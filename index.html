@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FESNA – Fundación de Educación Superior Nueva América | Portafolio Digital</title>
+  <meta name="description" content="Portafolio digital interactivo y campaña publicitaria de la Fundación de Educación Superior Nueva América (FESNA). Estudiante: David Yused Pulido Pardo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Overlay y Menú Lateral Desplegable a la Izquierda -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+  <aside id="left-sidebar" class="left-sidebar" aria-label="Menú Lateral de Programas FESNA">
+    <div class="sidebar-header">
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <div class="brand-icon" style="width:38px; height:38px; font-size:0.95rem;">NA</div>
+        <div>
+          <strong style="display:block; font-size:0.98rem; color:#ffffff;">Nueva América</strong>
+          <span style="font-size:0.7rem; color:#5eead4;">Menú de Programas por Ciclos</span>
+        </div>
+      </div>
+      <button id="close-sidebar-btn" class="sidebar-close-btn" title="Cerrar menú">✕</button>
+    </div>
+
+    <div class="sidebar-body">
+      <span class="sidebar-section-label">Navegación Principal</span>
+      <a href="index.html" class="sidebar-nav-item home-item active">
+        <div class="nav-item-title">
+          <span>🏠 Inicio • La FESNA</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">Presentación Personal e Información Institucional</div>
+      </a>
+
+      <span class="sidebar-section-label">Programas Profesionales por Ciclos</span>
+
+      <a href="administracion.html" class="sidebar-nav-item adm-item">
+        <div class="nav-item-title">
+          <span>📊 Administración de Empresas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Administrativos (111383 / 111384)<br>
+          • Tecnología en Gestión Administrativa (111385 / 111386)<br>
+          • Administración de Empresas (111357 / 111750)
+        </div>
+      </a>
+
+      <a href="contaduria.html" class="sidebar-nav-item cont-item">
+        <div class="nav-item-title">
+          <span>📈 Contaduría Pública</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Contables (111389 / 111390)<br>
+          • Tecnología en Gestión Contable y Financiera (111391 / 111392)<br>
+          • Contaduría Pública (111387 / 111388)
+        </div>
+      </a>
+
+      <a href="sistemas.html" class="sidebar-nav-item sis-item">
+        <div class="nav-item-title">
+          <span>💻 Ingeniería de Sistemas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Programación de Software (111395 / 111396)<br>
+          • Tecnología en Gestión de Software y Sistemas (111397 / 111398)<br>
+          • Ingeniería de Sistemas (111393 / 111394)
+        </div>
+      </a>
+
+      <a href="marketing.html" class="sidebar-nav-item mkt-item">
+        <div class="nav-item-title">
+          <span>📣 Marketing y Publicidad</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Comercialización y Com. Publicitaria (119246 / 119247)<br>
+          • Tecnología en Gestión Comercial y Publicidad (119245 / 119244)<br>
+          • Marketing y Publicidad (119242 / 119243)
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      Fundación de Educación Superior Nueva América (FESNA)<br>Código SNIES 4719 • Vigilada MinEducación
+    </div>
+  </aside>
+
+  <!-- Pestaña Flotante Izquierda para Abrir el Menú Desplegable -->
+  <button class="floating-left-menu-btn open-sidebar-btn" title="Abrir Menú de Programas">
+    <span>☰</span>
+    <span class="vertical-text">PROGRAMAS FESNA</span>
+  </button>
+
+  <!-- Barra Superior Institucional FESNA -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div>
+        <strong>Fundación de Educación Superior Nueva América (FESNA)</strong> • Código SNIES: <strong>4719</strong> • Personería Jurídica Res. 17084 (1978) y Res. 013091 (05/DIC/2019) • Vigilada MinEducación
+      </div>
+      <div class="top-contact-pills">
+        <span class="top-pill">👨‍🎓 David Yused Pulido Pardo • Ing. de Sistemas 10.º Semestre</span>
+        <span class="top-pill">📍 Bogotá D.C. – Diag. 47A Sur # 53-46</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación Superior -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left-group">
+        <button class="menu-drawer-trigger open-sidebar-btn">
+          ☰ Menú Programas
+        </button>
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon">NA</div>
+          <div>
+            <span class="brand-title">Nueva América • FESNA</span>
+            <span class="brand-subtitle">Siempre Nueva • Educación Superior</span>
+          </div>
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Inicio FESNA</a></li>
+          <li><a href="administracion.html" class="nav-pill-adm">Administración</a></li>
+          <li><a href="contaduria.html" class="nav-pill-cont">Contaduría</a></li>
+          <li><a href="sistemas.html" class="nav-pill-sis">Ing. de Sistemas</a></li>
+          <li><a href="marketing.html" class="nav-pill-mkt">Marketing y Publicidad</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- INICIO (SE CONSERVA IGUAL): 1. INTRODUCCIÓN Y PRESENTACIÓN PERSONAL   -->
+  <!-- ===================================================================== -->
+  <section id="introduccion" class="hero">
+    <div class="hero-container">
+      <!-- Columna Izquierda: Propósito de la Página Web y Recorrido del Curso -->
+      <div>
+        <div class="hero-tag">
+          <span>✨ 1. INTRODUCCIÓN Y PRESENTACIÓN PERSONAL • CAMPAÑA PUBLICITARIA FESNA</span>
+        </div>
+        <h1>
+          Portafolio Digital Interactivo: <span>Campaña Publicitaria FESNA</span> con Inteligencia Artificial
+        </h1>
+        <p class="hero-lead">
+          <strong>Propósito de la página web:</strong> Este sitio web interactivo tiene como propósito consolidar y presentar la campaña publicitaria institucional de la <strong>Fundación de Educación Superior Nueva América (FESNA)</strong>, integrando recursos audiovisuales, gráficos y sonoros creados con el apoyo de herramientas de Inteligencia Artificial, conservando fielmente los nombres oficiales de los programas y sus códigos SNIES.
+        </p>
+
+        <div style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 16px; padding: 1.35rem; margin-bottom: 1.75rem;">
+          <h3 style="color: #5eead4; font-size: 1.05rem; margin-bottom: 0.45rem;">
+            📘 Resumen General del Recorrido del Curso
+          </h3>
+          <p style="color: #e2e8f0; font-size: 0.94rem; margin: 0;">
+            Durante el desarrollo del curso exploramos y aplicamos tecnologías emergentes de Inteligencia Artificial aplicadas a la comunicación institucional y estratégica. Avanzamos desde el análisis de la identidad corporativa y la planeación de guiones hasta la producción práctica de videos explicativos, infografías institucionales, reels promocionales en formato móvil, spots publicitarios con locución sintética y motion graphics para los tres ciclos propedéuticos de formación superior.
+          </p>
+        </div>
+
+        <div class="hero-actions" style="margin-bottom: 0; display: flex; flex-wrap: wrap; gap: 0.75rem;">
+          <button class="btn btn-primary open-sidebar-btn">☰ Abrir Menú de las 4 Carreras</button>
+          <a href="#sobre-la-fesna" class="btn btn-secondary">🏛️ Conocer La FESNA</a>
+          <a href="DOCUMENTACION_SUSTENTACION_CAMPANA_FESNA_DAVID_PULIDO.docx" download class="btn" style="background:#0D3B66; color:#ffffff; font-weight:700; border:1px solid #5eead4; text-decoration:none; display:inline-flex; align-items:center; gap:0.4rem;">📄 Descargar Word Punto 4</a>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Perfil del Estudiante -->
+      <aside class="lead-form-card" style="border-top: 6px solid #1fa08b;">
+        <div style="display: flex; align-items: center; gap: 1rem; padding-bottom: 1rem; margin-bottom: 1.1rem; border-bottom: 1px solid var(--border-color);">
+          <div style="width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, var(--fesna-navy), var(--fesna-teal)); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.45rem; font-weight: 800; flex-shrink: 0;">
+            DP
+          </div>
+          <div>
+            <span style="display: inline-block; background: var(--fesna-teal-soft); color: var(--fesna-teal-dark); font-size: 0.72rem; font-weight: 800; padding: 0.2rem 0.65rem; border-radius: 999px; text-transform: uppercase; margin-bottom: 0.25rem;">
+              Perfil del Estudiante
+            </span>
+            <h2 style="font-size: 1.3rem; color: var(--fesna-navy); margin: 0;">David Yused Pulido Pardo</h2>
+            <p style="font-size: 0.9rem; color: var(--fesna-orange); font-weight: 700; margin: 0;">
+              Ingeniería de Sistemas • 10.º Semestre
+            </p>
+          </div>
+        </div>
+
+        <div style="display: grid; gap: 0.75rem; font-size: 0.88rem;">
+          <div style="background: #f8fafc; padding: 0.75rem 1rem; border-radius: 10px; border-left: 4px solid var(--fesna-navy);">
+            <strong style="color: var(--fesna-navy); display: block; margin-bottom: 0.2rem;">🎯 Objetivos de Aprendizaje:</strong>
+            <ul style="padding-left: 1.15rem; color: var(--text-secondary); display: grid; gap: 0.3rem; margin: 0;">
+              <li>Aplicar herramientas de Inteligencia Artificial en la creación de piezas comunicativas y publicitarias de alta calidad para la gestión empresarial.</li>
+              <li>Articular el dominio técnico de Ingeniería de Sistemas con la comunicación estratégica de los programas por ciclos propedéuticos de FESNA.</li>
+              <li>Garantizar el uso ético de recursos digitales y la exactitud de la información institucional oficial (códigos SNIES y registros calificados).</li>
+            </ul>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+            <div style="background: #f1f5f9; padding: 0.65rem 0.85rem; border-radius: 8px;">
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block;">Institución Campaña</span>
+              <strong style="color: var(--fesna-navy);">FESNA (SNIES 4719)</strong>
+            </div>
+            <div style="background: #f1f5f9; padding: 0.65rem 0.85rem; border-radius: 8px;">
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block;">Oferta Por Ciclos</span>
+              <strong style="color: var(--fesna-navy);">4 Áreas Profesionales</strong>
+            </div>
+          </div>
+
+          <a href="DOCUMENTACION_SUSTENTACION_CAMPANA_FESNA_DAVID_PULIDO.docx" download style="display:flex; align-items:center; justify-content:center; gap:0.5rem; background:linear-gradient(135deg, #0d3b66, #1fa08b); color:#ffffff; text-decoration:none; padding:0.7rem 1rem; border-radius:10px; font-weight:700; font-size:0.86rem; text-align:center; box-shadow:0 3px 8px rgba(13,59,102,0.15); transition:transform 0.2s ease;">
+            📥 Descargar Documentación y Sustentación (.docx)
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================================================================== -->
+  <!-- SECCIÓN INSTITUCIONAL: SOMOS LA NUEVA AMÉRICA, SIEMPRE NUEVA          -->
+  <!-- ===================================================================== -->
+  <section id="sobre-la-fesna" class="section">
+    <div class="section-header">
+      <span class="section-kicker">Institucional • www.nuevaamerica.edu.co</span>
+      <h2>Somos La Nueva América, Siempre Nueva</h2>
+      <p>
+        La <strong>Fundación de Educación Superior Nueva América (FESNA)</strong> cuenta con tu esfuerzo y potencialidades para convertirte en gestor del desarrollo personal, familiar y social con sentido ético, solidario, creativo y crítico.
+      </p>
+    </div>
+
+    <!-- Tarjetas de Historia Jurídica, Misión y Modalidades (Extraídas de nuevaamerica.edu.co) -->
+    <div class="benefits-grid">
+      <article class="benefit-card">
+        <div class="benefit-icon">🏛️</div>
+        <h3>Trayectoria y Reconocimiento Legal</h3>
+        <p>
+          Institución de Educación Superior de carácter Técnica Profesional, con personería jurídica aprobada por el Ministerio de Educación Nacional mediante la <strong>Resolución No. 17.084 del 13 de noviembre de 1978</strong> y redefinida mediante la <strong>Resolución No. 013091 del 5 de diciembre de 2019</strong> para ofrecer programas por ciclos propedéuticos.
+        </p>
+      </article>
+
+      <article class="benefit-card">
+        <div class="benefit-icon">🎓</div>
+        <h3>Profesionales por Ciclos Propedéuticos</h3>
+        <p>
+          La Nueva América se ha reinventado para ti: ahora ofrecemos programas profesionales por ciclos propedéuticos en los niveles de <strong>Técnica Profesional</strong>, <strong>Tecnología</strong> y <strong>Profesional Universitario</strong>. Obtén 3 títulos a lo largo de tu carrera en modalidad <strong>Presencial y Virtual</strong> en Bogotá D.C.
+        </p>
+      </article>
+
+      <article class="benefit-card">
+        <div class="benefit-icon">🌎</div>
+        <h3>Formación Técnica y Educación Continua</h3>
+        <p>
+          Además de nuestros ciclos propedéuticos, ofrecemos programas Técnicos Profesionales y <strong>Educación Continua</strong> (diplomados, capacitaciones, seminarios y talleres) para formar personas calificadas y capaces de afrontar los retos del mundo globalizado.
+        </p>
+      </article>
+    </div>
+
+    <!-- Banner Interactivo Oficial de los 12 Programas (4 Áreas y sus Colores Oficiales) -->
+    <div id="oferta-programas" style="margin-top: 3.5rem;">
+      <div class="section-header" style="margin-bottom: 1.8rem;">
+        <span class="section-kicker">Oferta Académica Oficial • Códigos SNIES Verificados</span>
+        <h2>Programas Profesionales por Ciclos Propedéuticos</h2>
+        <p>
+          Haz clic en cualquiera de las 4 áreas (o usa el <strong>Menú Lateral Izquierdo ☰</strong>) para ingresar a la página de cada carrera.
+        </p>
+      </div>
+
+      <!-- Imagen Oficial de Referencia + Franjas Interactivas con los Colores Exactos -->
+      <div class="programs-ribbon-container">
+        <!-- 1. ADMINISTRACIÓN DE EMPRESAS (TURQUESA) -->
+        <div class="ribbon-family-group">
+          <a href="administracion.html#nivel-tecnica" class="ribbon-row bg-adm-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos Administrativos Empresariales</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111383</span>
+                <span>Virtual: 111384</span>
+              </div>
+            </div>
+          </a>
+          <a href="administracion.html#nivel-tecnologia" class="ribbon-row bg-adm-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión Administrativa</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111385</span>
+                <span>Virtual: 111386</span>
+              </div>
+            </div>
+          </a>
+          <a href="administracion.html#nivel-profesional" class="ribbon-row bg-adm-3">
+            <span class="ribbon-program-name"><strong>Administración de Empresas</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111357</span>
+                <span>Virtual: 111750</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2. CONTADURÍA PÚBLICA (MORADO) -->
+        <div class="ribbon-family-group">
+          <a href="contaduria.html#nivel-tecnica" class="ribbon-row bg-cont-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos Contables</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111389</span>
+                <span>Virtual: 111390</span>
+              </div>
+            </div>
+          </a>
+          <a href="contaduria.html#nivel-tecnologia" class="ribbon-row bg-cont-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión Contable y Financiera</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111391</span>
+                <span>Virtual: 111392</span>
+              </div>
+            </div>
+          </a>
+          <a href="contaduria.html#nivel-profesional" class="ribbon-row bg-cont-3">
+            <span class="ribbon-program-name"><strong>Contaduría Pública</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111387</span>
+                <span>Virtual: 111388</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3. INGENIERÍA DE SISTEMAS (VERDE) -->
+        <div class="ribbon-family-group">
+          <a href="sistemas.html#nivel-tecnica" class="ribbon-row bg-sis-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos de Programación de Software</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111395</span>
+                <span>Virtual: 111396</span>
+              </div>
+            </div>
+          </a>
+          <a href="sistemas.html#nivel-tecnologia" class="ribbon-row bg-sis-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión de Software y Sistemas</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111397</span>
+                <span>Virtual: 111398</span>
+              </div>
+            </div>
+          </a>
+          <a href="sistemas.html#nivel-profesional" class="ribbon-row bg-sis-3">
+            <span class="ribbon-program-name"><strong>Ingeniería de Sistemas</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111393</span>
+                <span>Virtual: 111394</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4. MARKETING Y PUBLICIDAD (ROJO / VINO) -->
+        <div class="ribbon-family-group">
+          <a href="marketing.html#nivel-tecnica" class="ribbon-row bg-mkt-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos de Comercialización y Comunicación Publicitaria</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 119246</span>
+                <span>Virtual: 119247</span>
+              </div>
+            </div>
+          </a>
+          <a href="marketing.html#nivel-tecnologia" class="ribbon-row bg-mkt-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión de Comercial y Publicidad</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 119245</span>
+                <span>Virtual: 119244</span>
+              </div>
+            </div>
+          </a>
+          <a href="marketing.html#nivel-profesional" class="ribbon-row bg-mkt-3">
+            <span class="ribbon-program-name"><strong>Marketing y Publicidad</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 119242</span>
+                <span>Virtual: 119243</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Tarjetas Directas a las 4 Páginas -->
+      <div class="four-areas-grid">
+        <a href="administracion.html" class="area-portal-card card-adm">
+          <div>
+            <span class="top-pill">Área 1 • Ciclos Propedéuticos</span>
+            <h3>Administración de Empresas</h3>
+            <ul>
+              <li>T.P. en Procesos Administrativos Empresariales</li>
+              <li>Tecnología en Gestión Administrativa</li>
+              <li>Administración de Empresas</li>
+            </ul>
+          </div>
+          <span class="area-portal-btn">Entrar a Administración ➔</span>
+        </a>
+
+        <a href="contaduria.html" class="area-portal-card card-cont">
+          <div>
+            <span class="top-pill">Área 2 • Ciclos Propedéuticos</span>
+            <h3>Contaduría Pública</h3>
+            <ul>
+              <li>T.P. en Procesos Contables</li>
+              <li>Tecnología en Gestión Contable y Financiera</li>
+              <li>Contaduría Pública</li>
+            </ul>
+          </div>
+          <span class="area-portal-btn">Entrar a Contaduría ➔</span>
+        </a>
+
+        <a href="sistemas.html" class="area-portal-card card-sis">
+          <div>
+            <span class="top-pill">Área 3 • Ciclos Propedéuticos</span>
+            <h3>Ingeniería de Sistemas</h3>
+            <ul>
+              <li>T.P. en Procesos de Programación de Software</li>
+              <li>Tecnología en Gestión de Software y Sistemas</li>
+              <li>Ingeniería de Sistemas</li>
+            </ul>
+          </div>
+          <span class="area-portal-btn">Entrar a Ing. de Sistemas ➔</span>
+        </a>
+
+        <a href="marketing.html" class="area-portal-card card-mkt">
+          <div>
+            <span class="top-pill">Área 4 • Ciclos Propedéuticos</span>
+            <h3>Marketing y Publicidad</h3>
+            <ul>
+              <li>T.P. en Comercialización y Com. Publicitaria</li>
+              <li>Tecnología en Gestión de Comercial y Publicidad</li>
+              <li>Marketing y Publicidad</li>
+            </ul>
+          </div>
+          <span class="area-portal-btn">Entrar a Marketing ➔</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de Página Institucional Oficial FESNA -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>Fundación de Educación Superior Nueva América – FESNA</h4>
+        <p>
+          Institución de Educación Superior de carácter Técnica Profesional, con personería jurídica aprobada por el Ministerio de Educación Nacional mediante la Resolución No. 17.084 del 13 de noviembre de 1978 y redefinida mediante la Resolución No. 013091 del 5 de diciembre de 2019 para ofrecer programas por ciclos propedéuticos en los niveles de Técnica Profesional, Tecnología y Profesional Universitario.
+        </p>
+        <p style="margin-top:0.65rem;">
+          Es una institución de educación superior, privada, de utilidad común, sin ánimo de lucro con NIT No. 860.072.063-2 y con código SNIES No. 4719, con domicilio en Bogotá.<br>
+          <strong>Institución de Educación Superior sujeta a inspección y vigilancia por el Ministerio de Educación Nacional.</strong>
+        </p>
+      </div>
+
+      <div>
+        <h4>Programas Profesionales por Ciclos</h4>
+        <ul>
+          <li><a href="administracion.html" style="color:#5eead4; text-decoration:none;">• Administración de Empresas</a></li>
+          <li><a href="contaduria.html" style="color:#d8b4fe; text-decoration:none;">• Contaduría Pública</a></li>
+          <li><a href="sistemas.html" style="color:#86efac; text-decoration:none;">• Ingeniería de Sistemas</a></li>
+          <li><a href="marketing.html" style="color:#fca5a5; text-decoration:none;">• Marketing y Publicidad</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contáctanos y Ubicación</h4>
+        <ul>
+          <li>📍 <strong>Ubicación:</strong> Bogotá – Colombia, Diag. 47A Sur # 53 – 46, Barrio Venecia</li>
+          <li>📞 <strong>Programas Presenciales:</strong> Tel: (1) 7468757</li>
+          <li>💻 <strong>Programas Virtuales:</strong> Tel: (1) 9167888 – opción 2</li>
+          <li>✉️ <strong>Correo:</strong> contactenos@nuevaamerica.edu.co</li>
+          <li>🌐 <strong>Web Oficial:</strong> <a href="https://www.nuevaamerica.edu.co/" target="_blank" rel="noopener" style="color:#5eead4;">www.nuevaamerica.edu.co</a></li>
+          <li style="margin-top: 0.5rem; color: #ffffff;">
+            👨‍🎓 <strong>Autor:</strong> David Yused Pulido Pardo (Ing. de Sistemas – 10.º Semestre)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      Campaña Publicitaria FESNA – Portafolio Digital Interactivo • Desarrollado por <strong>David Yused Pulido Pardo</strong> • 2026
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

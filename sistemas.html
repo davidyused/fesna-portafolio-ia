@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ingeniería de Sistemas por Ciclos | Nueva América – FESNA</title>
+  <meta name="description" content="Campaña publicitaria FESNA – Área de Ingeniería de Sistemas por ciclos propedéuticos (SNIES 111395/111396, 111397/111398, 111393/111394)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Overlay y Menú Lateral Desplegable a la Izquierda -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+  <aside id="left-sidebar" class="left-sidebar" aria-label="Menú Lateral de Programas FESNA">
+    <div class="sidebar-header">
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <div class="brand-icon" style="width:38px; height:38px; font-size:0.95rem;">NA</div>
+        <div>
+          <strong style="display:block; font-size:0.98rem; color:#ffffff;">Nueva América</strong>
+          <span style="font-size:0.7rem; color:#5eead4;">Menú de Programas por Ciclos</span>
+        </div>
+      </div>
+      <button id="close-sidebar-btn" class="sidebar-close-btn" title="Cerrar menú">✕</button>
+    </div>
+
+    <div class="sidebar-body">
+      <span class="sidebar-section-label">Navegación Principal</span>
+      <a href="index.html" class="sidebar-nav-item home-item">
+        <div class="nav-item-title">
+          <span>🏠 Inicio • La FESNA</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">Presentación Personal e Información Institucional</div>
+      </a>
+
+      <span class="sidebar-section-label">Programas Profesionales por Ciclos</span>
+
+      <a href="administracion.html" class="sidebar-nav-item adm-item">
+        <div class="nav-item-title">
+          <span>📊 Administración de Empresas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Administrativos (111383 / 111384)<br>
+          • Tecnología en Gestión Administrativa (111385 / 111386)<br>
+          • Administración de Empresas (111357 / 111750)
+        </div>
+      </a>
+
+      <a href="contaduria.html" class="sidebar-nav-item cont-item">
+        <div class="nav-item-title">
+          <span>📈 Contaduría Pública</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Contables (111389 / 111390)<br>
+          • Tecnología en Gestión Contable y Financiera (111391 / 111392)<br>
+          • Contaduría Pública (111387 / 111388)
+        </div>
+      </a>
+
+      <a href="sistemas.html" class="sidebar-nav-item sis-item active">
+        <div class="nav-item-title">
+          <span>💻 Ingeniería de Sistemas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Programación de Software (111395 / 111396)<br>
+          • Tecnología en Gestión de Software y Sistemas (111397 / 111398)<br>
+          • Ingeniería de Sistemas (111393 / 111394)
+        </div>
+      </a>
+
+      <a href="marketing.html" class="sidebar-nav-item mkt-item">
+        <div class="nav-item-title">
+          <span>📣 Marketing y Publicidad</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Comercialización y Com. Publicitaria (119246 / 119247)<br>
+          • Tecnología en Gestión Comercial y Publicidad (119245 / 119244)<br>
+          • Marketing y Publicidad (119242 / 119243)
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      Fundación de Educación Superior Nueva América (FESNA)<br>Código SNIES 4719 • Vigilada MinEducación
+    </div>
+  </aside>
+
+  <!-- Pestaña Flotante Izquierda -->
+  <button class="floating-left-menu-btn open-sidebar-btn" title="Abrir Menú de Programas">
+    <span>☰</span>
+    <span class="vertical-text">PROGRAMAS FESNA</span>
+  </button>
+
+  <!-- Barra Superior Institucional -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div>
+        <strong>Fundación de Educación Superior Nueva América (FESNA)</strong> • Área de Ingeniería de Sistemas por Ciclos Propedéuticos
+      </div>
+      <div class="top-contact-pills">
+        <span class="top-pill">SNIES: 111395 / 111396 • 111397 / 111398 • 111393 / 111394</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left-group">
+        <button class="menu-drawer-trigger open-sidebar-btn">
+          ☰ Menú Programas
+        </button>
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon" style="background: linear-gradient(135deg, var(--sis-3), var(--sis-1));">NA</div>
+          <div>
+            <span class="brand-title">Nueva América • FESNA</span>
+            <span class="brand-subtitle" style="color: var(--sis-2);">Área de Ingeniería de Sistemas</span>
+          </div>
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Inicio FESNA</a></li>
+          <li><a href="#nivel-tecnica">1. Técnica Profesional</a></li>
+          <li><a href="#nivel-tecnologia">2. Tecnología</a></li>
+          <li><a href="#nivel-profesional">3. Ingeniería de Sistemas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero del Área de Ingeniería de Sistemas (Colores Verde Esmeralda / Bosque Oficiales) -->
+  <section class="hero theme-sis">
+    <div class="hero-container">
+      <div>
+        <div class="hero-tag" style="color:#bbf7d0;">
+          <span>💻 ÁREA DE INGENIERÍA DE SISTEMAS • FORMACIÓN POR CICLOS PROPEDÉUTICOS</span>
+        </div>
+        <h1>
+          Ingeniería de Sistemas en <span style="color:#86efac;">La Nueva América (FESNA)</span>
+        </h1>
+        <p class="hero-lead">
+          Avanza por ciclos propedéuticos desde <strong>Técnica Profesional en Procesos de Programación de Software</strong>, pasando por <strong>Tecnología en Gestión de Software y Sistemas</strong>, hasta alcanzar el título profesional en <strong>Ingeniería de Sistemas</strong> en modalidad presencial y virtual en Bogotá D.C.
+        </p>
+        <div class="hero-actions">
+          <a href="#nivel-tecnica" class="btn btn-primary">▶ Ver Ciclos y Programas</a>
+          <button class="btn btn-secondary open-sidebar-btn">☰ Cambiar de Programa</button>
+        </div>
+      </div>
+
+      <!-- Franjas Oficiales del Área de Ingeniería de Sistemas -->
+      <div class="programs-ribbon-container" style="margin-bottom:0;">
+        <div class="ribbon-family-group">
+          <a href="#nivel-tecnica" class="ribbon-row bg-sis-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos de Programación de Software</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111395</span>
+                <span>Virtual: 111396</span>
+              </div>
+            </div>
+          </a>
+          <a href="#nivel-tecnologia" class="ribbon-row bg-sis-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión de Software y Sistemas</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111397</span>
+                <span>Virtual: 111398</span>
+              </div>
+            </div>
+          </a>
+          <a href="#nivel-profesional" class="ribbon-row bg-sis-3">
+            <span class="ribbon-program-name"><strong>Ingeniería de Sistemas</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111393</span>
+                <span>Virtual: 111394</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <!-- Nivel 1 -->
+    <article id="nivel-tecnica" class="program-campaign-card">
+      <div class="program-banner bg-sis-1">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 1 • Técnica Profesional</span>
+          <h3>Técnica Profesional en Procesos de Programación de Software</h3>
+          <p>Primer ciclo propedéutico enfocado en desarrollo de software, lógica de programación, bases de datos y soporte aplicativo.</p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111395 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111396</div>
+          <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Nivel 2 -->
+    <article id="nivel-tecnologia" class="program-campaign-card">
+      <div class="program-banner bg-sis-2">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 2 • Tecnología</span>
+          <h3>Tecnología en Gestión de Software y Sistemas</h3>
+          <p>Segundo ciclo propedéutico orientado a la administración de sistemas de información, arquitectura de software, redes e infraestructura tecnológica.</p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111397 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111398</div>
+          <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Nivel 3 -->
+    <article id="nivel-profesional" class="program-campaign-card">
+      <div class="program-banner bg-sis-3">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 3 • Profesional Universitario</span>
+          <h3>Ingeniería de Sistemas</h3>
+          <p>Tercer ciclo propedéutico orientado al liderazgo de proyectos tecnológicos, inteligencia artificial, ciberseguridad y transformación digital organizacional.</p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111393 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111394</div>
+          <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      Fundación de Educación Superior Nueva América (FESNA) • Área de Ingeniería de Sistemas • <a href="index.html" style="color:#86efac;">Volver al Inicio</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

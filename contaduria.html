@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contaduría Pública por Ciclos | Nueva América – FESNA</title>
+  <meta name="description" content="Campaña publicitaria FESNA – Área de Contaduría Pública por ciclos propedéuticos (SNIES 111389/111390, 111391/111392, 111387/111388)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Overlay y Menú Lateral Desplegable a la Izquierda -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+  <aside id="left-sidebar" class="left-sidebar" aria-label="Menú Lateral de Programas FESNA">
+    <div class="sidebar-header">
+      <div style="display:flex; align-items:center; gap:0.65rem;">
+        <div class="brand-icon" style="width:38px; height:38px; font-size:0.95rem;">NA</div>
+        <div>
+          <strong style="display:block; font-size:0.98rem; color:#ffffff;">Nueva América</strong>
+          <span style="font-size:0.7rem; color:#5eead4;">Menú de Programas por Ciclos</span>
+        </div>
+      </div>
+      <button id="close-sidebar-btn" class="sidebar-close-btn" title="Cerrar menú">✕</button>
+    </div>
+
+    <div class="sidebar-body">
+      <span class="sidebar-section-label">Navegación Principal</span>
+      <a href="index.html" class="sidebar-nav-item home-item">
+        <div class="nav-item-title">
+          <span>🏠 Inicio • La FESNA</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">Presentación Personal e Información Institucional</div>
+      </a>
+
+      <span class="sidebar-section-label">Programas Profesionales por Ciclos</span>
+
+      <a href="administracion.html" class="sidebar-nav-item adm-item">
+        <div class="nav-item-title">
+          <span>📊 Administración de Empresas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Administrativos (111383 / 111384)<br>
+          • Tecnología en Gestión Administrativa (111385 / 111386)<br>
+          • Administración de Empresas (111357 / 111750)
+        </div>
+      </a>
+
+      <a href="contaduria.html" class="sidebar-nav-item cont-item active">
+        <div class="nav-item-title">
+          <span>📈 Contaduría Pública</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Procesos Contables (111389 / 111390)<br>
+          • Tecnología en Gestión Contable y Financiera (111391 / 111392)<br>
+          • Contaduría Pública (111387 / 111388)
+        </div>
+      </a>
+
+      <a href="sistemas.html" class="sidebar-nav-item sis-item">
+        <div class="nav-item-title">
+          <span>💻 Ingeniería de Sistemas</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Programación de Software (111395 / 111396)<br>
+          • Tecnología en Gestión de Software y Sistemas (111397 / 111398)<br>
+          • Ingeniería de Sistemas (111393 / 111394)
+        </div>
+      </a>
+
+      <a href="marketing.html" class="sidebar-nav-item mkt-item">
+        <div class="nav-item-title">
+          <span>📣 Marketing y Publicidad</span>
+          <span>➔</span>
+        </div>
+        <div class="nav-item-sub">
+          • T.P. en Comercialización y Com. Publicitaria (119246 / 119247)<br>
+          • Tecnología en Gestión Comercial y Publicidad (119245 / 119244)<br>
+          • Marketing y Publicidad (119242 / 119243)
+        </div>
+      </a>
+    </div>
+
+    <div class="sidebar-footer">
+      Fundación de Educación Superior Nueva América (FESNA)<br>Código SNIES 4719 • Vigilada MinEducación
+    </div>
+  </aside>
+
+  <!-- Pestaña Flotante Izquierda -->
+  <button class="floating-left-menu-btn open-sidebar-btn" title="Abrir Menú de Programas">
+    <span>☰</span>
+    <span class="vertical-text">PROGRAMAS FESNA</span>
+  </button>
+
+  <!-- Barra Superior Institucional -->
+  <div class="top-bar">
+    <div class="top-bar-inner">
+      <div>
+        <strong>Fundación de Educación Superior Nueva América (FESNA)</strong> • Área de Contaduría Pública por Ciclos Propedéuticos
+      </div>
+      <div class="top-contact-pills">
+        <span class="top-pill">SNIES: 111389 / 111390 • 111391 / 111392 • 111387 / 111388</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="nav-left-group">
+        <button class="menu-drawer-trigger open-sidebar-btn">
+          ☰ Menú Programas
+        </button>
+        <a href="index.html" class="brand-logo">
+          <div class="brand-icon" style="background: linear-gradient(135deg, var(--cont-3), var(--cont-1));">NA</div>
+          <div>
+            <span class="brand-title">Nueva América • FESNA</span>
+            <span class="brand-subtitle" style="color: var(--cont-2);">Área de Contaduría Pública</span>
+          </div>
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">🏠 Inicio FESNA</a></li>
+          <li><a href="#nivel-tecnica">1. Técnica Profesional</a></li>
+          <li><a href="#nivel-tecnologia">2. Tecnología</a></li>
+          <li><a href="#nivel-profesional">3. Contaduría Pública</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero del Área de Contaduría Pública (Colores Morado / Púrpura Oficiales) -->
+  <section class="hero theme-cont">
+    <div class="hero-container">
+      <div>
+        <div class="hero-tag" style="color:#f5d0fe;">
+          <span>📈 ÁREA DE CONTADURÍA PÚBLICA • FORMACIÓN POR CICLOS PROPEDÉUTICOS</span>
+        </div>
+        <h1>
+          Contaduría Pública en <span style="color:#f5d0fe;">La Nueva América (FESNA)</span>
+        </h1>
+        <p class="hero-lead">
+          El programa profesional de <strong>Contaduría Pública</strong>, articulado por ciclos propedéuticos con la <strong>Técnica Profesional en Procesos Contables</strong> y la <strong>Tecnología en Gestión Contable y Financiera</strong> en modalidades presencial y virtual, forma profesionales capaces de diseñar, administrar y evaluar sistemas de información contable y financiera orientados a la toma de decisiones en el nivel gerencial.
+        </p>
+        <div class="hero-actions">
+          <a href="#nivel-tecnica" class="btn btn-primary">▶ Ver Ciclos y Productos IA</a>
+          <button class="btn btn-secondary open-sidebar-btn">☰ Cambiar de Programa</button>
+        </div>
+      </div>
+
+      <!-- Franjas Oficiales del Área de Contaduría Pública -->
+      <div class="programs-ribbon-container" style="margin-bottom:0;">
+        <div class="ribbon-family-group">
+          <a href="#nivel-tecnica" class="ribbon-row bg-cont-1">
+            <span class="ribbon-program-name">Técnica Profesional en <strong>Procesos Contables</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111389</span>
+                <span>Virtual: 111390</span>
+              </div>
+            </div>
+          </a>
+          <a href="#nivel-tecnologia" class="ribbon-row bg-cont-2">
+            <span class="ribbon-program-name">Tecnología en <strong>Gestión Contable y Financiera</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111391</span>
+                <span>Virtual: 111392</span>
+              </div>
+            </div>
+          </a>
+          <a href="#nivel-profesional" class="ribbon-row bg-cont-3">
+            <span class="ribbon-program-name"><strong>Contaduría Pública</strong></span>
+            <div class="ribbon-snies-box">
+              <span class="ribbon-snies-label">SNIES</span>
+              <div class="ribbon-snies-codes">
+                <span>Presencial: 111387</span>
+                <span>Virtual: 111388</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido de los 3 Niveles de Contaduría Pública -->
+  <section class="section">
+
+    <!-- ================================================================= -->
+    <!-- NIVEL 1: TÉCNICA PROFESIONAL EN PROCESOS CONTABLES                -->
+    <!-- ================================================================= -->
+    <article id="nivel-tecnica" class="program-campaign-card">
+      <div class="program-banner bg-cont-1">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 1 • Técnica Profesional</span>
+          <h3>Técnica Profesional en Procesos Contables</h3>
+          <p>Título otorgado: <strong>Técnico/a Profesional en Procesos Contables</strong></p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#f5d0fe;">SNIES Presencial:</strong> 111389 | <strong style="color:#f5d0fe;">SNIES Virtual:</strong> 111390</div>
+          <div><strong style="color:#f5d0fe;">Resolución MEN:</strong> 009955 del 3 de junio de 2022</div>
+          <div><strong style="color:#f5d0fe;">Duración y Créditos:</strong> 3 períodos académicos • 51 / 52 créditos</div>
+          <div><strong style="color:#f5d0fe;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 1.1: Serie de Reels con Guion IA (Archivo real de David) -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>📱 Serie de Reels con Guion IA: Tips Contables</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Serie de Reels IA</span>
+          </div>
+          <p class="media-description">
+            Cápsulas cortas con tips sobre: <strong>1) Registro de asientos contables</strong>, <strong>2) Manejo de caja menor</strong>, <strong>3) Archivo tributario</strong> y <strong>4) Liquidación básica de nómina</strong>.
+          </p>
+          <div class="video-frame vertical-reel">
+            <video controls preload="metadata" src="assets/reel-tppc-contaduria.mp4">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+        </div>
+
+        <!-- Pieza 1.2: Cuña Radial Generada con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>📻 Cuña Radial Generada con IA</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Voz Neural Colombiana IA</span>
+          </div>
+          <p class="media-description">
+            Pieza radial generada con síntesis de voz neural en alta definición promocionando la Técnica Profesional en Procesos Contables (SNIES Presencial 111389 y Virtual 111390, Res. 009955 de 2022).
+          </p>
+          <div class="radio-spot-box" style="background: linear-gradient(135deg, #2a0630 0%, #581063 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span style="color:#f5d0fe; font-weight:800; font-size:0.8rem;">🔊 CUÑA RADIAL OFICIAL CON IA (Voz: Salomé Neural ES-CO)</span>
+              <span class="top-pill">SNIES 111389 / 111390</span>
+            </div>
+            <h5 style="color:#ffffff; font-size:1.05rem; margin-top:0.55rem;">
+              "Domina el lenguaje contable: Técnica Profesional en Procesos Contables"
+            </h5>
+            <div id="cuna-tppc-visualizer" class="audio-bars">
+              <div class="bar" style="animation-delay: 0.05s"></div>
+              <div class="bar" style="animation-delay: 0.18s"></div>
+              <div class="bar" style="animation-delay: 0.10s"></div>
+              <div class="bar" style="animation-delay: 0.26s"></div>
+              <div class="bar" style="animation-delay: 0.14s"></div>
+              <div class="bar" style="animation-delay: 0.32s"></div>
+              <div class="bar" style="animation-delay: 0.08s"></div>
+              <div class="bar" style="animation-delay: 0.22s"></div>
+              <div class="bar" style="animation-delay: 0.36s"></div>
+              <div class="bar" style="animation-delay: 0.12s"></div>
+              <div class="bar" style="animation-delay: 0.28s"></div>
+              <div class="bar" style="animation-delay: 0.20s"></div>
+            </div>
+            <audio id="cuna-tppc-audio" controls src="assets/cuna-radial-tppc.mp3" style="width:100%; margin-top:0.5rem;"></audio>
+          </div>
+          <div style="margin-top:1rem; padding:1rem; background:#ffffff; border-radius:10px; border:1px solid var(--border-color); font-size:0.85rem; color:var(--text-secondary);">
+            <strong>Competencias clave del ciclo:</strong> Contabilidad de Activos, Pasivos y Patrimonio; Procesos Contables; Software Contable; Contabilidad de Costos; Excel Financiero; Procedimiento Tributario y Derecho Laboral.
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Períodos 1 al 3 -->
+      <div class="curriculum-bar">
+        <div>
+          <strong>Plan de Estudios Oficial (Períodos 1.º, 2.º y 3.º – 51 / 52 Créditos Académicos • Res. 009955 de 03/JUN/2022)</strong>
+        </div>
+        <button class="btn btn-outline btn-sm toggle-curriculum-btn" data-target="plan-tppc">
+          Ver Plan de Estudios por Períodos ▼
+        </button>
+      </div>
+      <div id="plan-tppc" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-1);">Primer Período</h5>
+            <ul>
+              <li>Contabilidad de Activos, Ingresos y Gastos</li>
+              <li>Procesos Contables</li>
+              <li>Constitución Política de Colombia</li>
+              <li>Cátedra Nueva América 1</li>
+              <li>Proyecto de Vida</li>
+              <li>Fundamentos de Matemáticas</li>
+              <li>Habilidades Comunicativas</li>
+              <li>Manejo de Herramientas Ofimáticas</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-1);">Segundo Período</h5>
+            <ul>
+              <li>Contabilidad de Pasivos y Patrimonio</li>
+              <li>Matemática Financiera</li>
+              <li>Tecnologías Aplicadas (Software Contable)</li>
+              <li>Contabilidad de Costos</li>
+              <li>Derecho Laboral</li>
+              <li>Electiva Complementaria 1</li>
+              <li>Estadística Descriptiva</li>
+              <li>Investigación 1</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-1);">Tercer Período</h5>
+            <ul>
+              <li>Fundamentación de Estados Financieros</li>
+              <li>Excel Financiero</li>
+              <li>Procedimiento Tributario</li>
+              <li>Opción de Grado Técnica Profesional</li>
+              <li>Práctica Técnica Profesional</li>
+              <li>Electiva Profundización 1</li>
+              <li>Curso Propedéutico: Teoría Contable</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================================================================= -->
+    <!-- NIVEL 2: TECNOLOGÍA EN GESTIÓN CONTABLE Y FINANCIERA              -->
+    <!-- ================================================================= -->
+    <article id="nivel-tecnologia" class="program-campaign-card">
+      <div class="program-banner bg-cont-2">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 2 • Tecnología</span>
+          <h3>Tecnología en Gestión Contable y Financiera</h3>
+          <p>Título otorgado: <strong>Tecnólogo/a en Gestión Contable y Financiera</strong></p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#f5d0fe;">SNIES Presencial:</strong> 111391 | <strong style="color:#f5d0fe;">SNIES Virtual:</strong> 111392</div>
+          <div><strong style="color:#f5d0fe;">Resolución MEN:</strong> 009956 del 3 de junio de 2022</div>
+          <div><strong style="color:#f5d0fe;">Duración y Créditos:</strong> +2 períodos (5 semestres acumulados) • 86 / 87 créditos</div>
+          <div><strong style="color:#f5d0fe;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 2.1: Podcast "Conoce FESNA" con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎙️ Podcast "Conoce FESNA" con IA (Diálogo a 2 Voces)</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Podcast Conversacional IA</span>
+          </div>
+          <p class="media-description">
+            Episodio conversacional a dos voces neurales sobre la Tecnología en Gestión Contable y Financiera: análisis de estados financieros, costos, indicadores de liquidez e impuestos.
+          </p>
+          <div class="radio-spot-box" style="background: linear-gradient(135deg, #32083a 0%, #6b1378 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span style="color:#f5d0fe; font-weight:800; font-size:0.8rem;">🎧 PODCAST "CONOCE FESNA" (Voces: Dalia + Sebastián Neural)</span>
+              <span class="top-pill">SNIES 111391 / 111392</span>
+            </div>
+            <h5 style="color:#ffffff; font-size:1.05rem; margin-top:0.55rem;">
+              Episodio: "Gestión Contable, Liquidez y Normatividad Tributaria en FESNA"
+            </h5>
+            <div id="podcast-tgcf-visualizer" class="audio-bars">
+              <div class="bar" style="animation-delay: 0.05s"></div>
+              <div class="bar" style="animation-delay: 0.18s"></div>
+              <div class="bar" style="animation-delay: 0.10s"></div>
+              <div class="bar" style="animation-delay: 0.26s"></div>
+              <div class="bar" style="animation-delay: 0.14s"></div>
+              <div class="bar" style="animation-delay: 0.32s"></div>
+              <div class="bar" style="animation-delay: 0.08s"></div>
+              <div class="bar" style="animation-delay: 0.22s"></div>
+              <div class="bar" style="animation-delay: 0.36s"></div>
+              <div class="bar" style="animation-delay: 0.12s"></div>
+              <div class="bar" style="animation-delay: 0.28s"></div>
+              <div class="bar" style="animation-delay: 0.20s"></div>
+            </div>
+            <audio id="podcast-tgcf-audio" controls src="assets/podcast-conoce-fesna-tgcf.mp3" style="width:100%; margin-top:0.5rem;"></audio>
+          </div>
+        </div>
+
+        <!-- Pieza 2.2: Animación 2D Asistida por IA (Archivo real de David) -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎞️ Animación 2D Asistida por IA</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Animación 2D Full HD</span>
+          </div>
+          <p class="media-description">
+            Exposición didáctica animada en 2D sobre análisis de estados financieros, presupuestos, indicadores de liquidez y normatividad tributaria intermedia.
+          </p>
+          <div class="video-frame">
+            <video controls preload="metadata" src="assets/animacion2d-tgcf-contaduria.mp4">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Períodos 4 y 5 -->
+      <div class="curriculum-bar">
+        <div>
+          <strong>Plan de Estudios Oficial (Períodos 4.º y 5.º – 86 / 87 Créditos Académicos Acumulados • Res. 009956 de 03/JUN/2022)</strong>
+        </div>
+        <button class="btn btn-outline btn-sm toggle-curriculum-btn" data-target="plan-tgcf">
+          Ver Plan de Estudios por Períodos ▼
+        </button>
+      </div>
+      <div id="plan-tgcf" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-2);">Cuarto Período</h5>
+            <ul>
+              <li>Contabilidad Financiera</li>
+              <li>Costos Estándar y por Procesos</li>
+              <li>Impuestos Departamentales y Municipales</li>
+              <li>Fundamentos de Economía</li>
+              <li>Electiva Complementaria 2</li>
+              <li>Cátedra Nueva América 2</li>
+              <li>Emprendimiento</li>
+              <li>Estadística Inferencial</li>
+              <li>Matemática 1</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-2);">Quinto Período</h5>
+            <ul>
+              <li>Contabilidad y Normas Internacionales</li>
+              <li>Indicadores Contables Financieros</li>
+              <li>Impuestos Nacionales</li>
+              <li>Opción de Grado Tecnología</li>
+              <li>Práctica Tecnología</li>
+              <li>Electiva Profundización 2</li>
+              <li>Curso Propedéutico: Planeación y Administración Financiera</li>
+              <li>Investigación 2</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ================================================================= -->
+    <!-- NIVEL 3: CONTADURÍA PÚBLICA (PROFESIONAL UNIVERSITARIO)           -->
+    <!-- ================================================================= -->
+    <article id="nivel-profesional" class="program-campaign-card">
+      <div class="program-banner bg-cont-3">
+        <div class="program-banner-info">
+          <span class="step-tag">Nivel 3 • Profesional Universitario</span>
+          <h3>Contaduría Pública</h3>
+          <p>Título otorgado: <strong>Contador(a) Público(a)</strong></p>
+        </div>
+        <div class="program-official-meta">
+          <div><strong style="color:#f5d0fe;">SNIES Presencial:</strong> 111387 | <strong style="color:#f5d0fe;">SNIES Virtual:</strong> 111388</div>
+          <div><strong style="color:#f5d0fe;">Resolución MEN:</strong> 009957 del 3 de junio de 2022</div>
+          <div><strong style="color:#f5d0fe;">Duración y Créditos:</strong> +4 períodos (9 períodos acumulados) • 155 / 159 créditos</div>
+          <div><strong style="color:#f5d0fe;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 3.1: 1 Testimonio recreado con avatar IA (Archivo real de David) -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🧑‍💼 Testimonio Recreado con Avatar IA: Valeria Mendoza</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Avatar Virtual IA</span>
+          </div>
+          <p class="media-description">
+            Testimonio de egresada virtual sobre Normas Internacionales (NIIF/NIC), auditoría, revisoría fiscal, ética profesional y análisis macrofinanciero en FESNA.
+          </p>
+          <div class="video-frame">
+            <video controls preload="metadata" src="assets/testimonio-avatar-cp.mp4">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+        </div>
+
+        <!-- Pieza 3.2: Podcast Institucional Asistido por IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎧 Podcast Institucional Asistido por IA (Diálogo Directivo)</h4>
+            <span class="media-badge" style="background:#fae8ff; color:var(--cont-3);">Podcast Directivo a 2 Voces</span>
+          </div>
+          <p class="media-description">
+            Conversatorio institucional a dos voces neurales sobre NIIF/NIC, auditoría general, financiera, tributaria y forense, revisoría fiscal y ética del Contador Público en FESNA.
+          </p>
+          <div class="radio-spot-box" style="background: linear-gradient(135deg, #240529 0%, #74187e 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span style="color:#f5d0fe; font-weight:800; font-size:0.8rem;">🎙️ PODCAST INSTITUCIONAL (Voces: Jorge + Catalina Neural)</span>
+              <span class="top-pill">SNIES 111387 / 111388</span>
+            </div>
+            <h5 style="color:#ffffff; font-size:1.05rem; margin-top:0.55rem;">
+              "Liderazgo Contable, NIIF, Revisoría Fiscal y Auditoría Forense en La Nueva América"
+            </h5>
+            <div id="podcast-cp-visualizer" class="audio-bars">
+              <div class="bar" style="animation-delay: 0.05s"></div>
+              <div class="bar" style="animation-delay: 0.18s"></div>
+              <div class="bar" style="animation-delay: 0.10s"></div>
+              <div class="bar" style="animation-delay: 0.26s"></div>
+              <div class="bar" style="animation-delay: 0.14s"></div>
+              <div class="bar" style="animation-delay: 0.32s"></div>
+              <div class="bar" style="animation-delay: 0.08s"></div>
+              <div class="bar" style="animation-delay: 0.22s"></div>
+              <div class="bar" style="animation-delay: 0.36s"></div>
+              <div class="bar" style="animation-delay: 0.12s"></div>
+              <div class="bar" style="animation-delay: 0.28s"></div>
+              <div class="bar" style="animation-delay: 0.20s"></div>
+            </div>
+            <audio id="podcast-cp-audio" controls src="assets/podcast-institucional-cp.mp3" style="width:100%; margin-top:0.5rem;"></audio>
+          </div>
+        </div>
+      </div>
+
+      <!-- Perfil Ocupacional Oficial (Extraído de CONTADURIA-PUBLICA-3.pdf y Contaduría – Fesna.pdf) -->
+      <div class="occupational-bar" style="background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%); border-left-color: var(--cont-2);">
+        <h4 style="color:var(--cont-3); font-size:1.08rem;">
+          💼 Perfil Ocupacional Oficial – El Contador Público de La Nueva América puede desempeñarse a nivel nacional o internacional como:
+        </h4>
+        <div class="occupational-pills">
+          <span class="occ-pill">📊 Director de Contabilidad – Contador</span>
+          <span class="occ-pill">💰 Director Financiero – de Costos – Presupuestos</span>
+          <span class="occ-pill">⚖️ Director y Gerente de Planeación Tributaria</span>
+          <span class="occ-pill">🔍 Auditor Interno, Externo o Internacional</span>
+          <span class="occ-pill">🏛️ Revisor Fiscal y Aseguramiento de la Información</span>
+          <span class="occ-pill">📈 Controller, Contraloría y Tesorería</span>
+          <span class="occ-pill">🤝 Asesor Contable, Financiero y Tributario</span>
+          <span class="occ-pill">🚀 Empresario</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Períodos 6 al 9 -->
+      <div class="curriculum-bar">
+        <div>
+          <strong>Plan de Estudios Oficial (Períodos 6.º, 7.º, 8.º y 9.º – 155 / 159 Créditos Académicos Acumulados • Res. 009957 de 03/JUN/2022)</strong>
+        </div>
+        <button class="btn btn-outline btn-sm toggle-curriculum-btn" data-target="plan-cp">
+          Ver Plan de Estudios por Períodos ▼
+        </button>
+      </div>
+      <div id="plan-cp" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-3);">Sexto Período</h5>
+            <ul>
+              <li>Análisis Financiero</li>
+              <li>Presupuestos</li>
+              <li>Auditoría General</li>
+              <li>Drivers y Métodos de Costeo</li>
+              <li>Planeación Tributaria</li>
+              <li>Microeconomía</li>
+              <li>Cátedra Nueva América 3</li>
+              <li>Plan de Negocio</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-3);">Séptimo Período</h5>
+            <ul>
+              <li>Contabilidad Gubernamental</li>
+              <li>Herramientas Financieras en Evaluación de Proyectos</li>
+              <li>Auditoría Financiera</li>
+              <li>Legislación Comercial</li>
+              <li>Finanzas Públicas</li>
+              <li>Macroeconomía</li>
+              <li>Electiva Complementaria 3</li>
+              <li>Plan de Negocio Aplicado</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-3);">Octavo Período</h5>
+            <ul>
+              <li>Contabilidades Especiales</li>
+              <li>Estados Financieros Consolidados</li>
+              <li>Auditoría Tributaria</li>
+              <li>Revisoría Fiscal</li>
+              <li>Opción de Grado Profesional</li>
+              <li>Práctica Profesional</li>
+              <li>Investigación 3</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5 style="border-bottom-color:var(--cont-3);">Noveno Período</h5>
+            <ul>
+              <li>Contabilidad de Dirección Estratégica</li>
+              <li>Gerencia Financiera</li>
+              <li>Auditoría Forense</li>
+              <li>Ética del Contador</li>
+              <li>Seminario de Impuestos</li>
+              <li>Mercado de Capitales</li>
+              <li>Trabajo de Grado</li>
+              <li>Electiva Profundización 3</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      Fundación de Educación Superior Nueva América (FESNA) • Área de Contaduría Pública • <a href="index.html" style="color:#f5d0fe;">Volver al Inicio</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

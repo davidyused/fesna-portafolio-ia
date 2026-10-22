@@ -1,0 +1,10 @@
+# Ignorar archivos temporales .wav (el sitio web utiliza los .mp3 optimizados)
+assets/*.wav
+
+# Cache de Python
+__pycache__/
+*.pyc
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
