@@ -1108,3 +1108,469 @@ body {
     margin: 0 1.4rem 1.4rem;
   }
 }
+
+/* ==========================================================================
+   COMPONENTES INTERACTIVOS PARA MARKETING Y PUBLICIDAD (EXAMEN FINAL)
+   ========================================================================== */
+
+/* 1. Chatbot Conversacional IA */
+.mkt-chat-box {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
+}
+
+.mkt-chat-header {
+  background: linear-gradient(135deg, var(--mkt-3) 0%, var(--mkt-1) 100%);
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mkt-chat-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.chat-status-dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  display: inline-block;
+}
+
+.mkt-chat-messages {
+  flex: 1;
+  padding: 1.2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  background: #fdfaf9;
+}
+
+.chat-msg {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 88%;
+}
+
+.chat-msg.bot {
+  align-self: flex-start;
+}
+
+.chat-msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.chat-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.chat-msg.bot .chat-avatar {
+  background: var(--mkt-1);
+  color: #ffffff;
+}
+
+.chat-msg.user .chat-avatar {
+  background: var(--fesna-navy);
+  color: #ffffff;
+}
+
+.chat-bubble {
+  padding: 0.8rem 1.05rem;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.chat-msg.bot .chat-bubble {
+  background: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid #fed7aa;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.chat-msg.user .chat-bubble {
+  background: linear-gradient(135deg, var(--mkt-2), var(--mkt-1));
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-chips-container {
+  padding: 0.6rem 1rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.chat-chip {
+  background: #ffffff;
+  border: 1px solid #fca5a5;
+  color: var(--mkt-3);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chat-chip:hover {
+  background: var(--mkt-1);
+  color: #ffffff;
+  border-color: var(--mkt-1);
+}
+
+.mkt-chat-input-row {
+  display: flex;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  gap: 0.5rem;
+}
+
+.mkt-chat-input-row input {
+  flex: 1;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 0.55rem 1rem;
+  font-size: 0.88rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.mkt-chat-input-row input:focus {
+  border-color: var(--mkt-1);
+}
+
+.mkt-chat-input-row button {
+  background: var(--mkt-1);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.55rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mkt-chat-input-row button:hover {
+  background: var(--mkt-2);
+}
+
+/* 2. Buyer Persona y Copys */
+.buyer-persona-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.25rem;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 850px) {
+  .buyer-persona-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.persona-avatar-card {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid #fca5a5;
+}
+
+.persona-avatar-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--mkt-1), var(--fesna-orange));
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 0.75rem;
+  box-shadow: 0 4px 10px rgba(212,59,39,0.25);
+}
+
+.persona-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+}
+
+.persona-detail-item {
+  background: #f8fafc;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border-left: 3px solid var(--mkt-1);
+}
+
+.persona-detail-item strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--mkt-3);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.persona-detail-item p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.copy-tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.copy-tab-btn {
+  background: transparent;
+  border: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  padding: 0.45rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copy-tab-btn.active {
+  background: #fee2e2;
+  color: var(--mkt-2);
+}
+
+.copy-content-box {
+  background: #fdfaf9;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.copy-step-row {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed #fca5a5;
+}
+
+.copy-step-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.copy-step-badge {
+  display: inline-block;
+  background: var(--mkt-1);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.25rem;
+}
+
+/* 3. Simulador de Pauta Digital */
+.ads-sim-box {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.ads-sim-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.sim-input-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--fesna-navy);
+  margin-bottom: 0.4rem;
+}
+
+.sim-input-group input[type="range"] {
+  width: 100%;
+  accent-color: var(--mkt-1);
+}
+
+.sim-val-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--mkt-2);
+  font-weight: 700;
+  margin-top: 0.25rem;
+}
+
+.kpi-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.kpi-card {
+  background: linear-gradient(135deg, #fdfaf9 0%, #fee2e2 100%);
+  border: 1px solid #fca5a5;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--mkt-3);
+  margin-bottom: 0.35rem;
+}
+
+.kpi-number {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--mkt-2);
+}
+
+.ai-audit-verdict {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border-left: 5px solid #22c55e;
+}
+
+.ai-audit-verdict h5 {
+  color: #4ade80;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.ai-audit-verdict p {
+  font-size: 0.86rem;
+  margin: 0;
+  color: #cbd5e1;
+}
+
+/* 4. Pitch Deck Interactivo */
+.pitch-deck-viewer {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.pitch-screen {
+  padding: 2.25rem 2rem;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.pitch-screen-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.pitch-slide-content {
+  flex: 1;
+}
+
+.pitch-nav-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.4);
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.pitch-slide-btn {
+  background: var(--mkt-1);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pitch-slide-btn:hover {
+  background: var(--mkt-2);
+}
+
+.pitch-slide-btn:disabled {
+  background: #475569;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pitch-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.pitch-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pitch-dot.active {
+  background: #f87171;
+  transform: scale(1.3);
+}
+
+\

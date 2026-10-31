@@ -747,3 +747,357 @@ function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
   if (fill) ctx.fill();
   if (stroke) ctx.stroke();
 }
+
+/* ==========================================================================
+   INTERACTIVIDAD PARA MARKETING Y PUBLICIDAD (EXAMEN FINAL)
+   ========================================================================== */
+
+// 1. Chatbot Conversacional IA FESNA
+const mktKnowledgeBase = {
+  titulos: "En FESNA te formas bajo el modelo de ciclos propedéuticos y obtienes tres (3) títulos oficiales a lo largo de tu formación: 1) Técnico Profesional en Procesos de Comercialización y Comunicación Publicitaria (3 períodos, 49 créditos), 2) Tecnólogo en Gestión Comercial y Publicidad (5 períodos acumulados, 82 créditos) y 3) Profesional Universitario en Marketing y Publicidad (8 períodos acumulados, 133 créditos).",
+  snies: "Nuestros programas cuentan con registros calificados aprobados por el Ministerio de Educación Nacional (MEN) el 30 de abril de 2026: Técnica Profesional (Res. 011477, SNIES Presencial 119246 / Virtual 119247), Tecnología (Res. 011476, SNIES Presencial 119245 / Virtual 119244) y Profesional Universitario (Res. 011475, SNIES Presencial 119242 / Virtual 119243).",
+  creditos: "El plan de estudios está estructurado en períodos cuatrimestrales para que avances más rápido: Técnica Profesional (3 períodos, 49 créditos), Tecnología (+2 períodos para 5 acumulados, 82 créditos) y Grado Profesional (+3 períodos para 8 acumulados, 133 créditos).",
+  modalidad: "¡Estudia a tu propio ritmo! Todos nuestros ciclos están disponibles en modalidad PRESENCIAL en Bogotá D.C. (Diag. 47A Sur # 53-46, Barrio Venecia) y en modalidad VIRTUAL con acceso a plataforma interactiva 24/7 desde cualquier lugar del país.",
+  materias: "El plan de estudios abarca desde Fundamentos de Mercadeo, Diseño Publicitario y Software de Retoque en la Técnica; pasando por Experiencia UX, Redacción Publicitaria y Algoritmos SEM/SEO en la Tecnología; hasta Neuromarketing, Estrategia de Branding y Mercadeo Internacional en el nivel Profesional.",
+  costos: "La Fundación de Educación Superior Nueva América cuenta con planes de financiación directa sin intermediarios, descuentos por pronto pago y facilidades de homologación para que tu matrícula sea accesible. Comunícate al PBX (601) 746 8757 o vía WhatsApp al (+57) 317 400 1068 para una cotización personalizada."
+};
+
+function handleChatChip(topic) {
+  const answer = mktKnowledgeBase[topic];
+  if (!answer) return;
+
+  const topicsMap = {
+    titulos: "¿Qué títulos obtengo en Marketing por ciclos?",
+    snies: "¿Cuáles son los códigos SNIES y resoluciones oficiales?",
+    creditos: "¿Cuántos créditos y períodos dura la carrera?",
+    modalidad: "¿En qué modalidades puedo estudiar?"
+  };
+
+  addChatMessage(topicsMap[topic] || topic, 'user');
+  setTimeout(() => {
+    addChatMessage(answer, 'bot');
+  }, 400);
+}
+
+function submitChatInput() {
+  const input = document.getElementById('mkt-chat-input');
+  if (!input) return;
+  const q = input.value.trim();
+  if (!q) return;
+
+  addChatMessage(q, 'user');
+  input.value = '';
+
+  setTimeout(() => {
+    const lower = q.toLowerCase();
+    let reply = "¡Gracias por tu consulta! La Fundación de Educación Superior Nueva América (FESNA) ofrece el programa de Marketing y Publicidad por ciclos propedéuticos (Técnica Profesional, Tecnología y Grado Profesional) en modalidades Presencial y Virtual en Bogotá D.C. Comunícate a nuestro PBX (601) 746 8757 o visítanos en www.nuevaamerica.edu.co para asesorarte.";
+
+    if (lower.includes('titulo') || lower.includes('ciclo') || lower.includes('carrera') || lower.includes('homolog')) {
+      reply = mktKnowledgeBase.titulos;
+    } else if (lower.includes('snies') || lower.includes('resoluc') || lower.includes('men') || lower.includes('legal') || lower.includes('registro')) {
+      reply = mktKnowledgeBase.snies;
+    } else if (lower.includes('credito') || lower.includes('durac') || lower.includes('semestre') || lower.includes('periodo') || lower.includes('tiempo')) {
+      reply = mktKnowledgeBase.creditos;
+    } else if (lower.includes('modal') || lower.includes('virtual') || lower.includes('presencial') || lower.includes('donde') || lower.includes('sede')) {
+      reply = mktKnowledgeBase.modalidad;
+    } else if (lower.includes('materia') || lower.includes('pensum') || lower.includes('asignatura') || lower.includes('estudio')) {
+      reply = mktKnowledgeBase.materias;
+    } else if (lower.includes('costo') || lower.includes('precio') || lower.includes('valor') || lower.includes('cuanto') || lower.includes('matricula')) {
+      reply = mktKnowledgeBase.costos;
+    }
+
+    addChatMessage(reply, 'bot');
+  }, 450);
+}
+
+function addChatMessage(text, sender) {
+  const container = document.getElementById('mkt-chat-messages');
+  if (!container) return;
+
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-msg ${sender}`;
+
+  const avatarDiv = document.createElement('div');
+  avatarDiv.className = 'chat-avatar';
+  avatarDiv.textContent = sender === 'bot' ? 'NA' : 'TÚ';
+
+  const bubbleDiv = document.createElement('div');
+  bubbleDiv.className = 'chat-bubble';
+  bubbleDiv.innerHTML = text;
+
+  msgDiv.appendChild(avatarDiv);
+  msgDiv.appendChild(bubbleDiv);
+
+  container.appendChild(msgDiv);
+  container.scrollTop = container.scrollHeight;
+}
+
+// 2. Buyer Persona Copywriting Tabs
+function switchCopyTab(tab) {
+  const tabs = ['aida', 'pas', 'story'];
+  tabs.forEach(t => {
+    const panel = document.getElementById(`copy-panel-${t}`);
+    if (panel) panel.style.display = (t === tab) ? 'block' : 'none';
+  });
+
+  const buttons = document.querySelectorAll('.copy-tab-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(tab));
+  });
+}
+
+// 3. Simulador de Pauta Digital & Auditoría IA
+function updateAdsSimulator() {
+  const bInput = document.getElementById('sim-budget');
+  const cpcInput = document.getElementById('sim-cpc');
+  const ctrInput = document.getElementById('sim-ctr');
+
+  if (!bInput || !cpcInput || !ctrInput) return;
+
+  const budget = parseInt(bInput.value, 10);
+  const cpc = parseInt(cpcInput.value, 10);
+  const ctr = parseFloat(ctrInput.value);
+
+  // Formato de visualización
+  const dispBudget = document.getElementById('disp-budget');
+  const dispCpc = document.getElementById('disp-cpc');
+  const dispCtr = document.getElementById('disp-ctr');
+
+  if (dispBudget) dispBudget.textContent = `$${budget.toLocaleString('es-CO')} COP`;
+  if (dispCpc) dispCpc.textContent = `$${cpc.toLocaleString('es-CO')} COP`;
+  if (dispCtr) dispCtr.textContent = `${ctr.toFixed(1)}%`;
+
+  // Cálculos de métricas digitales
+  const clicks = Math.round(budget / cpc);
+  const impressions = Math.round(clicks / (ctr / 100));
+  const conversionRate = 0.08; // 8% tasa de conversión estimada
+  const leads = Math.max(1, Math.round(clicks * conversionRate));
+  const cpa = Math.round(budget / leads);
+  const roas = (ctr >= 3.5 ? 4.6 : (ctr >= 2.5 ? 3.8 : 2.5)).toFixed(1);
+
+  // Actualización en DOM
+  const kpiImp = document.getElementById('kpi-impressions');
+  const kpiClk = document.getElementById('kpi-clicks');
+  const kpiLds = document.getElementById('kpi-leads');
+  const kpiCpa = document.getElementById('kpi-cpa');
+  const kpiRoas = document.getElementById('kpi-roas');
+
+  if (kpiImp) kpiImp.textContent = impressions.toLocaleString('es-CO');
+  if (kpiClk) kpiClk.textContent = clicks.toLocaleString('es-CO');
+  if (kpiLds) kpiLds.textContent = leads.toLocaleString('es-CO');
+  if (kpiCpa) kpiCpa.textContent = `$${cpa.toLocaleString('es-CO')}`;
+  if (kpiRoas) kpiRoas.textContent = `${roas}x`;
+
+  // Diagnóstico IA
+  const verdictText = document.getElementById('ai-verdict-text');
+  const verdictBox = document.getElementById('ai-verdict-box');
+  if (verdictText && verdictBox) {
+    if (ctr >= 3.2 && cpc <= 1000) {
+      verdictBox.style.borderLeftColor = '#22c55e';
+      verdictText.innerHTML = `<strong>Rendimiento sobresaliente:</strong> Con un CTR del ${ctr.toFixed(1)}% y un CPC de $${cpc}, el algoritmo de Meta/Google Ads clasifica los anuncios con alta relevancia cualitativa. Proyectas generar <strong>${leads} leads calificados</strong> a un CPA óptimo de <strong>$${cpa.toLocaleString('es-CO')} COP</strong>. Recomendación: Escalar presupuesto a canales de remarketing.`;
+    } else if (cpc > 1400) {
+      verdictBox.style.borderLeftColor = '#eab308';
+      verdictText.innerHTML = `<strong>Atención a costos por clic:</strong> El CPC de $${cpc} es elevado para el segmento educativo universitario. La IA recomienda optimizar la segmentación geográfica hacia Bogotá y Cundinamarca e implementar copys orientados a los 3 títulos propedéuticos para elevar la conversión orgánica.`;
+    } else {
+      verdictBox.style.borderLeftColor = '#3b82f6';
+      verdictText.innerHTML = `<strong>Rendimiento balanceado:</strong> Generarás <strong>${clicks.toLocaleString('es-CO')} visitas cualificadas</strong> al portal institucional y <strong>${leads} aspirantes inscritos</strong>. La IA sugiere realizar pruebas A/B entre el formato de Reel vertical y banners display para mejorar la tasa de clics en un +0.8%.`;
+    }
+  }
+}
+
+// 4. Pitch Deck Interactivo de Marketing Global
+const pitchSlides = [
+  {
+    title: "1. Visión Global: Redefiniendo la Educación Publicitaria",
+    subtitle: "FUNDACIÓN DE EDUCACIÓN SUPERIOR NUEVA AMÉRICA (FESNA)",
+    body: `
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:0.75rem;">
+        <div>
+          <h5 style="color:#fca5a5; font-size:0.95rem; margin-bottom:0.4rem;">🎯 La Disrupción Educativa</h5>
+          <p style="font-size:0.86rem; color:#cbd5e1; line-height:1.5;">
+            FESNA rompe el paradigma de la educación superior rígida mediante un ecosistema de ciclos propedéuticos que combina <strong>rigor académico</strong>, <strong>tecnología de Inteligencia Artificial</strong> y <strong>empleabilidad acelerada</strong>.
+          </p>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:1rem; border-radius:10px; border-left:3px solid #f87171;">
+          <strong style="color:#ffffff; font-size:0.88rem; display:block; margin-bottom:0.25rem;">Nuestra Promesa de Valor:</strong>
+          <span style="font-size:0.82rem; color:#94a3b8;">
+            Tres títulos oficiales reconocidos por el Ministerio de Educación Nacional (MEN) en un recorrido secuencial de 8 períodos cuatrimestrales.
+          </span>
+        </div>
+      </div>
+    `
+  },
+  {
+    title: "2. Oportunidad de Mercado: La Brecha del Talento Digital",
+    subtitle: "DEMANDA CRECIENTE DE PUBLICISTAS CON DOMINIO DE IA",
+    body: `
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-top:0.75rem;">
+        <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; text-align:center;">
+          <div style="font-size:1.8rem; font-weight:800; color:#f87171;">+68%</div>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0.3rem 0 0;">Crecimiento en la demanda de creativos con dominio de analítica publicitaria en LATAM.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; text-align:center;">
+          <div style="font-size:1.8rem; font-weight:800; color:#fb923c;">5 Años</div>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0.3rem 0 0;">Tiempo excesivo que exigen las universidades tradicionales para entregar un primer título.</p>
+        </div>
+        <div style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:10px; text-align:center;">
+          <div style="font-size:1.8rem; font-weight:800; color:#4ade80;">3 Títulos</div>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0.3rem 0 0;">La solución FESNA: inserción laboral desde el tercer período académico.</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    title: "3. Solución: Ruta Propedéutica de 3 Niveles Acreditados",
+    subtitle: "RESPALDO JURÍDICO DEL MINISTERIO DE EDUCACIÓN NACIONAL",
+    body: `
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.85rem; margin-top:0.75rem;">
+        <div style="background:rgba(212,59,39,0.18); border:1px solid #f87171; padding:0.9rem; border-radius:10px;">
+          <span style="font-size:0.72rem; color:#fca5a5; font-weight:800;">NIVEL 1 • 3 PERÍODOS</span>
+          <h5 style="color:#ffffff; font-size:0.88rem; margin:0.25rem 0;">Técnica Profesional</h5>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0;">SNIES 119246/119247 • Res. 011477 (49 créditos). Enfoque operativo y venta directa.</p>
+        </div>
+        <div style="background:rgba(179,35,25,0.18); border:1px solid #f87171; padding:0.9rem; border-radius:10px;">
+          <span style="font-size:0.72rem; color:#fca5a5; font-weight:800;">NIVEL 2 • 5 PERÍODOS</span>
+          <h5 style="color:#ffffff; font-size:0.88rem; margin:0.25rem 0;">Tecnología en Gestión</h5>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0;">SNIES 119245/119244 • Res. 011476 (82 créditos). Pauta digital SEM/SEO y UX.</p>
+        </div>
+        <div style="background:rgba(123,31,23,0.25); border:1px solid #f87171; padding:0.9rem; border-radius:10px;">
+          <span style="font-size:0.72rem; color:#fca5a5; font-weight:800;">NIVEL 3 • 8 PERÍODOS</span>
+          <h5 style="color:#ffffff; font-size:0.88rem; margin:0.25rem 0;">Marketing y Publicidad</h5>
+          <p style="font-size:0.78rem; color:#cbd5e1; margin:0;">SNIES 119242/119243 • Res. 011475 (133 créditos). Dirección estratégica y global.</p>
+        </div>
+      </div>
+    `
+  },
+  {
+    title: "4. Estrategia de Expansión Transmedia y Omnicanalidad",
+    subtitle: "ECOSISTEMA DE CAPTACIÓN ASISTIDO POR INTELIGENCIA ARTIFICIAL",
+    body: `
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-top:0.75rem;">
+        <div>
+          <h5 style="color:#fca5a5; font-size:0.92rem; margin-bottom:0.35rem;">🚀 Canales de Atracción Masiva</h5>
+          <ul style="padding-left:1.15rem; font-size:0.82rem; color:#cbd5e1; display:grid; gap:0.35rem; margin:0;">
+            <li>Publicidad programática display segmentada por intencionalidad de estudio.</li>
+            <li>Reels y TikToks nativos con subtitulado y ganchos de micro-aprendizaje.</li>
+            <li>Inbound marketing mediante tests de orientación vocacional automatizados.</li>
+          </ul>
+        </div>
+        <div>
+          <h5 style="color:#fca5a5; font-size:0.92rem; margin-bottom:0.35rem;">💬 Conversión Conversacional</h5>
+          <ul style="padding-left:1.15rem; font-size:0.82rem; color:#cbd5e1; display:grid; gap:0.35rem; margin:0;">
+            <li>Asistentes virtuales entrenados con IA en WhatsApp institucional y web.</li>
+            <li>Atención en tiempo real con tiempos de respuesta menores a 5 segundos.</li>
+            <li>Agendamiento de matrícula y validación inmediata de homologación.</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  {
+    title: "5. Unit Economics & Proyección de Retorno Publicitario",
+    subtitle: "MÉTRICAS CLAVE DE ADQUISICIÓN Y RETENCIÓN (ROAS & LTV)",
+    body: `
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:0.75rem; margin-top:0.85rem; text-align:center;">
+        <div style="background:rgba(255,255,255,0.06); padding:0.85rem; border-radius:8px;">
+          <span style="font-size:0.72rem; color:#94a3b8; display:block;">CAC Estimado</span>
+          <strong style="font-size:1.2rem; color:#4ade80;">$145.000 COP</strong>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:0.85rem; border-radius:8px;">
+          <span style="font-size:0.72rem; color:#94a3b8; display:block;">LTV Alumno</span>
+          <strong style="font-size:1.2rem; color:#38bdf8;">$8.4M COP</strong>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:0.85rem; border-radius:8px;">
+          <span style="font-size:0.72rem; color:#94a3b8; display:block;">Ratio LTV / CAC</span>
+          <strong style="font-size:1.2rem; color:#fbbf24;">57.9x</strong>
+        </div>
+        <div style="background:rgba(255,255,255,0.06); padding:0.85rem; border-radius:8px;">
+          <span style="font-size:0.72rem; color:#94a3b8; display:block;">ROAS de Pauta</span>
+          <strong style="font-size:1.2rem; color:#f87171;">4.2x</strong>
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:#94a3b8; text-align:center; margin-top:1rem;">
+        *Modelo financiero sustentado en la permanencia del estudiante durante los ciclos propedéuticos consecutivos.
+      </p>
+    `
+  },
+  {
+    title: "6. Llamado a la Acción & Expansión de Marca FESNA",
+    subtitle: "CONSTRUYENDO EL LIDERAZGO COMERCIAL DEL MAÑANA",
+    body: `
+      <div style="text-align:center; padding:1rem 0;">
+        <h4 style="color:#ffffff; font-size:1.25rem; margin-bottom:0.6rem;">
+          "Siempre Nueva, Siempre Conectada con el Futuro Global"
+        </h4>
+        <p style="font-size:0.9rem; color:#cbd5e1; max-width:620px; margin:0 auto 1.25rem; line-height:1.5;">
+          FESNA consolida su liderazgo en Bogotá y Colombia, formando publicistas y mercadólogos que transforman marcas con ética, visión analítica y dominio de la inteligencia artificial.
+        </p>
+        <div style="display:inline-flex; gap:0.75rem; flex-wrap:wrap; justify-content:center;">
+          <a href="https://www.nuevaamerica.edu.co" target="_blank" class="btn btn-primary" style="background:#d43b27; border:none; padding:0.6rem 1.4rem;">
+            🌐 Visitar Portal www.nuevaamerica.edu.co
+          </a>
+          <a href="DOCUMENTACION_SUSTENTACION_CAMPANA_FESNA_DAVID_PULIDO.docx" download class="btn btn-outline" style="border-color:#fca5a5; color:#ffffff; padding:0.6rem 1.4rem;">
+            📄 Descargar Documentación APA 7
+          </a>
+        </div>
+      </div>
+    `
+  }
+];
+
+let currentPitchIndex = 0;
+
+function renderPitchSlide(idx) {
+  currentPitchIndex = idx;
+  const slide = pitchSlides[idx];
+  if (!slide) return;
+
+  const titleEl = document.getElementById('pitch-slide-title');
+  const numEl = document.getElementById('pitch-slide-num');
+  const bodyEl = document.getElementById('pitch-slide-body');
+  const prevBtn = document.getElementById('pitch-prev-btn');
+  const nextBtn = document.getElementById('pitch-next-btn');
+
+  if (titleEl) titleEl.textContent = slide.title;
+  if (numEl) numEl.textContent = `${idx + 1} / ${pitchSlides.length}`;
+  if (bodyEl) bodyEl.innerHTML = slide.body;
+
+  if (prevBtn) prevBtn.disabled = (idx === 0);
+  if (nextBtn) nextBtn.disabled = (idx === pitchSlides.length - 1);
+
+  // Puntos indicadores
+  const dots = document.querySelectorAll('.pitch-dot');
+  dots.forEach((dot, dIdx) => {
+    dot.classList.toggle('active', dIdx === idx);
+  });
+}
+
+function nextPitchSlide() {
+  if (currentPitchIndex < pitchSlides.length - 1) {
+    renderPitchSlide(currentPitchIndex + 1);
+  }
+}
+
+function prevPitchSlide() {
+  if (currentPitchIndex > 0) {
+    renderPitchSlide(currentPitchIndex - 1);
+  }
+}
+
+function goToPitchSlide(idx) {
+  renderPitchSlide(idx);
+}
+
+// Inicialización de componentes de Marketing al cargar el documento
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar simulador de pauta si está en la página
+  if (document.getElementById('sim-budget')) {
+    updateAdsSimulator();
+  }
+
+  // Inicializar pitch deck si está en la página
+  if (document.getElementById('pitch-slide-title')) {
+    renderPitchSlide(0);
+  }
+});
+

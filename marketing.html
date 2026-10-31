@@ -194,47 +194,590 @@
   </section>
 
   <section class="section">
-    <!-- Nivel 1 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 1: TÉCNICA PROFESIONAL EN PROCESOS DE COMERCIALIZACIÓN          -->
+    <!-- ===================================================================== -->
     <article id="nivel-tecnica" class="program-campaign-card">
       <div class="program-banner bg-mkt-1">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 1 • Técnica Profesional</span>
           <h3>Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria</h3>
-          <p>Primer ciclo propedéutico enfocado en producción de piezas publicitarias, comercialización, medios digitales y comunicación de marca.</p>
+          <p>Título otorgado: <strong>Técnico/a Profesional en Procesos de Comercialización y Comunicación Publicitaria</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#fca5a5;">SNIES Presencial:</strong> 119246 | <strong style="color:#fca5a5;">SNIES Virtual:</strong> 119247</div>
+          <div><strong style="color:#fca5a5;">Resolución MEN:</strong> 011477 del 30 de abril de 2026 (Vigencia 7 años)</div>
+          <div><strong style="color:#fca5a5;">Duración y Créditos:</strong> 3 períodos académicos • 49 créditos</div>
           <div><strong style="color:#fca5a5;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 1.1: Diseño de piezas gráficas comerciales asistidas por IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎨 Pieza Gráfica Publicitaria Generada con IA</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">IA Visual & Plantillas</span>
+          </div>
+          <p class="media-description">
+            Campaña gráfica de difusión comercial <strong>"Conecta Tu Futuro Creativo con FESNA"</strong>, diseñada para pauta en redes sociales (Feed y Display) aplicando técnicas de venta directa, jerarquía visual y llamada a la acción de alto impacto.
+          </p>
+
+          <div class="infographic-frame" style="border: 2px solid #fecaca; border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem;">
+            <img src="assets/ad-comercial-mkt.jpg" alt="Pieza Gráfica Comercial Marketing FESNA con IA" style="width: 100%; height: auto; display: block;" />
+          </div>
+
+          <div style="background: #fdfaf9; border: 1px solid #fed7aa; border-radius: 10px; padding: 0.85rem; font-size: 0.82rem;">
+            <strong style="color: var(--mkt-2); display: block; margin-bottom: 0.25rem;">📋 Prompt de Ingeniería Visual Utilizado:</strong>
+            <p style="font-family: monospace; color: #475569; margin: 0 0 0.5rem 0; font-size: 0.78rem;">
+              "High-impact university advertising banner for 'FESNA - Marketing y Publicidad'. Modern educational studio, young creative students collaborating with digital dashboards, deep crimson and coral accents (#D43B27, #B32319), commercial ad composition, sharp detail."
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Formato: 1080x1080 px</span>
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Técnica: Venta Directa AIDA</span>
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Objetivo: Captación de Leads</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pieza 1.2: Simulación de atención al cliente mediante chat conversacional entrenado con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>💬 Chat Conversacional Asistido por IA: Asesor FESNA</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">Simulador en Vivo</span>
+          </div>
+          <p class="media-description">
+            Simulador conversacional entrenado con los protocolos oficiales de servicio al cliente y admisiones de FESNA para resolver consultas sobre créditos, homologación y modalidades en tiempo real.
+          </p>
+
+          <div class="mkt-chat-box">
+            <div class="mkt-chat-header">
+              <div class="mkt-chat-header-title">
+                <span class="chat-status-dot"></span>
+                <span>Asesor Virtual FESNA • Marketing</span>
+              </div>
+              <span style="font-size: 0.75rem; background: rgba(255,255,255,0.2); padding: 0.2rem 0.5rem; border-radius: 6px;">IA Activa</span>
+            </div>
+
+            <div id="mkt-chat-messages" class="mkt-chat-messages">
+              <div class="chat-msg bot">
+                <div class="chat-avatar">NA</div>
+                <div class="chat-bubble">
+                  ¡Hola! 👋 Soy tu asesor virtual de la Fundación de Educación Superior Nueva América (FESNA). Estoy aquí para orientarte sobre nuestros programas en <strong>Marketing y Publicidad</strong> por ciclos propedéuticos. ¿En qué puedo ayudarte hoy?
+                </div>
+              </div>
+            </div>
+
+            <!-- Chips de preguntas frecuentes -->
+            <div class="chat-chips-container">
+              <button class="chat-chip" onclick="handleChatChip('titulos')">🎓 ¿Qué títulos obtengo?</button>
+              <button class="chat-chip" onclick="handleChatChip('snies')">📋 Códigos SNIES y Resoluciones</button>
+              <button class="chat-chip" onclick="handleChatChip('creditos')">⏱️ Créditos y Duración</button>
+              <button class="chat-chip" onclick="handleChatChip('modalidad')">💻 ¿Es virtual o presencial?</button>
+            </div>
+
+            <form id="mkt-chat-form" class="mkt-chat-input-row" onsubmit="event.preventDefault(); submitChatInput();">
+              <input type="text" id="mkt-chat-input" placeholder="Escribe tu consulta sobre el programa..." autocomplete="off" />
+              <button type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--mkt-1);">
+        <strong style="color: var(--mkt-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Técnico Profesional:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          El egresado apoya la ejecución de procesos de venta directa, manejo de canales de distribución física y digital, creación de contenidos publicitarios y atención al usuario según protocolos corporativos.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Auxiliar de Mercadeo y Publicidad</span>
+          <span class="occ-pill">Asistente de Contenidos Comerciales</span>
+          <span class="occ-pill">Gestor de Atención y Servicio al Cliente</span>
+          <span class="occ-pill">Coordinador de Puntos de Venta (PDV)</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 49 Créditos</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">3 períodos cuatrimestrales • Res. 011477 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-tecnica-mkt">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-tecnica-mkt" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Primer Período (16 Créditos)</h5>
+            <ul>
+              <li>Habilidades Comunicativas</li>
+              <li>Fundamentos de Mercadeo</li>
+              <li>Fundamentos de Administración</li>
+              <li>Constitución Política de Colombia</li>
+              <li>Cátedra Nueva América I</li>
+              <li>Fundamentos de Matemáticas</li>
+              <li>Manejo de Herramientas Ofimáticas</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Segundo Período (16 Créditos)</h5>
+            <ul>
+              <li>Diseño Básico</li>
+              <li>Fundamentos de Publicidad</li>
+              <li>Producto y Precio</li>
+              <li>Investigación 1</li>
+              <li>Electiva Complementaria I</li>
+              <li>Estadística Inferencial</li>
+              <li>Software Aplicado Vectores y Retoque</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Tercer Período (17 Créditos)</h5>
+            <ul>
+              <li>Diseño Publicitario</li>
+              <li>Promoción de Ventas y Canales</li>
+              <li>Psicología y Nuevas Audiencias</li>
+              <li>Derecho Laboral</li>
+              <li>Opción de Grado</li>
+              <li>Electiva de Profundización I</li>
+              <li>Tendencias de Mercadeo y Publicidad</li>
+              <li>Proyecto de Vida</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Nivel 2 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 2: TECNOLOGÍA EN GESTIÓN COMERCIAL Y PUBLICIDAD                 -->
+    <!-- ===================================================================== -->
     <article id="nivel-tecnologia" class="program-campaign-card">
       <div class="program-banner bg-mkt-2">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 2 • Tecnología</span>
-          <h3>Tecnología en Gestión de Comercial y Publicidad</h3>
-          <p>Segundo ciclo propedéutico orientado a la coordinación de campañas publicitarias, investigación de mercados, gestión comercial y pauta digital.</p>
+          <h3>Tecnología en Gestión Comercial y Publicidad</h3>
+          <p>Título otorgado: <strong>Tecnólogo/a en Gestión Comercial y Publicidad</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#fca5a5;">SNIES Presencial:</strong> 119245 | <strong style="color:#fca5a5;">SNIES Virtual:</strong> 119244</div>
+          <div><strong style="color:#fca5a5;">Resolución MEN:</strong> 011476 del 30 de abril de 2026 (Vigencia 7 años)</div>
+          <div><strong style="color:#fca5a5;">Duración y Créditos:</strong> +2 períodos (5 acumulados) • 82 créditos</div>
           <div><strong style="color:#fca5a5;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 2.1: Creación y optimización de Buyer Persona y copys con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎯 Buyer Persona & Copys Persuasivos con IA</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">IA Generativa Textual</span>
+          </div>
+          <p class="media-description">
+            Perfilamiento del estudiante arquetípico y matriz de copys persuasivos estructurados con IA generativa bajo los modelos <strong>AIDA</strong>, <strong>PAS</strong> y <strong>Storytelling</strong> para campañas omnicanal.
+          </p>
+
+          <div class="buyer-persona-grid">
+            <div class="persona-avatar-card">
+              <div class="persona-avatar-img">CR</div>
+              <h5 style="margin: 0; color: var(--fesna-navy); font-size: 1.05rem;">Camila Rojas</h5>
+              <span style="font-size: 0.78rem; color: var(--mkt-1); font-weight: 700;">Buyer Persona FESNA</span>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.4rem 0 0;">
+                21 años • Bogotá D.C.<br>Community Manager Junior y creadora de contenido.
+              </p>
+            </div>
+
+            <div class="persona-details-grid">
+              <div class="persona-detail-item">
+                <strong>🎯 Metas & Motivaciones</strong>
+                <p>Evolucionar de la creación informal de posts a liderar estrategias de pauta digital y analítica publicitaria con titulación formal.</p>
+              </div>
+              <div class="persona-detail-item">
+                <strong>⚡ Dolores / Frustraciones</strong>
+                <p>Las carreras tradicionales de 5 años son costosas y tardan mucho en otorgar un título para conseguir mejores empleos.</p>
+              </div>
+              <div class="persona-detail-item">
+                <strong>💡 Solución FESNA</strong>
+                <p>Modelo propedéutico: obtiene título Tecnólogo en 5 cuatrimestres y puede homologar directamente al título Profesional.</p>
+              </div>
+              <div class="persona-detail-item">
+                <strong>📱 Canales de Impacto</strong>
+                <p>Instagram Reels, TikTok Ads, LinkedIn Learning y campañas de búsqueda en Google.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pestañas de Copys -->
+          <div class="copy-tabs-nav">
+            <button class="copy-tab-btn active" onclick="switchCopyTab('aida')">Fórmula AIDA</button>
+            <button class="copy-tab-btn" onclick="switchCopyTab('pas')">Fórmula PAS</button>
+            <button class="copy-tab-btn" onclick="switchCopyTab('story')">Storytelling</button>
+          </div>
+
+          <div id="copy-panel-aida" class="copy-content-box">
+            <div class="copy-step-row">
+              <span class="copy-step-badge">Atención (Hook)</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                "¿Subes contenido pero no sabes medir el ROI de tus campañas publicitarias?"
+              </p>
+            </div>
+            <div class="copy-step-row">
+              <span class="copy-step-badge">Interés</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                En FESNA te formas en la <strong>Tecnología en Gestión Comercial y Publicidad</strong>, dominando algoritmos de conversión, SEM, SEO y métricas avanzadas.
+              </p>
+            </div>
+            <div class="copy-step-row">
+              <span class="copy-step-badge">Deseo</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                Gradúate con título tecnológico respaldado por la Res. 011476 de 2026 y continúa hacia tu título profesional sin perder tiempo.
+              </p>
+            </div>
+            <div class="copy-step-row">
+              <span class="copy-step-badge">Acción (CTA)</span>
+              <p style="margin:0; font-size:0.86rem; font-weight:700; color:var(--mkt-2);">
+                ¡Inscríbete hoy en modalidad presencial o virtual en www.nuevaamerica.edu.co!
+              </p>
+            </div>
+          </div>
+
+          <div id="copy-panel-pas" class="copy-content-box" style="display:none;">
+            <div class="copy-step-row">
+              <span class="copy-step-badge" style="background:#dc2626;">Problema</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                El mercado laboral exige resultados comerciales comprobables, pero la mayoría de publicistas solo aprenden teoría abstracta.
+              </p>
+            </div>
+            <div class="copy-step-row">
+              <span class="copy-step-badge" style="background:#ea580c;">Agitación</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                Mientras las empresas buscan expertos en analítica y pauta que multipliquen ventas, tú sigues compitiendo por salarios básicos.
+              </p>
+            </div>
+            <div class="copy-step-row">
+              <span class="copy-step-badge" style="background:#16a34a;">Solución</span>
+              <p style="margin:0; font-size:0.86rem; color:#1e293b;">
+                Con la Tecnología en Gestión Comercial y Publicidad de FESNA dominas pauta digital, redacción publicitaria y analítica de datos en solo 5 cuatrimestres.
+              </p>
+            </div>
+          </div>
+
+          <div id="copy-panel-story" class="copy-content-box" style="display:none;">
+            <p style="margin:0; font-size:0.86rem; line-height:1.55; color:#1e293b;">
+              <em>"Hace un año manejaba las redes de un local sin saber si mis anuncios realmente vendían. Al entrar a FESNA aprendí a interpretar el CTR, auditar presupuestos con IA y segmentar audiencias reales. Hoy no solo soy Tecnóloga en Gestión Comercial, sino que lidero la pauta de 4 marcas y voy rumbo a mi grado profesional. La educación por ciclos en FESNA cambió mi horizonte."</em> — <strong>Caso de éxito proyectado con IA</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pieza 2.2: Auditoría y simulación de campañas de pauta digital asistidas por analítica de IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>📈 Simulador & Auditor de Pauta Digital con IA</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">Analítica en Tiempo Real</span>
+          </div>
+          <p class="media-description">
+            Simulador interactivo de métricas de rendimiento digital (KPIs, CTR, CPC, CPA y ROAS) con diagnóstico predictivo generado por IA para la optimización de pauta omnicanal.
+          </p>
+
+          <div class="ads-sim-box">
+            <div class="ads-sim-controls">
+              <div class="sim-input-group">
+                <label for="sim-budget">💰 Presupuesto Mensual:</label>
+                <input type="range" id="sim-budget" min="500000" max="5000000" step="250000" value="2000000" oninput="updateAdsSimulator()" />
+                <div class="sim-val-display">
+                  <span>Mín: $500K</span>
+                  <span id="disp-budget">$2.000.000 COP</span>
+                  <span>Máx: $5M</span>
+                </div>
+              </div>
+
+              <div class="sim-input-group">
+                <label for="sim-cpc">🎯 Costo por Clic (CPC Promedio):</label>
+                <input type="range" id="sim-cpc" min="400" max="2000" step="50" value="850" oninput="updateAdsSimulator()" />
+                <div class="sim-val-display">
+                  <span>Económico: $400</span>
+                  <span id="disp-cpc">$850 COP</span>
+                  <span>Competido: $2.000</span>
+                </div>
+              </div>
+
+              <div class="sim-input-group">
+                <label for="sim-ctr">⚡ Tasa de Clics Estimada (CTR):</label>
+                <input type="range" id="sim-ctr" min="1.0" max="5.0" step="0.2" value="2.8" oninput="updateAdsSimulator()" />
+                <div class="sim-val-display">
+                  <span>Bajo: 1.0%</span>
+                  <span id="disp-ctr">2.8%</span>
+                  <span>Excelente: 5.0%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grilla de KPIs dinámicos -->
+            <div class="kpi-cards-grid">
+              <div class="kpi-card">
+                <div class="kpi-label">Impresiones Est.</div>
+                <div id="kpi-impressions" class="kpi-number">84.033</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">Clics al Sitio</div>
+                <div id="kpi-clicks" class="kpi-number">2.353</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">Leads Calificados (8%)</div>
+                <div id="kpi-leads" class="kpi-number">188</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">CPA Estimado</div>
+                <div id="kpi-cpa" class="kpi-number">$10.638</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-label">ROAS Proyectado</div>
+                <div id="kpi-roas" class="kpi-number">3.8x</div>
+              </div>
+            </div>
+
+            <!-- Veredicto de Auditoría IA -->
+            <div id="ai-verdict-box" class="ai-audit-verdict">
+              <h5>🤖 Diagnóstico Analítico de la IA:</h5>
+              <p id="ai-verdict-text">
+                Rendimiento óptimo: con un CTR del 2.8% y un CPC de $850, la campaña se ubica en el percentil superior del sector educativo en Meta Ads. Se recomienda escalar el presupuesto un 15% semanal en creativos de video vertical.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--mkt-2);">
+        <strong style="color: var(--mkt-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Tecnólogo:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          Coordina campañas de mercadeo y publicidad, planifica pauta digital en plataformas SEM/SEO, analiza métricas de conversión y gestiona proyectos comerciales con metodologías ágiles.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Coordinador de Campañas Digitales</span>
+          <span class="occ-pill">Analista de SEM, SEO y Conversión</span>
+          <span class="occ-pill">Community Manager y Planner Táctico</span>
+          <span class="occ-pill">Analista de Mercados y Experiencia UX</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 82 Créditos Acumulados</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">Cuarto y Quinto Período • Res. 011476 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-tecnologia-mkt">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-tecnologia-mkt" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Cuarto Período (16 Créditos)</h5>
+            <ul>
+              <li>Semiología y Experiencia UX</li>
+              <li>Fundamentos de Economía</li>
+              <li>Investigación 2</li>
+              <li>Electiva Complementaria II</li>
+              <li>Cátedra Nueva América II</li>
+              <li>Estadística Descriptiva</li>
+              <li>Taller de Creación Multimedia y Audiovisual</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Quinto Período (17 Créditos)</h5>
+            <ul>
+              <li>Redacción Publicitaria</li>
+              <li>Investigación de Mercados Mixta</li>
+              <li>Opción de Grado</li>
+              <li>Electiva de Profundización II</li>
+              <li>Emprendimiento</li>
+              <li>Habilidades Gerenciales en Mercadeo</li>
+              <li>Algoritmo de Conversión Redes Sociales - SEM y SEO</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Nivel 3 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 3: PROFESIONAL UNIVERSITARIO EN MARKETING Y PUBLICIDAD          -->
+    <!-- ===================================================================== -->
     <article id="nivel-profesional" class="program-campaign-card">
       <div class="program-banner bg-mkt-3">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 3 • Profesional Universitario</span>
-          <h3>Marketing y Publicidad</h3>
-          <p>Tercer ciclo propedéutico orientado a la dirección estratégica de marketing, branding corporativo, planeación de medios y comunicación integrada.</p>
+          <h3>Marketing y Publicidad (Nivel Profesional)</h3>
+          <p>Título otorgado: <strong>Profesional Universitario en Marketing y Publicidad</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#fca5a5;">SNIES Presencial:</strong> 119242 | <strong style="color:#fca5a5;">SNIES Virtual:</strong> 119243</div>
+          <div><strong style="color:#fca5a5;">Resolución MEN:</strong> 011475 del 30 de abril de 2026 (Vigencia 7 años)</div>
+          <div><strong style="color:#fca5a5;">Duración y Créditos:</strong> +3 períodos (8 acumulados) • 133 créditos</div>
           <div><strong style="color:#fca5a5;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 3.1: Plan de marketing predictivo y macrotendencias de consumo con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🔮 Plan Predictivo & Macrotendencias de Consumo</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">IA Analítica & Neuromarketing</span>
+          </div>
+          <p class="media-description">
+            Diagnóstico prospectivo sobre el consumidor globalizado, segmentación predictiva algorítmica y modelado de retención estudiantil para la toma de decisiones gerenciales en educación superior.
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:0.75rem; margin-bottom:1rem;">
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:10px; padding:0.85rem; border-top:3px solid var(--mkt-1);">
+              <span style="font-size:0.75rem; color:var(--mkt-1); font-weight:800; text-transform:uppercase;">Tendencia 1</span>
+              <strong style="display:block; font-size:0.88rem; color:var(--fesna-navy); margin:0.2rem 0;">Hiperpersonalización Algorítmica</strong>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">Modelos LLM que adaptan la oferta académica a las habilidades y aspiraciones de cada aspirante.</p>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:10px; padding:0.85rem; border-top:3px solid var(--mkt-2);">
+              <span style="font-size:0.75rem; color:var(--mkt-2); font-weight:800; text-transform:uppercase;">Tendencia 2</span>
+              <strong style="display:block; font-size:0.88rem; color:var(--fesna-navy); margin:0.2rem 0;">Neuromarketing Predictivo</strong>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">Mapeo cognitivo y análisis de sentimiento visual antes de lanzar campañas masivas en ATL/BTL.</p>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:10px; padding:0.85rem; border-top:3px solid var(--mkt-3);">
+              <span style="font-size:0.75rem; color:var(--mkt-3); font-weight:800; text-transform:uppercase;">Tendencia 3</span>
+              <strong style="display:block; font-size:0.88rem; color:var(--fesna-navy); margin:0.2rem 0;">Consumo Ético y Propósito</strong>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">La Generación Z exige coherencia, transparencia social y valor comunitario en marcas universitarias.</p>
+            </div>
+
+            <div style="background:#f8fafc; border:1px solid var(--border-color); border-radius:10px; padding:0.85rem; border-top:3px solid var(--fesna-orange);">
+              <span style="font-size:0.75rem; color:var(--fesna-orange); font-weight:800; text-transform:uppercase;">Tendencia 4</span>
+              <strong style="display:block; font-size:0.88rem; color:var(--fesna-navy); margin:0.2rem 0;">Omnicanalidad Phygital</strong>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">Integración sin fricciones entre la experiencia presencial en sede y plataformas virtuales.</p>
+            </div>
+          </div>
+
+          <div style="background:#fdfaf9; border:1px solid #fed7aa; border-radius:10px; padding:0.85rem; font-size:0.82rem;">
+            <strong style="color:var(--mkt-2); display:block; margin-bottom:0.2rem;">📊 Modelo Predictivo de Retención (Churn & LTV):</strong>
+            <p style="color:#475569; margin:0; line-height:1.45;">
+              La analítica de IA estima que la titulación intermedia a los 3 y 5 cuatrimestres eleva la tasa de permanencia estudiantil en un <strong>34.2%</strong> frente a modelos tradicionales de 10 semestres, aumentando el valor de vida del estudiante (LTV) en un <strong>41.8%</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Pieza 3.2: Pitch deck de lanzamiento de marca internacional con narrativa interactiva -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🚀 Pitch Deck de Marca Global (Interactivo)</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">Presentación Ejecutiva</span>
+          </div>
+          <p class="media-description">
+            Pitch deck de disrupción publicitaria para el posicionamiento de FESNA en mercados internacionales, con narrativa estratégica interactiva diapositiva por diapositiva.
+          </p>
+
+          <div class="pitch-deck-viewer">
+            <div class="pitch-screen">
+              <div class="pitch-screen-header">
+                <div>
+                  <span style="color:#f87171; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;">PITCH DECK INTERNACIONAL FESNA</span>
+                  <h4 id="pitch-slide-title" style="color:#ffffff; margin:0.2rem 0 0; font-size:1.15rem;">
+                    1. Visión Global: Redefiniendo la Educación Publicitaria
+                  </h4>
+                </div>
+                <span id="pitch-slide-num" style="background:#1e293b; color:#94a3b8; padding:0.25rem 0.65rem; border-radius:20px; font-size:0.8rem; font-weight:700;">1 / 6</span>
+              </div>
+
+              <div id="pitch-slide-body" class="pitch-slide-content">
+                <!-- Se llena dinámicamente con JS -->
+              </div>
+            </div>
+
+            <div class="pitch-nav-footer">
+              <button id="pitch-prev-btn" class="pitch-slide-btn" onclick="prevPitchSlide()" disabled>◀ Anterior</button>
+              <div id="pitch-dots" class="pitch-dots">
+                <span class="pitch-dot active" onclick="goToPitchSlide(0)"></span>
+                <span class="pitch-dot" onclick="goToPitchSlide(1)"></span>
+                <span class="pitch-dot" onclick="goToPitchSlide(2)"></span>
+                <span class="pitch-dot" onclick="goToPitchSlide(3)"></span>
+                <span class="pitch-dot" onclick="goToPitchSlide(4)"></span>
+                <span class="pitch-dot" onclick="goToPitchSlide(5)"></span>
+              </div>
+              <button id="pitch-next-btn" class="pitch-slide-btn" onclick="nextPitchSlide()">Siguiente ▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--mkt-3);">
+        <strong style="color: var(--mkt-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Profesional Universitario:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          Lidera la dirección de mercadeo y publicidad, planifica estrategias globales de branding y neuromarketing, toma decisiones basadas en inteligencia de negocios y gestiona presupuestos comerciales a gran escala.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Director de Publicidad (Creative Director)</span>
+          <span class="occ-pill">Director de Mercadeo (CMO)</span>
+          <span class="occ-pill">Gerente de Marca (Brand Manager Internacional)</span>
+          <span class="occ-pill">Investigador de Mercados y Business Manager</span>
+          <span class="occ-pill">Director de Medios y Pauta Global</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 133 Créditos Acumulados</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">Sexto, Séptimo y Octavo Período • Res. 011475 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-profesional-mkt">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-profesional-mkt" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Sexto Período (17 Créditos)</h5>
+            <ul>
+              <li>Relaciones Públicas</li>
+              <li>Campañas Publicitarias en ATL y BTL</li>
+              <li>Neuromarketing y Mercadeo de Servicios</li>
+              <li>Contabilidad de Costos y Presupuestos</li>
+              <li>Legislación Comercial y Publicitaria</li>
+              <li>Software Aplicado a Métrica y Analítica de Datos</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Séptimo Período (17 Créditos)</h5>
+            <ul>
+              <li>Estrategia de Marca (Branding)</li>
+              <li>Publicidad Programática - Display</li>
+              <li>Marketing Internacional</li>
+              <li>Práctica Profesional I</li>
+              <li>Investigación 3</li>
+              <li>Electiva Complementaria III</li>
+              <li>Plan de Negocios</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Octavo Período (17 Créditos)</h5>
+            <ul>
+              <li>Portafolio</li>
+              <li>Gerencia de Marketing y Publicidad</li>
+              <li>Inteligencia de Negocios</li>
+              <li>Inteligencia de Mercados y Plan de Marketing</li>
+              <li>Práctica Profesional II</li>
+              <li>Opción de Grado</li>
+              <li>Electiva de Profundización III</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
