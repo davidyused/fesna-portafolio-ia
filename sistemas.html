@@ -194,47 +194,526 @@
   </section>
 
   <section class="section">
-    <!-- Nivel 1 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 1: TÉCNICA PROFESIONAL EN PROCESOS DE PROGRAMACIÓN DE SOFTWARE  -->
+    <!-- ===================================================================== -->
     <article id="nivel-tecnica" class="program-campaign-card">
       <div class="program-banner bg-sis-1">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 1 • Técnica Profesional</span>
           <h3>Técnica Profesional en Procesos de Programación de Software</h3>
-          <p>Primer ciclo propedéutico enfocado en desarrollo de software, lógica de programación, bases de datos y soporte aplicativo.</p>
+          <p>Título otorgado: <strong>Técnico/a Profesional en Procesos de Programación de Software</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111395 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111396</div>
+          <div><strong style="color:#86efac;">Resolución MEN:</strong> 012171 del 28 de junio de 2022 (Vigencia 7 años)</div>
+          <div><strong style="color:#86efac;">Duración y Créditos:</strong> 3 períodos académicos • 52 créditos</div>
           <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 1.1: Serie de Reels con IA sobre programación -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>📱 Serie de Reels con IA: Fundamentos de Código</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Reel 9:16 Full HD • IA</span>
+          </div>
+          <p class="media-description">
+            Cápsulas de video verticales (formato 9:16) generadas con IA para la enseñanza ágil de conceptos técnicos: <strong>1) Variables y Tipos de Datos</strong>, <strong>2) Condicionales (if/else)</strong>, <strong>3) Ciclos (for/while)</strong> y <strong>4) Funciones y Algoritmos</strong>.
+          </p>
+
+          <div class="video-frame vertical-reel" style="margin-bottom: 0.85rem;">
+            <video controls preload="metadata" src="assets/reel-programacion-sistemas.webm">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+
+          <div class="media-toolbar" style="justify-content:center; margin-bottom:0.65rem;">
+            <a href="assets/reel-programacion-sistemas.webm" download class="btn btn-outline" style="font-size:0.8rem; border-color:var(--sis-1); color:var(--sis-2);">
+              ⬇ Descargar Reel Vertical (9:16)
+            </a>
+          </div>
+
+          <!-- Showcase de Cápsulas de Reels -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:0.55rem;">
+            <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:0.6rem; text-align:center;">
+              <span style="font-size:0.68rem; color:#16a34a; font-weight:800; display:block;">CÁPSULA 1</span>
+              <strong style="font-size:0.78rem; color:var(--fesna-navy);">Variables & RAM</strong>
+            </div>
+            <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:0.6rem; text-align:center;">
+              <span style="font-size:0.68rem; color:#16a34a; font-weight:800; display:block;">CÁPSULA 2</span>
+              <strong style="font-size:0.78rem; color:var(--fesna-navy);">Condicionales if/else</strong>
+            </div>
+            <div style="background:#f0fdf4; border:1px solid #86efac; border-radius:8px; padding:0.6rem; text-align:center;">
+              <span style="font-size:0.68rem; color:#16a34a; font-weight:800; display:block;">CÁPSULA 3</span>
+              <strong style="font-size:0.78rem; color:var(--fesna-navy);">Ciclos & Funciones</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pieza 1.2: Infografía interactiva generada con IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>📊 Infografía Interactiva: Fundamentos de Algoritmos</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Lógica & Código en Vivo</span>
+          </div>
+          <p class="media-description">
+            Recurso visual generado con IA que sintetiza el flujo algorítmico, estructuras de datos y lógica computacional, acompañado de un simulador de sintaxis interactivo.
+          </p>
+
+          <div class="infographic-frame" style="border: 2px solid #86efac; border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem;">
+            <img src="assets/infografia-sistemas-ia.jpg" alt="Infografía Interactiva Programación FESNA con IA" style="width: 100%; height: auto; display: block;" />
+          </div>
+
+          <!-- Simulador Interactivo de Algoritmos -->
+          <div class="algo-sim-container">
+            <div class="algo-tabs-bar">
+              <button class="algo-tab-btn active" onclick="switchAlgoTab('var')">📌 1. Variables</button>
+              <button class="algo-tab-btn" onclick="switchAlgoTab('cond')">⚖️ 2. Condicionales</button>
+              <button class="algo-tab-btn" onclick="switchAlgoTab('loops')">🔁 3. Ciclos</button>
+              <button class="algo-tab-btn" onclick="switchAlgoTab('func')">⚡ 4. Funciones & O(n)</button>
+            </div>
+
+            <div id="algo-code-display" class="algo-code-content">
+<span style="color:#94a3b8;"># 1. Definición de variables y tipos en Python (FESNA Software Core)</span>
+nombre_estudiante: <span style="color:#4ade80;">str</span> = <span style="color:#fbbf24;">"David Pulido"</span>
+semestre_actual: <span style="color:#4ade80;">int</span> = <span style="color:#f87171;">10</span>
+promedio_ponderado: <span style="color:#4ade80;">float</span> = <span style="color:#f87171;">4.85</span>
+titulado_tecnico: <span style="color:#4ade80;">bool</span> = <span style="color:#38bdf8;">True</span>
+lenguajes_dominados: <span style="color:#4ade80;">list</span> = [<span style="color:#fbbf24;">"Python"</span>, <span style="color:#fbbf24;">"JavaScript"</span>, <span style="color:#fbbf24;">"SQL"</span>]
+            </div>
+
+            <div id="algo-explanation" class="algo-explanation-box">
+              <strong style="color:#86efac; display:block; margin-bottom:0.2rem;">💡 Concepto Clave:</strong>
+              Las variables son espacios nombrados en memoria RAM que almacenan tipos de datos específicos (primitivos como enteros/booleanos o compuestos como listas y diccionarios), esenciales para el soporte aplicativo.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--sis-1);">
+        <strong style="color: var(--sis-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Técnico Profesional:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          Desarrollador de software junior, codificador de scripts y módulos backend/frontend, asistente de bases de datos relacionales y soporte operativo a plataformas tecnológicas.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Programador / Desarrollador Junior</span>
+          <span class="occ-pill">Auxiliar de Soporte de Software</span>
+          <span class="occ-pill">Codificador de Interfaces Web y Móviles</span>
+          <span class="occ-pill">Asistente de Bases de Datos SQL</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 52 Créditos</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">3 períodos cuatrimestrales • Res. 012171 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-tecnica-sis">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-tecnica-sis" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Primer Período (17 Créditos)</h5>
+            <ul>
+              <li>Lógica de Programación y Algoritmos</li>
+              <li>Fundamentos de Informática y Hardware</li>
+              <li>Habilidades Comunicativas</li>
+              <li>Cátedra Nueva América I</li>
+              <li>Matemáticas Básicas</li>
+              <li>Manejo de Herramientas Ofimáticas</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Segundo Período (17 Créditos)</h5>
+            <ul>
+              <li>Programación Orientada a Objetos I</li>
+              <li>Estructuras de Datos y Algoritmos</li>
+              <li>Bases de Datos Relacionales (SQL)</li>
+              <li>Álgebra Lineal</li>
+              <li>Constitución Política de Colombia</li>
+              <li>Electiva Complementaria I</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Tercer Período (18 Créditos)</h5>
+            <ul>
+              <li>Programación Orientada a Objetos II</li>
+              <li>Desarrollo de Software Web</li>
+              <li>Gestión de Bases de Datos Avanzada</li>
+              <li>Pruebas de Software (Testing)</li>
+              <li>Opción de Grado</li>
+              <li>Electiva de Profundización I</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Nivel 2 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 2: TECNOLOGÍA EN GESTIÓN DE SOFTWARE Y SISTEMAS                 -->
+    <!-- ===================================================================== -->
     <article id="nivel-tecnologia" class="program-campaign-card">
       <div class="program-banner bg-sis-2">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 2 • Tecnología</span>
           <h3>Tecnología en Gestión de Software y Sistemas</h3>
-          <p>Segundo ciclo propedéutico orientado a la administración de sistemas de información, arquitectura de software, redes e infraestructura tecnológica.</p>
+          <p>Título otorgado: <strong>Tecnólogo/a en Gestión de Software y Sistemas</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111397 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111398</div>
+          <div><strong style="color:#86efac;">Resolución MEN:</strong> 012172 del 28 de junio de 2022 (Vigencia 7 años)</div>
+          <div><strong style="color:#86efac;">Duración y Créditos:</strong> +2 períodos (5 acumulados) • 86 créditos</div>
           <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 2.1: Podcast técnico asistido por IA -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎙️ Podcast Técnico con IA: SDLC & Metodologías Ágiles</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Voz Neural HD</span>
+          </div>
+          <p class="media-description">
+            Episodio de audio institucional analizando el <strong>Ciclo de Vida del Software (SDLC)</strong>, metodologías ágiles (Scrum, Kanban), bases de datos SQL vs NoSQL, arquitectura de microservicios y despliegues CI/CD.
+          </p>
+
+          <div class="radio-spot-box" style="background: linear-gradient(135deg, #062414 0%, #0d5625 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span style="color:#86efac; font-weight:800; font-size:0.8rem;">🔊 PODCAST TÉCNICO OFICIAL (Voz: Gonzalo Neural ES-CO)</span>
+              <span class="top-pill" style="background:rgba(255,255,255,0.15); color:#ffffff;">SNIES 111397 / 111398</span>
+            </div>
+            <h5 style="color:#ffffff; font-size:1.05rem; margin-top:0.55rem;">
+              "TechFESNA: Ciclo de Vida del Software, Arquitectura y Metodologías Ágiles"
+            </h5>
+
+            <!-- Ecualizador de Barras -->
+            <div id="podcast-tgss-bars" class="audio-bars">
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #16a34a, #86efac);"></div>
+            </div>
+
+            <audio id="audio-podcast-tgss" src="assets/podcast-tecnico-tgss.mp3" preload="metadata"></audio>
+
+            <div class="media-toolbar" style="margin-top:0.5rem;">
+              <button id="play-podcast-tgss" class="btn btn-primary" style="background:#22c55e; border:none; color:#0f172a; font-weight:800;">
+                ▶ Reproducir Podcast Técnico
+              </button>
+              <a href="assets/podcast-tecnico-tgss.mp3" download class="btn btn-outline" style="border-color:#86efac; color:#ffffff; font-size:0.8rem;">
+                ⬇ Descargar MP3
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pieza 2.2: Video explicativo con IA sobre sistemas y desarrollo de software -->
+        <div class="media-card">
+          <div class="media-card-header">
+            <h4>🎬 Video Explicativo con IA: Sistemas y Desarrollo de Software</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Video Full HD • Gemini Canvas</span>
+          </div>
+          <p class="media-description">
+            Producción audiovisual en Full HD generada con IA sobre el <strong>Ciclo de Vida del Software (SDLC)</strong>, metodologías ágiles (Scrum/Kanban), arquitectura en 3 capas, bases de datos SQL/NoSQL y gestión de proyectos TI.
+          </p>
+
+          <div class="video-frame" style="border: 2px solid #22c55e; border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem;">
+            <video controls preload="metadata" src="assets/video-explicativo-sistemas.webm" style="width:100%; display:block;">
+              Tu navegador no soporta la reproducción de video HTML5.
+            </video>
+          </div>
+
+          <div style="background:#090d16; border-radius:12px; padding:1rem; border:1px solid #1e293b; color:#cbd5e1;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+              <span style="color:#4ade80; font-weight:800; font-size:0.8rem;">📐 ARQUITECTURA EXPLICADA EN EL VIDEO</span>
+              <a href="assets/video-explicativo-sistemas.webm" download style="color:#86efac; font-size:0.78rem; font-weight:700; text-decoration:none;">⬇ Descargar Video Full HD</a>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:0.5rem; text-align:center; font-size:0.76rem;">
+              <div style="background:#1e293b; padding:0.5rem; border-radius:6px; border-top:2px solid #38bdf8;">
+                <strong>Frontend & UX</strong><br>Web / Mobile
+              </div>
+              <div style="background:#1e293b; padding:0.5rem; border-radius:6px; border-top:2px solid #22c55e;">
+                <strong>Backend & APIs</strong><br>Microservicios
+              </div>
+              <div style="background:#1e293b; padding:0.5rem; border-radius:6px; border-top:2px solid #f59e0b;">
+                <strong>SQL/NoSQL & CI/CD</strong><br>Cloud & DevOps
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--sis-2);">
+        <strong style="color: var(--sis-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Tecnólogo:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          Coordinador de proyectos de desarrollo, administrador de bases de datos intermedias, líder de pruebas de aseguramiento de calidad (QA), analista de requerimientos y gestor de infraestructura tecnológica.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Tecnólogo en Desarrollo y Sistemas</span>
+          <span class="occ-pill">Administrador de Bases de Datos (DBA)</span>
+          <span class="occ-pill">Analista de Pruebas y Aseguramiento QA</span>
+          <span class="occ-pill">Scrum Master / Coordinador de Sprints</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 86 Créditos Acumulados</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">Cuarto y Quinto Período • Res. 012172 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-tecnologia-sis">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-tecnologia-sis" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Cuarto Período (17 Créditos)</h5>
+            <ul>
+              <li>Arquitectura de Software y Patrones de Diseño</li>
+              <li>Metodologías Ágiles de Desarrollo (Scrum/Kanban)</li>
+              <li>Redes de Datos y Protocolos de Comunicación</li>
+              <li>Sistemas Operativos y Servidores</li>
+              <li>Estadística y Probabilidad para Sistemas</li>
+              <li>Cátedra Nueva América II</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Quinto Período (17 Créditos)</h5>
+            <ul>
+              <li>Gestión y Seguridad de Sistemas de Información</li>
+              <li>Bases de Datos Distribuidas y NoSQL</li>
+              <li>Integración Continua y DevOps (CI/CD)</li>
+              <li>Ingeniería de Requerimientos de Software</li>
+              <li>Opción de Grado Tecnológico</li>
+              <li>Electiva de Profundización II</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Nivel 3 -->
+
+    <!-- ===================================================================== -->
+    <!-- NIVEL 3: INGENIERÍA DE SISTEMAS (PROFESIONAL UNIVERSITARIO)           -->
+    <!-- ===================================================================== -->
     <article id="nivel-profesional" class="program-campaign-card">
       <div class="program-banner bg-sis-3">
         <div class="program-banner-info">
           <span class="step-tag">Nivel 3 • Profesional Universitario</span>
           <h3>Ingeniería de Sistemas</h3>
-          <p>Tercer ciclo propedéutico orientado al liderazgo de proyectos tecnológicos, inteligencia artificial, ciberseguridad y transformación digital organizacional.</p>
+          <p>Título otorgado: <strong>Ingeniero/a de Sistemas</strong></p>
         </div>
         <div class="program-official-meta">
           <div><strong style="color:#86efac;">SNIES Presencial:</strong> 111393 | <strong style="color:#86efac;">SNIES Virtual:</strong> 111394</div>
+          <div><strong style="color:#86efac;">Resolución MEN:</strong> 012173 del 28 de junio de 2022 (Vigencia 7 años)</div>
+          <div><strong style="color:#86efac;">Duración y Créditos:</strong> +4 períodos (9 acumulados) • 155 créditos</div>
           <div><strong style="color:#86efac;">Modalidad:</strong> Presencial y Virtual • Bogotá D.C.</div>
+        </div>
+      </div>
+
+      <div class="program-media-grid">
+        <!-- Pieza 3.1: Proyecto de solución tecnológica con IA (¡PROTOTIPO EN VIVO!) -->
+        <div class="media-card" style="grid-column: 1 / -1;">
+          <div class="media-card-header">
+            <h4>🛡️ Proyecto Tecnológico con IA: "FESNA AI CodeGuard"</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Prototipo Interactivo en Vivo</span>
+          </div>
+          <p class="media-description">
+            <strong>Solución Tecnológica de Inteligencia Artificial:</strong> Sistema inteligente de auditoría automatizada de código, detección de vulnerabilidades críticas de ciberseguridad (OWASP Top 10) y refactorización guiada por IA en tiempo real.
+          </p>
+
+          <div class="ai-project-box">
+            <div class="ai-project-header">
+              <div class="ai-project-title">
+                <div class="ai-project-logo">🛡️</div>
+                <div>
+                  <h4 style="margin:0; color:#ffffff; font-size:1.15rem;">FESNA AI CodeGuard v2.4</h4>
+                  <span style="font-size:0.75rem; color:#4ade80;">Motor de Auditoría de Ciberseguridad & Refactorización con IA</span>
+                </div>
+              </div>
+              <span class="top-pill" style="background:rgba(34,197,94,0.15); color:#86efac; border:1px solid #22c55e;">
+                Proyecto Oficial • David Yused Pulido Pardo
+              </span>
+            </div>
+
+            <!-- Selector de Presets de Prueba -->
+            <label style="font-size:0.82rem; color:#94a3b8; font-weight:700; display:block; margin-bottom:0.4rem;">
+              Selecciona un escenario de código para auditar con IA:
+            </label>
+            <div class="ai-presets-row">
+              <button class="preset-chip-btn active" onclick="loadSecurityPreset('sqli')">⚠️ Inyección SQL (Autenticación)</button>
+              <button class="preset-chip-btn" onclick="loadSecurityPreset('xss')">⚠️ Cross-Site Scripting (XSS)</button>
+              <button class="preset-chip-btn" onclick="loadSecurityPreset('perf')">⚠️ Ineficiencia O(n²) & Fuga</button>
+              <button class="preset-chip-btn" onclick="loadSecurityPreset('secure')">✅ Código Seguro Refactorizado</button>
+            </div>
+
+            <!-- Editor de Código -->
+            <textarea id="ai-code-editor" class="code-editor-area" spellcheck="false"></textarea>
+
+            <div class="ai-scan-actions">
+              <button class="btn-ai-scan" onclick="runAiSecurityAudit()">
+                ⚡ Ejecutar Auditoría con IA
+              </button>
+              <span style="font-size:0.8rem; color:#94a3b8;" id="audit-status-tag">
+                Estado: Listo para escanear
+              </span>
+            </div>
+
+            <!-- Panel de Resultados de Auditoría IA -->
+            <div id="ai-audit-results" class="ai-audit-output">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+                <div>
+                  <span id="vuln-badge" class="vuln-badge danger">🚨 CRÍTICO • OWASP A03: Injection</span>
+                  <h5 id="vuln-title" style="margin:0.35rem 0 0; color:#ffffff; font-size:1.05rem;">
+                    Vulnerabilidad de Inyección SQL detectada (CWE-89)
+                  </h5>
+                </div>
+                <div style="text-align:right;">
+                  <span style="font-size:0.75rem; color:#94a3b8; display:block;">Puntaje de Seguridad</span>
+                  <strong id="security-score" style="font-size:1.5rem; color:#f87171;">28 / 100</strong>
+                </div>
+              </div>
+
+              <p id="vuln-description" style="font-size:0.85rem; color:#cbd5e1; margin:0; line-height:1.5;">
+                El código concatena entradas directas del usuario en una sentencia SQL sin sanitización ni sentencias preparadas, permitiendo eludir la autenticación mediante payloads como <code style="color:#fbbf24;">' OR '1'='1</code>.
+              </p>
+
+              <div>
+                <strong style="color:#4ade80; font-size:0.82rem; display:block; margin-bottom:0.3rem;">
+                  ✨ Solución Refactorizada Segura con IA (Clean Architecture):
+                </strong>
+                <pre id="refactored-code" class="refactored-code-box"><code># Código Seguro con Consultas Parametrizadas (Prepared Statements)
+cursor.execute(
+    "SELECT id, nombre, rol FROM usuarios WHERE usuario = %s AND password_hash = %s",
+    (usuario_input, hashed_password)
+)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pieza 3.2: Podcast/Video de análisis prospectivo sobre IA e ingeniería de sistemas -->
+        <div class="media-card" style="grid-column: 1 / -1;">
+          <div class="media-card-header">
+            <h4>🔭 Análisis Prospectivo: El Futuro de la Ingeniería de Sistemas</h4>
+            <span class="media-badge" style="background:#dcfce7; color:var(--sis-3);">Podcast Neural de Prospectiva</span>
+          </div>
+          <p class="media-description">
+            Discusión académica sobre el impacto de la Inteligencia Artificial Generativa, agentes autónomos en DevOps, computación en la nube y ética algorítmica en la formación del Ingeniero de Sistemas de FESNA.
+          </p>
+
+          <div class="radio-spot-box" style="background: linear-gradient(135deg, #021a0d 0%, #0d5625 100%);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+              <span style="color:#86efac; font-weight:800; font-size:0.8rem;">🔊 PODCAST PROSPECTIVO INSTITUCIONAL (Voz: Salomé Neural ES-CO)</span>
+              <span class="top-pill" style="background:rgba(255,255,255,0.15); color:#ffffff;">SNIES 111393 / 111394</span>
+            </div>
+            <h5 style="color:#ffffff; font-size:1.05rem; margin-top:0.55rem;">
+              "El Ingeniero de Sistemas en la Era de los Agentes de Inteligencia Artificial"
+            </h5>
+
+            <!-- Ecualizador de Barras -->
+            <div id="podcast-prospectivo-bars" class="audio-bars">
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+              <div class="bar" style="background:linear-gradient(to top, #22c55e, #a7f3d0);"></div>
+            </div>
+
+            <audio id="audio-podcast-prospectivo" src="assets/podcast-prospectivo-sistemas.mp3" preload="metadata"></audio>
+
+            <div class="media-toolbar" style="margin-top:0.5rem;">
+              <button id="play-podcast-prospectivo" class="btn btn-primary" style="background:#22c55e; border:none; color:#0f172a; font-weight:800;">
+                ▶ Escuchar Análisis Prospectivo
+              </button>
+              <a href="assets/podcast-prospectivo-sistemas.mp3" download class="btn btn-outline" style="border-color:#86efac; color:#ffffff; font-size:0.8rem;">
+                ⬇ Descargar MP3
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Perfil Ocupacional -->
+      <div class="occupational-bar" style="border-left-color: var(--sis-3);">
+        <strong style="color: var(--sis-3); font-size: 0.95rem; display: block;">💼 Perfil Ocupacional del Ingeniero de Sistemas:</strong>
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0.2rem 0 0.5rem;">
+          Líder de transformación digital, arquitecto de software cloud, director de tecnología (CTO), ingeniero de aprendizaje automático e inteligencia artificial, y auditor senior de ciberseguridad.
+        </p>
+        <div class="occupational-pills">
+          <span class="occ-pill">Director de Tecnología e Información (CIO / CTO)</span>
+          <span class="occ-pill">Arquitecto de Soluciones Cloud & Microservicios</span>
+          <span class="occ-pill">Especialista en Inteligencia Artificial y Machine Learning</span>
+          <span class="occ-pill">Auditor y Consultor Senior de Ciberseguridad</span>
+          <span class="occ-pill">Líder de Proyectos de Transformación Digital</span>
+        </div>
+      </div>
+
+      <!-- Plan de Estudios Desplegable -->
+      <div class="curriculum-bar">
+        <div>
+          <strong style="color: var(--fesna-navy); font-size: 0.92rem;">Plan de Estudios Oficial • 155 Créditos Acumulados</strong>
+          <span style="font-size: 0.8rem; color: var(--text-secondary); display: block;">Sexto, Séptimo, Octavo y Noveno Período • Res. 012173 del MEN</span>
+        </div>
+        <button class="btn btn-outline toggle-curriculum-btn" data-target="curr-profesional-sis">
+          Ver Asignaturas ▼
+        </button>
+      </div>
+
+      <div id="curr-profesional-sis" class="curriculum-panel">
+        <div class="periods-grid">
+          <div class="period-card">
+            <h5>Sexto Período (18 Créditos)</h5>
+            <ul>
+              <li>Inteligencia Artificial y Aprendizaje Automático</li>
+              <li>Sistemas Distribuidos y Computación en la Nube</li>
+              <li>Modelamiento y Simulación de Sistemas</li>
+              <li>Legislación Informática y Ética Profesional</li>
+              <li>Investigación de Operaciones</li>
+              <li>Electiva Complementaria III</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Séptimo Período (18 Créditos)</h5>
+            <ul>
+              <li>Ciberseguridad y Criptografía Aplicada</li>
+              <li>Minería de Datos y Big Data Analytics</li>
+              <li>Gestión Estratégica de Proyectos de TI</li>
+              <li>Metodología de la Investigación en Ingeniería</li>
+              <li>Práctica Profesional I</li>
+              <li>Electiva de Profundización III</li>
+            </ul>
+          </div>
+          <div class="period-card">
+            <h5>Octavo y Noveno Período (36 Créditos)</h5>
+            <ul>
+              <li>Sistemas Inteligentes Autónomos y Robótica</li>
+              <li>Gobierno de TI y Auditoría de Sistemas</li>
+              <li>Emprendimiento y Creación de Empresas Tecnológicas</li>
+              <li>Práctica Profesional II</li>
+              <li>Proyecto de Grado en Ingeniería de Sistemas</li>
+              <li>Seminario de Actualización Tecnológica</li>
+            </ul>
+          </div>
         </div>
       </div>
     </article>

@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Script generador del documento Word (.docx) para el Punto 4 y la Documentacion
-Tecnica Completa del Examen de Segundo Corte - FESNA.
+Script generador del documento Word (.docx) para el EXAMEN FINAL - FESNA.
+Cubre las 4 Areas Profesionales por Ciclos Propedeuticos (24 Actividades con IA):
+1. Administracion de Empresas
+2. Contaduria Publica
+3. Ingenieria de Sistemas
+4. Marketing y Publicidad
 Estudiante: David Yused Pulido Pardo
 Programa: Ingenieria de Sistemas - 10. Semestre
+Docente: Fredy Osbaldo Lemus Solano
 """
 
-import os
 import shutil
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
@@ -105,7 +109,6 @@ def add_prompt_box(doc, title, tool_badge, prompt_text, script_or_notes=None, ac
     set_cell_background(cell, bg_hex)
     set_cell_margins(cell, top=140, bottom=140, left=180, right=180)
 
-    # Borde izquierdo grueso de color acento
     tcPr = cell._tc.get_or_add_tcPr()
     tcBorders = parse_xml(
         f'<w:tcBorders {nsdecls("w")}>'
@@ -129,7 +132,14 @@ def add_prompt_box(doc, title, tool_badge, prompt_text, script_or_notes=None, ac
     r_badge.font.name = 'Calibri'
     r_badge.font.size = Pt(10)
     r_badge.font.bold = True
-    r_badge.font.color.rgb = RGBColor(146, 26, 163) if accent_hex == "921AA3" else RGBColor(21, 135, 119)
+    if accent_hex == "921AA3":
+        r_badge.font.color.rgb = RGBColor(146, 26, 163)
+    elif accent_hex == "1A7C3B":
+        r_badge.font.color.rgb = RGBColor(20, 108, 49)
+    elif accent_hex == "D43B27":
+        r_badge.font.color.rgb = RGBColor(179, 35, 25)
+    else:
+        r_badge.font.color.rgb = RGBColor(21, 135, 119)
 
     p_prompt_lbl = cell.add_paragraph()
     p_prompt_lbl.paragraph_format.space_after = Pt(2)
@@ -152,7 +162,7 @@ def add_prompt_box(doc, title, tool_badge, prompt_text, script_or_notes=None, ac
         p_notes = cell.add_paragraph()
         p_notes.paragraph_format.space_after = Pt(2)
         p_notes.paragraph_format.line_spacing = 1.12
-        rn_lbl = p_notes.add_run("Elaboración técnica y extracto del guion/resultado: ")
+        rn_lbl = p_notes.add_run("Elaboración técnica y resultado integrado: ")
         rn_lbl.font.name = 'Calibri'
         rn_lbl.font.size = Pt(10)
         rn_lbl.font.bold = True
@@ -173,7 +183,6 @@ def add_styled_table(doc, headers, rows, header_bg="0D3B66"):
     tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl.style = 'Table Grid'
 
-    # Encabezados
     hdr_cells = tbl.rows[0].cells
     for idx, h_text in enumerate(headers):
         cell = hdr_cells[idx]
@@ -189,7 +198,6 @@ def add_styled_table(doc, headers, rows, header_bg="0D3B66"):
         r.font.bold = True
         r.font.color.rgb = RGBColor(255, 255, 255)
 
-    # Filas de datos
     for r_idx, row_data in enumerate(rows):
         row_cells = tbl.rows[r_idx + 1].cells
         bg = "F8FAFC" if r_idx % 2 == 1 else "FFFFFF"
@@ -233,7 +241,6 @@ def add_apa_reference(doc, ref_text):
 def build_document():
     doc = Document()
 
-    # Configurar margenes de pagina (Normas APA: 2.54 cm = 1 pulgada en todos los lados)
     for section in doc.sections:
         section.top_margin = Inches(1.0)
         section.bottom_margin = Inches(1.0)
@@ -248,7 +255,7 @@ def build_document():
 
     p_badge = doc.add_paragraph()
     p_badge.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    r_b = p_badge.add_run("FUNDACIÓN DE EDUCACIÓN SUPERIOR NUEVA AMÉRICA — FESNA\nEXAMEN DE SEGUNDO CORTE — PORTAFOLIO Y CAMPAÑA MULTIMEDIA CON IA")
+    r_b = p_badge.add_run("FUNDACIÓN DE EDUCACIÓN SUPERIOR NUEVA AMÉRICA — FESNA\nEXAMEN FINAL — PORTAFOLIO DIGITAL Y CAMPAÑA PUBLICITARIA MULTIMODAL CON IA")
     r_b.font.name = 'Calibri'
     r_b.font.size = Pt(11)
     r_b.font.bold = True
@@ -261,32 +268,33 @@ def build_document():
     p_title.paragraph_format.space_after = Pt(12)
     r_t = p_title.add_run(
         "Documentación Técnica, Ingeniería de Prompts, Ecosistema de Inteligencia Artificial "
-        "(HeyGen, CapCut, Gemini y Antigravity) y Sustentación Teórica de la Campaña "
+        "(HeyGen, CapCut, Gemini, Gemini Canvas y Antigravity) y Sustentación Teórica de la Campaña "
         "Institucional Multipágina para FESNA"
     )
     r_t.font.name = 'Calibri'
-    r_t.font.size = Pt(18)
+    r_t.font.size = Pt(17.5)
     r_t.font.bold = True
     r_t.font.color.rgb = RGBColor(13, 59, 102)
 
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_sub.paragraph_format.space_after = Pt(36)
+    p_sub.paragraph_format.space_after = Pt(28)
     r_sub = p_sub.add_run(
-        "Áreas Desarrolladas por Ciclos Propedéuticos: Administración de Empresas y Contaduría Pública\n"
-        "(Punto 4: Sustentación Teórica, Metodología de Elaboración y Referencias en Normas APA 7.ª Edición)"
+        "Cuatro Áreas Desarrolladas por Ciclos Propedéuticos (24 Actividades con IA):\n"
+        "Administración de Empresas • Contaduría Pública • Ingeniería de Sistemas • Marketing y Publicidad\n"
+        "(Sustentación Teórica, Metodología de Elaboración, Ética Algorítmica y Referencias en Normas APA 7.ª Edición)"
     )
     r_sub.font.name = 'Calibri'
-    r_sub.font.size = Pt(12)
+    r_sub.font.size = Pt(11.5)
     r_sub.font.italic = True
     r_sub.font.color.rgb = RGBColor(90, 100, 115)
 
-    # Tabla resumen de datos de portada
     cover_rows = [
         ["Estudiante / Autor:", "David Yused Pulido Pardo"],
         ["Programa Académico:", "Ingeniería de Sistemas — 10.º Semestre"],
         ["Docente Titular:", "Fredy Osbaldo Lemus Solano"],
-        ["Institución:", "Fundación de Educación Superior Nueva América (FESNA) — Personería Jurídica Res. 6208 de 2009 MEN"],
+        ["Institución:", "Fundación de Educación Superior Nueva América (FESNA) — SNIES 4719 — Vigilada MinEducación"],
+        ["Enlace Web Público:", "https://davidyused.github.io/fesna-portafolio-ia/"],
         ["Ecosistema IA Empleado:", "Antigravity (Agente IA & Neural TTS) • Google Gemini & Gemini Canvas • CapCut IA • HeyGen Avatar IA"],
         ["Fecha de Entrega:", "Octubre de 2026 — Bogotá D.C., Colombia"]
     ]
@@ -306,53 +314,64 @@ def build_document():
 
     add_body_p(
         doc,
-        "El presente documento constituye el soporte técnico, metodológico y teórico (Punto 4 del Examen de Segundo Corte) "
-        "del portal web interactivo y la campaña publicitaria transmedia desarrollada para la Fundación de Educación Superior "
-        "Nueva América (FESNA). El objetivo central del proyecto consistió en diseñar, producir e integrar doce (12) productos "
-        "comunicativos asistidos por Inteligencia Artificial —seis (6) para el Área de Administración y seis (6) para el Área "
-        "de Contaduría Pública—, respetando de manera rigurosa el modelo educativo por ciclos propedéuticos de la institución "
-        "(Nivel 1: Técnico Profesional, Nivel 2: Tecnológico y Nivel 3: Profesional Universitario) y garantizando el 100 % de "
-        "fidelidad frente a los códigos SNIES y las Resoluciones de Registro Calificado otorgadas por el Ministerio de Educación "
-        "Nacional (MEN)."
+        "El presente documento constituye la memoria técnica, metodológica y teórica integral del Examen Final para el portal "
+        "web interactivo y la campaña publicitaria transmedia desarrollada para la Fundación de Educación Superior Nueva América "
+        "(FESNA), publicada en línea en https://davidyused.github.io/fesna-portafolio-ia/. El propósito central del proyecto "
+        "consistió en diseñar, producir, programar y documentar veinticuatro (24) productos comunicativos, analíticos y tecnológicos "
+        "asistidos por Inteligencia Artificial —distribuidos en las cuatro (4) áreas profesionales por ciclos propedéuticos de la "
+        "institución: Administración de Empresas, Contaduría Pública, Ingeniería de Sistemas y Marketing y Publicidad—, "
+        "respetando el 100 % de fidelidad frente a los códigos SNIES y las Resoluciones de Registro Calificado otorgadas por el "
+        "Ministerio de Educación Nacional (MEN)."
     )
 
-    add_formatted_heading(doc, "1.1. Estructura Multipágina y Separación entre Portal Publicitario y Sustentación", level=2, color_rgb=(21, 135, 119))
+    add_formatted_heading(doc, "1.1. Estructura Multipágina del Sitio Web Publicado", level=2, color_rgb=(21, 135, 119))
     add_body_p(
         doc,
-        "Siguiendo los criterios de diseño y experiencia de usuario (UX/UI) definidos durante el desarrollo, se estableció una "
-        "arquitectura web limpia y modular donde el sitio web actúa como una plataforma institucional y publicitaria real de FESNA, "
-        "mientras que el presente documento Word concentra toda la memoria técnica, los prompts ejecutados, la justificación de "
-        "herramientas y la fundamentación teórica en normas APA 7.ª edición. La plataforma web se compone de cinco (5) páginas "
-        "interconectadas mediante un menú lateral desplegable a la izquierda (drawer menu):"
+        "El sitio web fue diseñado bajo una arquitectura multipágina limpia y responsiva, interconectada mediante una barra de "
+        "navegación superior y un menú lateral desplegable a la izquierda (drawer menu) que conserva la identidad cromática "
+        "oficial de cada facultad:"
     )
 
     add_bullet_p(
         doc,
         "1. Página Principal Institucional (index.html): ",
         "Inicia con la Sección 1 obligatoria de Introducción y Presentación Personal del estudiante (David Yused Pulido Pardo, "
-        "Ingeniería de Sistemas, 10.º semestre, objetivos de aprendizaje, propósito del sitio web y recorrido del curso). "
-        "A continuación, presenta la identidad corporativa de FESNA (https://www.nuevaamerica.edu.co/), su modelo por ciclos "
-        "propedéuticos y el directorio visual de los 12 programas académicos con sus bandas cromáticas oficiales."
+        "Ingeniería de Sistemas, 10.º semestre, objetivos de aprendizaje, propósito del sitio web y resumen del recorrido del curso), "
+        "seguida de la reseña histórica y jurídica de FESNA (https://www.nuevaamerica.edu.co/), el directorio interactivo de los "
+        "12 programas por ciclos propedéuticos y el botón de descarga directa del presente documento Word."
     )
     add_bullet_p(
         doc,
         "2. Área de Administración (administracion.html — Paleta Turquesa #36B59E / #1FA08B / #158777): ",
-        "Aloja las 6 actividades de IA distribuidas en sus 3 niveles propedéuticos: Técnica Profesional en Procesos Administrativos "
-        "Empresariales (Video explicativo IA + Infografía institucional IA), Tecnología en Gestión Administrativa (Reel promocional IA "
-        "+ Spot publicitario con voz IA) y Administración de Empresas (Video institucional IA + Motion Graphics inteligente en Canvas)."
+        "Consolida las 6 actividades de IA: Técnica Profesional en Procesos Administrativos Empresariales (Video explicativo IA + "
+        "Infografía institucional IA), Tecnología en Gestión Administrativa (Reel promocional IA + Spot publicitario con voz IA) y "
+        "Administración de Empresas (Video institucional IA + Motion Graphics inteligente a 60 FPS en HTML5 Canvas)."
     )
     add_bullet_p(
         doc,
         "3. Área de Contaduría Pública (contaduria.html — Paleta Morada #AA38B9 / #921AA3 / #74187E): ",
-        "Aloja las 6 actividades de IA de la facultad contable: Técnica Profesional en Procesos Contables (Serie de Reels con guion IA "
-        "+ Cuña radial IA), Tecnología en Gestión Contable y Financiera (Podcast 'Conoce FESNA' a dos voces + Animación 2D Full HD "
-        "asistida por IA) y Contaduría Pública (Testimonio recreado con Avatar IA Valeria Mendoza en HeyGen + Podcast institucional ejecutivo)."
+        "Consolida las 6 actividades de IA: Técnica Profesional en Procesos Contables (Serie de Reels con subtítulos morados + "
+        "Cuña radial IA), Tecnología en Gestión Contable y Financiera (Podcast 'Conoce FESNA' a dos voces + Animación 2D Full HD "
+        "generada en Gemini Canvas) y Contaduría Pública (Testimonio recreado con Avatar IA Valeria Mendoza en HeyGen + Podcast institucional)."
     )
     add_bullet_p(
         doc,
-        "4. Áreas Complementarias del Menú Desplegable (sistemas.html y marketing.html): ",
-        "Páginas dedicadas a Ingeniería de Sistemas (paleta verde #1A7C3B) y Marketing y Publicidad (paleta roja/vinotinto #D43B27) "
-        "con sus respectivos códigos SNIES y estructura de ciclos propedéuticos, garantizando una navegación institucional completa."
+        "4. Área de Ingeniería de Sistemas (sistemas.html — Paleta Verde Esmeralda #1A7C3B / #146C31 / #0D5625): ",
+        "Consolida las 6 actividades de IA: Técnica Profesional en Procesos de Programación de Software (Reel 9:16 sobre fundamentos "
+        "de programación + Infografía interactiva con simulador de algoritmos en vivo), Tecnología en Gestión de Software y Sistemas "
+        "(Podcast técnico asistido por IA sobre SDLC y metodologías ágiles + Video explicativo Full HD sobre arquitectura y DevOps) "
+        "e Ingeniería de Sistemas (Proyecto de solución tecnológica interactivo en vivo 'FESNA AI CodeGuard v2.4' para auditoría "
+        "de ciberseguridad OWASP Top 10 + Podcast de análisis prospectivo sobre IA e ingeniería de sistemas)."
+    )
+    add_bullet_p(
+        doc,
+        "5. Área de Marketing y Publicidad (marketing.html — Paleta Roja / Vinotinto #D43B27 / #B32319 / #7B1F17): ",
+        "Consolida las 6 actividades de IA: Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria "
+        "(Galería de 2 piezas gráficas comerciales generadas con IA + Simulador en vivo de atención al cliente mediante Chatbot "
+        "conversacional entrenado con IA), Tecnología en Gestión Comercial y Publicidad (Creación de Buyer Persona 'Camila Rojas' "
+        "y matriz interactiva de copys AIDA, PAS y Storytelling + Simulador y auditor en tiempo real de campañas de pauta digital "
+        "con cálculo de Impresiones, Clics, Leads, CPA y ROAS) y Marketing y Publicidad (Plan de marketing predictivo y análisis "
+        "de 4 macrotendencias + Pitch Deck interactivo de 6 diapositivas ejecutivas para lanzamiento de marca global)."
     )
 
     # =========================================================================
@@ -365,51 +384,40 @@ def build_document():
         color_rgb=(13, 59, 102)
     )
 
-    add_body_p(
-        doc,
-        "Para alcanzar un acabado profesional, nítido y coherente en todos los formatos exigidos por el examen (video horizontal 16:9, "
-        "Reels verticales 9:16, avatar hablante con sincronización labial, animación 2D vectorial, infografía corporativa y producción "
-        "sonora multipista), se integró un flujo de trabajo apoyado en cuatro (4) plataformas especializadas de Inteligencia Artificial: "
-        "Antigravity, Google Gemini (con Gemini Canvas), CapCut y HeyGen."
-    )
-
     ia_rows = [
         [
             "1. Antigravity\n(Agente de Ingeniería de Software & Síntesis Neural)",
-            "• Arquitectura web HTML5, CSS3 y JavaScript.\n"
-            "• Motor de Motion Graphics a 60 FPS.\n"
-            "• Generación de voces neurales (edge-tts).\n"
-            "• Postprocesamiento gráfico con Python Pillow.",
-            "Permitió construir desde cero la estructura multipágina con menú lateral desplegable, programar el lienzo interactivo "
-            "del Nivel 3 de Administración y sintetizar audios MP3 de alta definición (24 kHz) con voces neurales colombianas y "
-            "latinoamericanas diferenciadas para cada spot, cuña y podcast a dos voces."
+            "• Arquitectura web multipágina HTML5/CSS3/JS.\n"
+            "• Motores interactivos en vivo (CodeGuard, Chatbot, Simulador Ads, Pitch Deck, Motion Graphics).\n"
+            "• Síntesis de voz neural (edge-tts) y Python Pillow.",
+            "Permitió programar todos los módulos interactivos funcionales del portafolio, sintetizar 6 productos sonoros MP3 "
+            "con voces neurales colombianas y latinoamericanas libres de ruido, postprocesar infografías con precisión tipográfica "
+            "y desplegar el proyecto en GitHub Pages."
         ],
         [
-            "2. Google Gemini &\nGemini Canvas\n(IA Multimodal y Código Animado)",
-            "• Ingeniería y validación de guiones.\n"
-            "• Animación 2D en Full HD (1920x1080).\n"
-            "• Generación de ilustración base para infografía.",
-            "Se utilizó para estructurar los guiones adaptados al nivel jerárquico de cada programa y, mediante Gemini Canvas, "
-            "generar y exportar en video la Animación 2D del Nivel 2 de Contaduría Pública (Tecnología en Gestión Contable y Financiera) "
-            "con gráficos vectoriales nítidos y captura MediaRecorder."
+            "2. Google Gemini &\nGemini Canvas\n(IA Multimodal y Animación Programática)",
+            "• Estructuración de guiones, copys y Buyer Persona.\n"
+            "• Generación de ilustraciones y piezas gráficas comerciales.\n"
+            "• Exportación de videos Full HD en Gemini Canvas.",
+            "Se empleó para redactar guiones verificados contra las Resoluciones MEN y para generar en Gemini Canvas tres (3) "
+            "producciones animadas en Full HD capturadas a 60 FPS vía MediaRecorder API (Animación 2D de Contaduría, Video Explicativo "
+            "de Sistemas 16:9 y Reel de Programación 9:16)."
         ],
         [
             "3. CapCut\n(Suite de Producción Audiovisual con IA)",
-            "• Edición de videos explicativos e institucionales.\n"
+            "• Montaje de videos explicativos e institucionales.\n"
             "• Creación de Reels verticales (9:16).\n"
-            "• Subtitulado dinámico automático y efectos.",
-            "Fundamental para el montaje rítmico de los videos del Área de Administración y la Serie de Reels del Nivel 1 de "
-            "Contaduría Pública (fesna_reel_subtitulos_morados.mp4), aplicando subtítulos dinámicos sincronizados con la paleta "
-            "morada (#AA38B9) y turquesa (#36B59E) de FESNA."
+            "• Subtitulado dinámico automático por colores.",
+            "Fundamental para la edición rítmica de los videos del Área de Administración y la Serie de Reels de Contaduría Pública, "
+            "aplicando subtítulos automáticos sincronizados con las paletas cromáticas institucionales de FESNA."
         ],
         [
             "4. HeyGen\n(Plataforma de Avatares Digitales con IA)",
             "• Recreación de testimonio con avatar hiperrealista.\n"
             "• Sincronización labial (lip-sync) y gestualidad.\n"
             "• Cumplimiento ético de identidad sintética.",
-            "Se empleó en el Nivel 3 de Contaduría Pública para dar vida a 'Valeria Mendoza' (Valeria Mendoza — Contaduría Pública FESNA.mp4), "
-            "un avatar digital ejecutivo que presenta un testimonio realista sobre NIIF y Revisoría Fiscal sin clonar ni suplantar a "
-            "ninguna persona real (cumpliendo la Regla General #7 del examen)."
+            "Utilizado en el Nivel 3 de Contaduría Pública para dar vida a la egresada virtual 'Valeria Mendoza', presentando un "
+            "testimonio ejecutivo sobre NIIF y Revisoría Fiscal sin clonar ni suplantar la identidad de personas reales (Regla #7)."
         ]
     ]
     add_styled_table(
@@ -419,51 +427,16 @@ def build_document():
         header_bg="0D3B66"
     )
 
-    add_formatted_heading(doc, "2.1. Detalle de Cómo Interactuaron las 4 Herramientas en Nuestro Flujo de Trabajo", level=2, color_rgb=(21, 135, 119))
-    add_body_p(
-        doc,
-        "1. En Google Gemini analizamos primero los documentos oficiales suministrados (Resoluciones MEN 010895, 010896, 010897 para "
-        "Administración; Resoluciones MEN 009955, 009956, 009957 y brochures oficiales para Contaduría Pública). Con base en esa "
-        "información verificada, redactamos los guiones técnicos y generamos en Gemini Canvas la Animación 2D Full HD."
-    )
-    add_body_p(
-        doc,
-        "2. En CapCut importamos los guiones y secuencias visuales para producir los videos explicativos, el video institucional final "
-        "y los Reels promocionales verticales (9:16), añadiendo subtítulos dinámicos resaltados en los colores institucionales de cada "
-        "facultad (turquesa en Administración y morado en Contaduría)."
-    )
-    add_body_p(
-        doc,
-        "3. En HeyGen configuramos el avatar virtual femenino de perfil corporativo ('Valeria Mendoza'), cargamos el guion testimonial "
-        "del Nivel Profesional de Contaduría Pública y generamos la pieza audiovisual con sincronización labial precisa y entonación "
-        "profesional colombiana."
-    )
-    add_body_p(
-        doc,
-        "4. En Antigravity integramos todos los activos multimedia dentro de la arquitectura web multipágina, refinamos la infografía "
-        "institucional mediante un script de Python (Pillow) para que los códigos SNIES y textos se vieran 100 % nítidos, programamos "
-        "el motor de Motion Graphics en HTML5 Canvas y ejecutamos scripts de síntesis neural (edge-tts) para producir los cuatro (4) "
-        "productos sonoros con voces neurales diferenciadas y calidad de estudio."
-    )
-
     doc.add_page_break()
 
     # =========================================================================
-    # SECCION 3: COMO ELABORAMOS LAS COSAS PASO A PASO Y PROMPTS UTILIZADOS
+    # SECCION 3: PROCESO DETALLADO Y PROMPTS DE LAS 24 ACTIVIDADES (4 AREAS)
     # =========================================================================
     add_formatted_heading(
         doc,
-        "3. Proceso Detallado de Elaboración y Prompts Principales por Área y Nivel",
+        "3. Proceso Detallado de Elaboración y Prompts Principales por Área y Nivel (24 Actividades)",
         level=1,
         color_rgb=(13, 59, 102)
-    )
-
-    add_body_p(
-        doc,
-        "A continuación, se documenta de forma exhaustiva cómo se elaboró cada una de las doce (12) actividades exigidas en el "
-        "Examen de Segundo Corte, incluyendo la tabla de verificación normativa previa, los prompts exactos suministrados a las "
-        "herramientas de Inteligencia Artificial (Gemini, CapCut, HeyGen y Antigravity), los guiones producidos y el procedimiento "
-        "técnico de integración."
     )
 
     # -------------------------------------------------------------------------
@@ -483,7 +456,7 @@ def build_document():
             "Presencial: 111383\nVirtual: 111384",
             "Res. 010895 del 16/JUN/2022\n(Vigencia 7 años)",
             "3 períodos\n(53 créditos)",
-            "Nivel Operativo:\nEjecución documental, archivo, servicio al cliente y apoyo administrativo."
+            "Nivel Operativo:\nArchivo, flujo documental, atención al cliente y ofimática."
         ],
         [
             "Nivel 2: Tecnológico",
@@ -491,7 +464,7 @@ def build_document():
             "Presencial: 111385\nVirtual: 111386",
             "Res. 010896 del 16/JUN/2022\n(Vigencia 7 años)",
             "+2 períodos / 5 acumulados\n(87 créditos)",
-            "Nivel Táctico / Intermedio:\nCoordinación de áreas, control de indicadores y optimización de recursos."
+            "Nivel Táctico:\nSupervisión, gestión del talento humano, logística e indicadores."
         ],
         [
             "Nivel 3: Profesional Universitario",
@@ -499,126 +472,67 @@ def build_document():
             "Presencial: 111357\nVirtual: 111750",
             "Res. 010897 del 16/JUN/2022\n(Vigencia 7 años)",
             "+4 períodos / 9 acumulados\n(155 créditos)",
-            "Nivel Estratégico / Directivo:\nAlta gerencia, toma de decisiones, planeación global y emprendimiento."
+            "Nivel Estratégico:\nAlta dirección, liderazgo, RSE y planes de negocio."
         ]
     ]
     add_styled_table(
         doc,
-        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Comunicativo"],
+        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Pedagógico"],
         admin_norm_rows,
         header_bg="158777"
     )
 
-    # Nivel 1 Administracion
-    add_formatted_heading(
-        doc,
-        "A. Nivel 1 — Técnica Profesional en Procesos Administrativos Empresariales",
-        level=3,
-        color_rgb=(21, 135, 119)
-    )
-
     add_prompt_box(
         doc,
-        "Actividad 1.1: Video Explicativo con IA (Archivo: assets/video-tppae.mp4)",
+        "Actividad 1.1 (Admin): Video Explicativo con IA (Archivo: assets/video-tppae.mp4)",
         "Gemini + CapCut IA",
-        "Actúa como un director creativo de marketing educativo para la Fundación de Educación Superior Nueva América (FESNA). "
-        "Redacta un guion audiovisual explicativo de 45 segundos y su estructura de escenas para CapCut sobre el programa "
-        "'Técnica Profesional en Procesos Administrativos Empresariales' (SNIES Presencial 111383, Virtual 111384, Resolución MEN "
-        "010895 del 16 de junio de 2022). El enfoque debe ser 100% operativo y práctico: destaca que en solo 3 períodos académicos "
-        "(53 créditos) el estudiante domina la gestión documental, atención al cliente, ofimática empresarial y soporte a procesos "
-        "internos. Incluye subtítulos dinámicos y llamado a la acción a www.nuevaamerica.edu.co.",
-        "Se estructuró el guion en Gemini dividido en 4 bloques (Gancho operativo, Formación práctica en 3 semestres, Respaldo legal "
-        "SNIES 111383/111384 y Cierre). Posteriormente, en CapCut se realizó el montaje con secuencias de entorno empresarial moderno, "
-        "locución clara y subtítulos automáticos sincronizados a 720p HD.",
+        "Actúa como director creativo de marketing educativo para FESNA. Redacta un guion audiovisual explicativo de 45 segundos sobre la 'Técnica Profesional en Procesos Administrativos Empresariales' (SNIES 111383 / 111384, Res. MEN 010895 de 2022, 3 períodos, 53 créditos), explicando paso a paso los procesos operativos empresariales: archivo, flujo de documentos y atención al cliente.",
+        "Guion estructurado en Gemini y producido en CapCut con secuencias empresariales modernas, locución sintética y subtítulos dinámicos a 720p HD.",
         accent_hex="1FA08B"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 1.2: Infografía Institucional con IA (Archivo: assets/infografia-ia-tppae-final.png)",
+        "Actividad 1.2 (Admin): Infografía Institucional con IA (Archivo: assets/infografia-ia-tppae-final.png)",
         "Gemini Imagen + Antigravity (Python Pillow)",
-        "Generate a clean, modern corporate infographic illustration for a Colombian university business administration program "
-        "('FESNA - Técnica Profesional en Procesos Administrativos Empresariales'). Visual style: flat vector infographic combined "
-        "with 3D isometric icons, corporate colors matching FESNA identity: deep navy blue (#0D3B66), vibrant teal/emerald (#00897B), "
-        "and warm orange accents (#F36F21) on a clean light background. Show 3 connected operational workflow stages with clear visual "
-        "icons: 1. Gestión Documental y Archivo, 2. Flujo de Documentos y Operaciones, 3. Atención al Cliente y Ofimática.",
-        "Para garantizar que ningún texto ni código SNIES sufriera distorsiones típicas de los generadores de imagen, aplicamos un "
-        "proceso híbrido en Antigravity: generamos la ilustración isométrica base con IA y luego programamos un script en Python "
-        "con la librería Pillow (postprocess_infografia.py) que maquetó el encabezado institucional de FESNA, las etiquetas nítidas "
-        "de los 3 ejes operativos y el pie de página con los códigos SNIES 111383/111384 y la Resolución 010895 de 2022.",
+        "Generate a clean corporate infographic illustration for 'FESNA - Técnica Profesional en Procesos Administrativos Empresariales'. Flat vector + 3D isometric icons in navy blue (#0D3B66), teal (#00897B), and orange (#F36F21). Show 3 connected operational workflow stages: 1. Gestión Documental, 2. Flujo de Operaciones, 3. Atención al Cliente.",
+        "Se combinó la ilustración generativa con un script de postprocesamiento en Python (Pillow) que maquetó con nitidez perfecta el encabezado institucional y los códigos SNIES 111383/111384.",
         accent_hex="1FA08B"
-    )
-
-    # Nivel 2 Administracion
-    add_formatted_heading(
-        doc,
-        "B. Nivel 2 — Tecnología en Gestión Administrativa",
-        level=3,
-        color_rgb=(21, 135, 119)
     )
 
     add_prompt_box(
         doc,
-        "Actividad 2.1: Reel Promocional con IA (Archivo: assets/reel-tga.mp4)",
+        "Actividad 2.1 (Admin): Reel Promocional con IA (Archivo: assets/reel-tga.mp4)",
         "Gemini + CapCut IA (Formato 9:16)",
-        "Diseña un guion dinámico para un Reel vertical (9:16) de 30 segundos dirigido a jóvenes y técnicos que buscan ascender "
-        "al nivel táctico empresarial con la 'Tecnología en Gestión Administrativa' de FESNA (SNIES Presencial 111385, Virtual 111386, "
-        "Resolución MEN 010896 de 2022, 5 semestres acumulados, 87 créditos). Estructura el Reel en: 1) Hook visual en los primeros "
-        "3 segundos ('¿Ya eres técnico o quieres coordinar equipos de alto rendimiento?'), 2) Cuerpo sobre supervisión táctica, "
-        "indicadores de gestión y optimización de recursos, y 3) CTA invitando a homologar o avanzar por ciclos propedéuticos.",
-        "Se produjo el video vertical en CapCut empleando cortes rápidos cada 2.5 segundos, transiciones dinámicas y texto en pantalla "
-        "resaltando el paso del nivel operativo al nivel táctico en solo 2 semestres adicionales tras el ciclo técnico.",
+        "Diseña un guion dinámico para un Reel vertical (9:16) de 30 segundos promocionando la 'Tecnología en Gestión Administrativa' de FESNA (SNIES 111385 / 111386, Res. MEN 010896 de 2022, 5 semestres acumulados, 87 créditos), destacando supervisión táctica, gestión del talento humano y logística.",
+        "Producido en formato móvil vertical 9:16 con cortes rítmicos, transiciones modernas y textos resaltados para redes sociales.",
         accent_hex="1FA08B"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 2.2: Spot Publicitario con Voz IA (Archivo: assets/spot-tga-voz-ia.mp3)",
+        "Actividad 2.2 (Admin): Spot Publicitario con Voz IA (Archivo: assets/spot-tga-voz-ia.mp3)",
         "Gemini + Antigravity (edge-tts: es-CO-GonzaloNeural)",
-        "Escribe un spot publicitario radial de 30 segundos para la Tecnología en Gestión Administrativa de FESNA. El tono debe ser "
-        "ejecutivo, motivador y enfocado en el liderazgo táctico: coordinación de talento humano, control presupuestal e indicadores "
-        "de gestión. Incluye los códigos SNIES 111385 (Presencial) y 111386 (Virtual), Resolución MEN 010896 de 2022 y el portal "
-        "www.nuevaamerica.edu.co.",
-        "Una vez validado el guion, se sintetizó el audio en Antigravity utilizando el motor neuronal de Microsoft Azure (edge-tts) "
-        "con la voz masculina colombiana 'es-CO-GonzaloNeural' configurada con ajuste de velocidad (+4%) y entonación cálida para "
-        "obtener una locución comercial nítida y libre de artefactos robóticos.",
+        "Escribe un spot publicitario radial de 30 segundos para la Tecnología en Gestión Administrativa de FESNA con tono ejecutivo y motivador, mencionando los códigos SNIES 111385 y 111386 y la Resolución MEN 010896 de 2022.",
+        "Sintetizado mediante el motor neuronal de Microsoft Azure (edge-tts) con la voz masculina colombiana 'es-CO-GonzaloNeural' e integrado con visualizador de barras de audio en vivo.",
         accent_hex="1FA08B"
-    )
-
-    # Nivel 3 Administracion
-    add_formatted_heading(
-        doc,
-        "C. Nivel 3 — Administración de Empresas (Nivel Profesional Universitario)",
-        level=3,
-        color_rgb=(21, 135, 119)
     )
 
     add_prompt_box(
         doc,
-        "Actividad 3.1: Video Institucional Generado con IA (Archivo: assets/video-institucional-ae.mp4)",
+        "Actividad 3.1 (Admin): Video Institucional Generado con IA (Archivo: assets/video-institucional-ae.mp4)",
         "Gemini + CapCut IA",
-        "Elabora el guion maestro para el Video Institucional del programa profesional 'Administración de Empresas' de FESNA "
-        "(SNIES Presencial 111357, Virtual 111750, Resolución MEN 010897 del 16 de junio de 2022, 9 períodos acumulados, 155 créditos). "
-        "El mensaje debe proyectar visión estratégica, alta gerencia, dirección organizacional, innovación corporativa y creación de "
-        "empresa, mostrando cómo el estudiante culmina su tercer ciclo propedéutico obteniendo tres títulos en su trayectoria.",
-        "El video final (fesna_video_institucional_final.mp4 integrado como assets/video-institucional-ae.mp4) combina narrativa "
-        "corporativa de alto impacto visual en CapCut con gráficas de crecimiento empresarial, destacando la formación de líderes "
-        "estratégicos capaces de transformar organizaciones en Colombia y el mundo.",
+        "Elabora el guion maestro para el Video Institucional del programa profesional 'Administración de Empresas' de FESNA (SNIES 111357 / 111750, Res. MEN 010897 de 2022, 9 períodos acumulados, 155 créditos), enfocado en comunicación estratégica, visión directiva, liderazgo y responsabilidad social empresarial.",
+        "Integrado en alta definición (fesna_video_institucional_final.mp4) mostrando la culminación exitosa de los tres ciclos propedéuticos.",
         accent_hex="1FA08B"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 3.2: Motion Graphics Inteligente en Tiempo Real (Motor Canvas en app.js)",
+        "Actividad 3.2 (Admin): Motion Graphics Inteligente (Motor HTML5 Canvas en app.js)",
         "Antigravity (HTML5 Canvas API a 60 FPS)",
-        "Programa en JavaScript nativo un motor interactivo de Motion Graphics vectorial en HTML5 Canvas a 60 fotogramas por segundo "
-        "para el Nivel Profesional de Administración de Empresas de FESNA. La animación debe dividirse en 4 escenas sincronizadas con "
-        "controles de reproducción, barra de progreso y selector directo de escenas: Escena 1 (Ruta Propedéutica de 3 Títulos), "
-        "Escena 2 (Pilares Estratégicos y KPIs Gerenciales), Escena 3 (Modalidades Presencial SNIES 111357 y Virtual SNIES 111750) "
-        "y Escena 4 (Respaldo Legal Res. 010897 de 2022).",
-        "Desarrollado íntegramente mediante código en Antigravity dentro de app.js. Renderiza partículas dinámicas, nodos conectados, "
-        "barras de progreso animadas con funciones de suavizado (easeOutCubic) y tarjetas vectoriales que responden en tiempo real "
-        "a la interacción del usuario.",
+        "Programa en JavaScript nativo un motor interactivo de Motion Graphics vectorial en HTML5 Canvas a 60 FPS con 4 escenas sincronizadas: 1) Ruta Propedéutica de 3 Títulos, 2) Pilares Estratégicos y KPIs, 3) Modalidades SNIES 111357/111750 y 4) Respaldo Res. 010897 de 2022.",
+        "Ejecutado en tiempo real dentro de administracion.html con controles interactivos de pausa, reinicio y salto directo entre escenas.",
         accent_hex="1FA08B"
     )
 
@@ -641,7 +555,7 @@ def build_document():
             "Presencial: 111389\nVirtual: 111390",
             "Res. 009955 del 03/JUN/2022\n(Vigencia 7 años)",
             "3 períodos\n(51 P / 52 V créditos)",
-            "Nivel Operativo Contable:\nRegistro de transacciones, causación, facturación electrónica, nómina y soportes."
+            "Nivel Operativo Contable:\nAsientos contables, caja menor, archivo tributario y nómina."
         ],
         [
             "Nivel 2: Tecnológico",
@@ -649,7 +563,7 @@ def build_document():
             "Presencial: 111391\nVirtual: 111392",
             "Res. 009956 del 03/JUN/2022\n(Vigencia 7 años)",
             "+2 períodos / 5 acumulados\n(86 P / 87 V créditos)",
-            "Nivel Táctico y Analítico:\nPresupuestos, costos, estados financieros intermedios, tesorería e impuestos."
+            "Nivel Táctico Financiero:\nEstados financieros, presupuestos, liquidez y tributaria intermedia."
         ],
         [
             "Nivel 3: Profesional Universitario",
@@ -657,187 +571,285 @@ def build_document():
             "Presencial: 111387\nVirtual: 111388",
             "Res. 009957 del 03/JUN/2022\n(Vigencia 7 años)",
             "+4 períodos / 9 acumulados\n(155 P / 159 V créditos)",
-            "Nivel Estratégico y Fe Pública:\nAuditoría, Revisoría Fiscal, Estándares Internacionales NIIF/NIA y Gerencia Tributaria."
+            "Nivel Estratégico y Fe Pública:\nNIIF/NIC, auditoría, revisoría fiscal y análisis macrofinanciero."
         ]
     ]
     add_styled_table(
         doc,
-        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Comunicativo"],
+        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Pedagógico"],
         conta_norm_rows,
         header_bg="74187E"
     )
 
-    # Nivel 1 Contaduria
-    add_formatted_heading(
-        doc,
-        "A. Nivel 1 — Técnica Profesional en Procesos Contables",
-        level=3,
-        color_rgb=(146, 26, 163)
-    )
-
     add_prompt_box(
         doc,
-        "Actividad 1.1: Serie de Reels con Guion IA (Archivo: assets/reel-tppc-contaduria.mp4)",
+        "Actividad 1.1 (Contaduría): Serie de Reels con Guion IA (Archivo: assets/reel-tppc-contaduria.mp4)",
         "Gemini + CapCut IA (Subtítulos Morados)",
-        "Actúa como estratega de contenidos digitales para FESNA. Crea una serie de 3 guiones de Reels verticales (9:16) para el "
-        "programa 'Técnica Profesional en Procesos Contables' (SNIES Presencial 111389, Virtual 111390, Resolución MEN 009955 del "
-        "3 de junio de 2022, 3 períodos académicos, 51 créditos presencial / 52 virtual): "
-        "Reel 1 (Mito vs. Realidad): Desmiente que se necesiten 5 años para empezar a trabajar en contabilidad. "
-        "Reel 2 (Perfil Laboral): Muestra los cargos reales (Auxiliar Contable, Asistente de Facturación Electrónica y Nómina). "
-        "Reel 3 (Ventaja Propedéutica): Explica cómo este primer título se homologa directamente hacia la Tecnología y la Contaduría Pública.",
-        "Con el guion estructurado en Gemini, se realizó la producción audiovisual en CapCut (fesna_reel_subtitulos_morados.mp4), "
-        "incorporando subtítulos dinámicos resaltados en color morado institucional (#AA38B9), ritmo ágil para TikTok/Instagram Reels "
-        "y tarjetas visuales con los códigos SNIES verificados.",
+        "Crea una serie de guiones de Reels verticales (9:16) para la 'Técnica Profesional en Procesos Contables' (SNIES 111389 / 111390, Res. MEN 009955 de 2022) con cápsulas sobre registro de asientos contables, manejo de caja menor, archivo tributario y liquidación básica de nómina.",
+        "Editado en CapCut (fesna_reel_subtitulos_morados.mp4) con subtítulos dinámicos resaltados en morado (#AA38B9).",
         accent_hex="921AA3",
         bg_hex="FBF5FC"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 1.2: Cuña Radial Generada con IA (Archivo: assets/cuna-radial-tppc.mp3)",
+        "Actividad 1.2 (Contaduría): Cuña Radial Generada con IA (Archivo: assets/cuna-radial-tppc.mp3)",
         "Gemini + Antigravity (edge-tts: es-CO-SalomeNeural)",
-        "Redacta una cuña radial publicitaria de 30 segundos para la Técnica Profesional en Procesos Contables de FESNA. Debe tener "
-        "un tono joven, ágil y convincente, destacando el dominio de software contable, facturación electrónica, nómina y soportes "
-        "tributarios en solo 3 semestres. Incluye los códigos SNIES 111389 y 111390 y la Resolución MEN 009955 de 2022.",
-        "Para diferenciar la identidad sonora respecto al área de Administración, en Antigravity empleamos la voz neuronal femenina "
-        "colombiana 'es-CO-SalomeNeural' con ritmo dinámico (+6% en velocidad y +3Hz en tono), logrando una cuña radial brillante, "
-        "natural y de alta recordación.",
-        accent_hex="921AA3",
-        bg_hex="FBF5FC"
-    )
-
-    # Nivel 2 Contaduria
-    add_formatted_heading(
-        doc,
-        "B. Nivel 2 — Tecnología en Gestión Contable y Financiera",
-        level=3,
-        color_rgb=(146, 26, 163)
-    )
-
-    add_prompt_box(
-        doc,
-        "Actividad 2.1: Podcast 'Conoce FESNA' con IA a Dos Voces (Archivo: assets/podcast-conoce-fesna-tgcf.mp3)",
-        "Gemini + Antigravity (edge-tts: es-MX-DaliaNeural & es-VE-SebastianNeural)",
-        "Escribe el guion de un episodio de podcast conversacional titulado 'Conoce FESNA' (duración aproximada 1 minuto y 15 segundos) "
-        "entre dos anfitriones: Valeria (conductora principal, cálida y analítica) y Mateo (co-conductor, enfocado en empleabilidad y "
-        "finanzas). El episodio debe explicar cómo el estudiante avanza al segundo ciclo propedéutico: 'Tecnología en Gestión Contable "
-        "y Financiera' (SNIES Presencial 111391, Virtual 111392, Resolución MEN 009956 del 3 de junio de 2022, 5 semestres acumulados), "
-        "destacando competencias en análisis financiero, control presupuestal, estructura de costos y gestión tributaria.",
-        "En Antigravity programamos un generador multipista en Python (generate_clean_voices.py) que sintetizó por separado las "
-        "intervenciones de Valeria (voz neural 'es-MX-DaliaNeural') y de Mateo (voz neural 'es-VE-SebastianNeural') y luego las "
-        "ensambló con pausas acústicas naturales de 250 ms entre turnos de habla. El resultado es un diálogo realista entre dos "
-        "locutores distintos y perfectamente nítidos.",
+        "Redacta una cuña radial de 30 segundos para la Técnica Profesional en Procesos Contables de FESNA destacando facturación electrónica, nómina y soportes contables en 3 períodos (SNIES 111389 / 111390).",
+        "Sintetizada con la voz neural femenina colombiana 'es-CO-SalomeNeural' con ritmo comercial ágil.",
         accent_hex="921AA3",
         bg_hex="FBF5FC"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 2.2: Animación 2D Asistida por IA (Archivo: assets/animacion2d-tgcf-contaduria.mp4)",
-        "Google Gemini con Canvas (Exportación Video Full HD 1920x1080)",
-        "Actúa como un experto en Motion Graphics 2D y desarrollador creativo en HTML5 Canvas. Crea en Gemini Canvas una aplicación "
-        "autocontenida en un solo archivo HTML que reproduzca una Animación 2D promocional e informativa en resolución Full HD "
-        "(1920x1080, 60 FPS) sobre el programa 'Tecnología en Gestión Contable y Financiera' de FESNA (Nivel 2 por Ciclos Propedéuticos). "
-        "Usa la paleta morada oficial (#74187E, #921AA3, #AA38B9) con acentos dorados (#F59E0B). Estructura 5 escenas de 6 segundos "
-        "(30s en total): Escena 1 (Intro Institucional FESNA), Escena 2 (Progresión Propedéutica del Nivel 1 al Nivel 2 en 5 semestres), "
-        "Escena 3 (Competencias Tácticas: Costos, Presupuestos, Tesorería e Impuestos con gráficos animados), Escena 4 (Modalidades "
-        "Presencial SNIES 111391 y Virtual SNIES 111392) y Escena 5 (Cierre con Res. MEN 009956 de 2022). Incluye un botón 'Descargar "
-        "Video' usando MediaRecorder API a 8 Mbps.",
-        "Se ejecutó este prompt especializado en Google Gemini activando la herramienta Canvas. El lienzo renderizó las 5 escenas "
-        "vectoriales con barras financieras animadas, tarjetas isométricas y transiciones suaves, permitiendo grabar y descargar "
-        "directamente el archivo de video en alta definición (FESNA_Tecnologia_Gestion_Contable_Financiera_FullHD.mp4).",
+        "Actividad 2.1 (Contaduría): Podcast 'Conoce FESNA' con IA (Archivo: assets/podcast-conoce-fesna-tgcf.mp3)",
+        "Gemini + Antigravity (edge-tts: DaliaNeural & SebastianNeural)",
+        "Escribe el guion de un episodio del podcast conversacional 'Conoce FESNA' entre dos anfitriones (Valeria y Mateo) explicando el análisis de estados financieros, presupuestos e indicadores de liquidez en la Tecnología en Gestión Contable y Financiera (SNIES 111391 / 111392, Res. 009956 de 2022).",
+        "Generado mediante síntesis multipista en Python uniendo las voces neurales 'es-MX-DaliaNeural' y 'es-VE-SebastianNeural' con pausas naturales.",
         accent_hex="921AA3",
         bg_hex="FBF5FC"
     )
 
-    # Nivel 3 Contaduria
-    add_formatted_heading(
+    add_prompt_box(
         doc,
-        "C. Nivel 3 — Contaduría Pública (Nivel Profesional Universitario)",
-        level=3,
-        color_rgb=(146, 26, 163)
+        "Actividad 2.2 (Contaduría): Animación 2D Asistida por IA (Archivo: assets/animacion2d-tgcf-contaduria.mp4)",
+        "Google Gemini con Canvas (Full HD 1920x1080)",
+        "Crea en Gemini Canvas una aplicación HTML5 Canvas Full HD (1920x1080, 60 FPS) que reproduzca y exporte en video una Animación 2D de 30 segundos (5 escenas) sobre la Tecnología en Gestión Contable y Financiera de FESNA (paleta morada #74187E, #921AA3, #AA38B9) con botón MediaRecorder.",
+        "Exportado directamente en Full HD (FESNA_Tecnologia_Gestion_Contable_Financiera_FullHD.mp4) e integrado en contaduria.html.",
+        accent_hex="921AA3",
+        bg_hex="FBF5FC"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 3.1: Testimonio Recreado con Avatar IA (Archivo: assets/testimonio-avatar-cp.mp4)",
+        "Actividad 3.1 (Contaduría): Testimonio Recreado con Avatar IA (Archivo: assets/testimonio-avatar-cp.mp4)",
         "HeyGen Avatar IA + Gemini",
-        "Configuración en HeyGen: Seleccionar avatar femenino corporativo latinoamericano ('Valeria Mendoza', vestimenta ejecutiva "
-        "formal, encuadre medio de estudio moderno). "
-        "Guion y Prompt de voz suministrado al avatar: 'Hola, soy Valeria Mendoza, y hoy quiero contarte cómo la Contaduría Pública "
-        "en la Fundación de Educación Superior Nueva América, FESNA, transforma tu visión profesional. Gracias a su modelo por ciclos "
-        "propedéuticos, avancé desde el nivel técnico y tecnológico hasta culminar mi título profesional en 9 períodos académicos. "
-        "Aquí dominamos las Normas Internacionales de Información Financiera (NIIF), la auditoría integral, la revisoría fiscal y la "
-        "gerencia tributaria estratégica, con la responsabilidad ética de dar fe pública. Estudia en modalidad presencial con código "
-        "SNIES 111387 o virtual con SNIES 111388, respaldados por la Resolución del Ministerio de Educación 009957 de 2022. "
-        "¡Construye tu futuro directivo en FESNA!'",
-        "Generado en HeyGen (archivo 'Valeria Mendoza — Contaduría Pública FESNA.mp4'). El motor de IA de HeyGen sincronizó los "
-        "movimientos labiales (lip-sync), parpadeos y microexpresiones faciales con la locución testimonial. En la tarjeta del sitio "
-        "web se incluyó la nota ética explícita indicando que se trata de una recreación con avatar sintético de IA, cumpliendo la "
-        "Regla General #7 del examen.",
+        "Avatar corporativo femenino 'Valeria Mendoza' en HeyGen. Guion: 'Hola, soy Valeria Mendoza... Gracias al modelo por ciclos propedéuticos de FESNA culminé mi título profesional de Contaduría Pública (SNIES 111387 / 111388, Res. 009957 de 2022), dominando NIIF, auditoría, revisoría fiscal y fe pública.'",
+        "Producido en HeyGen con sincronización labial hiperrealista y declaración ética explícita de personaje sintético (Regla #7).",
         accent_hex="921AA3",
         bg_hex="FBF5FC"
     )
 
     add_prompt_box(
         doc,
-        "Actividad 3.2: Podcast Institucional Asistido por IA (Archivo: assets/podcast-institucional-cp.mp3)",
-        "Gemini + Antigravity (edge-tts: es-MX-JorgeNeural & es-CL-CatalinaNeural)",
-        "Redacta un guion de Podcast Institucional de corte directivo y académico (duración 1 minuto y 20 segundos) para el programa "
-        "profesional de Contaduría Pública de FESNA (SNIES Presencial 111387, Virtual 111388, Resolución MEN 009957 del 3 de junio de "
-        "2022, 9 períodos acumulados, 155 créditos presencial / 159 virtual). Participan dos voces de perfil decano/consultor: el "
-        "Dr. Alejandro Vargas y la Dra. Carolina Méndez. Deben dialogar sobre la importancia estratégica del Contador Público de FESNA "
-        "en la alta dirección, la aplicación de estándares internacionales NIIF/NIA, la Revisoría Fiscal, la ética de la fe pública y "
-        "la ventaja de obtener tres títulos universitarios a lo largo de la carrera.",
-        "Para distinguir este podcast directivo del podcast juvenil del Nivel 2, en Antigravity seleccionamos dos voces neurales con "
-        "timbre maduro y autoritativo: 'es-MX-JorgeNeural' (Dr. Alejandro Vargas) y 'es-CL-CatalinaNeural' (Dra. Carolina Méndez), "
-        "ensamblando sus intervenciones con calidad de estudio.",
+        "Actividad 3.2 (Contaduría): Podcast Institucional Asistido por IA (Archivo: assets/podcast-institucional-cp.mp3)",
+        "Gemini + Antigravity (edge-tts: JorgeNeural & CatalinaNeural)",
+        "Redacta un podcast institucional directivo entre el Dr. Alejandro Vargas y la Dra. Carolina Méndez sobre Normas Internacionales NIIF/NIC, revisoría fiscal, ética y análisis macrofinanciero en el programa de Contaduría Pública de FESNA.",
+        "Sintetizado a dos voces ejecutivas ('es-MX-JorgeNeural' y 'es-CL-CatalinaNeural') con calidad de estudio.",
         accent_hex="921AA3",
         bg_hex="FBF5FC"
     )
 
+    doc.add_page_break()
+
     # -------------------------------------------------------------------------
-    # 3.3 DESAFIOS ENCONTRADOS Y SOLUCIONES
+    # 3.3 AREA DE INGENIERIA DE SISTEMAS
     # -------------------------------------------------------------------------
     add_formatted_heading(
         doc,
-        "3.3. Desafíos Técnicos Encontrados Durante la Elaboración y Soluciones Implementadas",
+        "3.3. Área de Ingeniería de Sistemas (Paleta Institucional Verde: #1A7C3B / #146C31 / #0D5625)",
         level=2,
-        color_rgb=(13, 59, 102)
+        color_rgb=(20, 108, 49)
     )
 
-    challenges_rows = [
+    sis_norm_rows = [
         [
-            "1. Legibilidad de textos y códigos SNIES en infografías generadas por IA",
-            "Los modelos de difusión de imagen suelen alterar números largos (como SNIES 111383 o Res. 010895) o deformar tipografías pequeñas.",
-            "Se implementó un flujo híbrido en Antigravity: la IA generó la ilustración vectorial/isométrica limpia y mediante un script en Python (Pillow) se superpusieron el encabezado institucional y el pie normativo con tipografía 100 % nítida."
+            "Nivel 1: Técnico Profesional",
+            "Técnica Profesional en Procesos de Programación de Software",
+            "Presencial: 111395\nVirtual: 111396",
+            "Res. 012171 del 28/JUN/2022\n(Vigencia 7 años)",
+            "3 períodos\n(52 créditos)",
+            "Fundamentos de Código:\nVariables, tipos de datos, condicionales, ciclos, funciones y algoritmos."
         ],
         [
-            "2. Naturalidad y diferenciación de voces en Cuñas y Podcasts",
-            "Las voces TTS locales del navegador suenan robóticas y no permiten grabar un diálogo fluido entre dos interlocutores distintos.",
-            "Se integró la librería 'edge-tts' en Python conectada a las voces neurales de Microsoft Azure, asignando 6 timbres distintos (Salomé, Gonzalo, Dalia, Sebastián, Jorge y Catalina) y uniendo las pistas de diálogo con pausas naturales."
+            "Nivel 2: Tecnológico",
+            "Tecnología en Gestión de Software y Sistemas",
+            "Presencial: 111397\nVirtual: 111398",
+            "Res. 012172 del 28/JUN/2022\n(Vigencia 7 años)",
+            "+2 períodos / 5 acumulados\n(86 créditos)",
+            "Gestión y Arquitectura:\nCiclo de vida SDLC, Scrum/Kanban, bases de datos SQL/NoSQL y arquitectura."
         ],
         [
-            "3. Exportación de la Animación 2D en resolución Full HD descargable",
-            "Se requería una animación 2D vectorial fluida sobre la Tecnología en Gestión Contable y Financiera que pudiera descargarse como archivo MP4/WebM.",
-            "Se diseñó un prompt de ingeniería avanzada para Google Gemini con Canvas a 1920x1080 (60 FPS) incorporando el API MediaRecorder a 8 Mbps para exportar el video directamente en alta definición."
-        ],
-        [
-            "4. Recreación del testimonio con Avatar IA y restricciones de exportación",
-            "Las plataformas de avatares presentan límites de exportación en cuentas gratuitas y exigen cuidado ético para no suplantar personas reales.",
-            "Se estructuró el guion exacto de 45 segundos para el avatar ficticio 'Valeria Mendoza' en HeyGen y se integró el video MP4 resultante junto con su cláusula de transparencia ética."
-        ],
-        [
-            "5. Coherencia cromática entre 4 facultades en una misma web",
-            "Cada área de FESNA posee un color institucional propio (Turquesa, Morado, Verde y Rojo), lo que podía fragmentar la identidad visual.",
-            "Se creó un sistema de variables CSS dinámicas en styles.css y un menú lateral desplegable (drawer) que adapta los acentos cromáticos según la página activa sin perder la unidad institucional de FESNA."
+            "Nivel 3: Profesional Universitario",
+            "Ingeniería de Sistemas",
+            "Presencial: 111393\nVirtual: 111394",
+            "Res. 012173 del 28/JUN/2022\n(Vigencia 7 años)",
+            "+4 períodos / 9 acumulados\n(155 créditos)",
+            "Solución Tecnológica e IA:\nCiberseguridad, sistemas inteligentes, automatización y transformación digital."
         ]
     ]
     add_styled_table(
         doc,
-        ["Desafío Identificado", "Causa Técnica", "Solución Implementada por el Estudiante con IA"],
-        challenges_rows,
-        header_bg="0D3B66"
+        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Pedagógico"],
+        sis_norm_rows,
+        header_bg="0D5625"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 1.1 (Sistemas): Serie de Reels con IA sobre Programación (Archivo: assets/reel-programacion-sistemas.webm)",
+        "Google Gemini con Canvas (Formato Vertical 9:16 Full HD 1080x1920)",
+        "Actúa como Creador de Motion Graphics Verticales y Desarrollador en HTML5 Canvas. Crea en Gemini Canvas una aplicación que reproduzca y descargue en video vertical Full HD (1080x1920, 60 FPS) un Reel educativo de 25 segundos sobre 'Fundamentos de Programación de Software' para FESNA (SNIES 111395 / 111396, Res. 012171 de 2022): 1) Variables y RAM, 2) Condicionales if/else, 3) Ciclos for/while y 4) Funciones y algoritmos, con subtítulos dinámicos en verde esmeralda (#1A7C3B).",
+        "Generado y exportado desde Gemini Canvas en formato 9:16 (FESNA_Reel_Programacion_9x16.webm) e integrado en el reproductor vertical de sistemas.html.",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 1.2 (Sistemas): Infografía Interactiva Generada con IA (Archivo: assets/infografia-sistemas-ia.jpg + Simulador JS)",
+        "Gemini Imagen + Antigravity (Simulador Interactivo de Algoritmos)",
+        "Generate a clean, high-tech educational infographic illustration for 'FESNA - Técnica Profesional en Procesos de Programación de Software'. Visual theme: software programming fundamentals, structured code, algorithms, flowcharts, logic gates, data structures (variables, loops, conditionals, functions) in emerald green (#1A7C3B) and neon cyan on dark slate (#0a192f).",
+        "Se integró la infografía generada con IA junto con un Simulador Interactivo de Algoritmos en sistemas.html que permite alternar en vivo entre 4 pestañas de código Python (Variables, Condicionales, Ciclos y Funciones O(1)).",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 2.1 (Sistemas): Podcast Técnico Asistido por IA (Archivo: assets/podcast-tecnico-tgss.mp3)",
+        "Gemini + Antigravity (edge-tts: es-CO-GonzaloNeural)",
+        "Redacta el guion institucional para el podcast técnico 'TechFESNA' de la Tecnología en Gestión de Software y Sistemas (SNIES 111397 / 111398, Res. MEN 012172 de 2022), analizando la evolución del ciclo de vida del software (SDLC) hacia metodologías ágiles (Scrum/Kanban), integración continua CI/CD, bases de datos SQL vs. NoSQL y arquitectura de microservicios.",
+        "Sintetizado mediante script en Python (generate_sistemas_audio.py) con voz neural colombiana de alta definición e integrado con ecualizador animado en sistemas.html.",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 2.2 (Sistemas): Video Explicativo con IA sobre Sistemas y Desarrollo de Software (Archivo: assets/video-explicativo-sistemas.webm)",
+        "Google Gemini con Canvas (Full HD 1920x1080 a 60 FPS)",
+        "Crea en Gemini Canvas una aplicación HTML5 Canvas Full HD (1920x1080, 60 FPS) que reproduzca y permita descargar como archivo de video el 'Video Explicativo con IA sobre Sistemas y Desarrollo de Software' para la Tecnología en Gestión de Software y Sistemas de FESNA (SNIES 111397 / 111398, Res. 012172 de 2022, 86 créditos), estructurado en 5 escenas: Portada, Ciclo SDLC y Scrum, Arquitectura en 3 Capas, Bases de Datos SQL/NoSQL y Escalera Propedéutica.",
+        "Exportado como archivo de video Full HD (FESNA_Video_Explicativo_Sistemas_FullHD.webm) e incrustado directamente en sistemas.html.",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 3.1 (Sistemas): Proyecto de Solución Tecnológica con IA ('FESNA AI CodeGuard v2.4' en sistemas.html)",
+        "Antigravity + Gemini (Prototipo Funcional de Auditoría de Ciberseguridad OWASP Top 10)",
+        "Diseña e implementa un prototipo funcional interactivo de solución tecnológica con IA llamado 'FESNA AI CodeGuard v2.4' que resuelva la problemática real de vulnerabilidades de seguridad y cuellos de botella en el desarrollo de software. El sistema debe analizar código en vivo, detectar Inyección SQL (CWE-89), Cross-Site Scripting XSS (CWE-79) y complejidad cuadrática O(n²), calcular un puntaje de seguridad de 0 a 100 y generar la refactorización segura bajo Clean Architecture.",
+        "Programado como aplicación interactiva en vivo dentro de sistemas.html (app.js): el usuario o evaluador puede cargar 4 escenarios de código o editar el código en el área de texto y ejecutar la auditoría asistida por IA en tiempo real.",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 3.2 (Sistemas): Podcast de Análisis Prospectivo sobre IA e Ingeniería de Sistemas (Archivo: assets/podcast-prospectivo-sistemas.mp3)",
+        "Gemini + Antigravity (edge-tts: es-CO-SalomeNeural)",
+        "Escribe un guion de análisis prospectivo para el programa profesional de Ingeniería de Sistemas de FESNA (SNIES 111393 / 111394, Res. MEN 012173 de 2022, 9 períodos, 155 créditos) sobre cómo la IA generativa y los agentes autónomos transforman al ingeniero de sistemas en un arquitecto de soluciones resilientes, científicas de datos y ciberseguridad ética.",
+        "Sintetizado en alta definición con la voz neural 'es-CO-SalomeNeural' e integrado con visualizador de ondas en sistemas.html.",
+        accent_hex="1A7C3B",
+        bg_hex="F2FBF5"
+    )
+
+    doc.add_page_break()
+
+    # -------------------------------------------------------------------------
+    # 3.4 AREA DE MARKETING Y PUBLICIDAD
+    # -------------------------------------------------------------------------
+    add_formatted_heading(
+        doc,
+        "3.4. Área de Marketing y Publicidad (Paleta Institucional Roja/Vinotinto: #D43B27 / #B32319 / #7B1F17)",
+        level=2,
+        color_rgb=(179, 35, 25)
+    )
+
+    mkt_norm_rows = [
+        [
+            "Nivel 1: Técnico Profesional",
+            "Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria",
+            "Presencial: 119246\nVirtual: 119247",
+            "Res. 011477 del 30/ABR/2026\n(Vigencia 7 años)",
+            "3 períodos\n(49 créditos)",
+            "Comunicación Comercial:\nVenta directa, piezas gráficas comerciales y protocolos de atención al usuario."
+        ],
+        [
+            "Nivel 2: Tecnológico",
+            "Tecnología en Gestión Comercial y Publicidad",
+            "Presencial: 119245\nVirtual: 119244",
+            "Res. 011476 del 30/ABR/2026\n(Vigencia 7 años)",
+            "+2 períodos / 5 acumulados\n(82 créditos)",
+            "Mercadeo Digital y Pauta:\nBuyer Persona, copys persuasivos, SEM/SEO y auditoría de métricas (CTR, CPA, ROAS)."
+        ],
+        [
+            "Nivel 3: Profesional Universitario",
+            "Marketing y Publicidad",
+            "Presencial: 119242\nVirtual: 119243",
+            "Res. 011475 del 30/ABR/2026\n(Vigencia 7 años)",
+            "+3 períodos / 8 acumulados\n(133 créditos)",
+            "Estrategia Global y Predictiva:\nNeuromarketing, macrotendencias analíticas y Pitch Deck de marca internacional."
+        ]
+    ]
+    add_styled_table(
+        doc,
+        ["Nivel Propedéutico", "Programa Oficial FESNA", "Códigos SNIES", "Resolución MEN", "Duración y Créditos", "Enfoque Pedagógico"],
+        mkt_norm_rows,
+        header_bg="7B1F17"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 1.1 (Marketing): Diseño de Piezas Gráficas Comerciales Asistidas por IA (Archivos: ad-comercial-mkt.jpg y ad-comercial-mkt-2.jpg)",
+        "Gemini Imagen + Antigravity (Galería Interactiva Dual)",
+        "1) High-impact university advertising banner for 'FESNA - Marketing y Publicidad', creative agency studio, digital marketing dashboards, deep crimson (#D43B27, #B32319).\n"
+        "2) Modern social media commercial advertisement poster for 'FESNA - Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria', glossy 3D megaphone, social metrics, crimson red and burgundy layout.",
+        "Se generaron dos (2) piezas gráficas comerciales de alta conversión y se integraron en marketing.html mediante un conmutador interactivo por pestañas junto con sus metadatos de venta directa.",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 1.2 (Marketing): Simulación de Atención al Cliente mediante Chat Conversacional Entrenado con IA",
+        "Antigravity + Gemini (Chatbot Interactivo en Vivo en marketing.html)",
+        "Entrena un asistente virtual conversacional de admisiones y servicio al cliente para el área de Marketing y Publicidad de FESNA. Debe aplicar protocolos de atención cordial, resolver dudas en tiempo real sobre los 3 títulos por ciclos propedéuticos, los códigos SNIES (119246/119247, 119245/119244, 119242/119243), las Resoluciones MEN 011477, 011476 y 011475 del 30 de abril de 2026, los créditos (49, 82 y 133) y las modalidades presencial y virtual.",
+        "Implementado como un Chatbot 100 % funcional dentro de marketing.html con chips de consulta rápida y campo de texto libre con motor de respuesta inteligente.",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 2.1 (Marketing): Creación y Optimización de Buyer Persona y Copys Publicitarios con IA",
+        "Gemini + Antigravity (Ficha Camila Rojas + Pestañas AIDA, PAS y Storytelling)",
+        "Desarrolla el perfil arquetípico de Buyer Persona (Camila Rojas, 21 años, Bogotá D.C., Community Manager Junior que busca profesionalizarse) para la Tecnología en Gestión Comercial y Publicidad de FESNA (SNIES 119245 / 119244, Res. 011476 de 2026, 82 créditos). Redacta y optimiza 3 copys publicitarios aplicando las fórmulas AIDA (Atención, Interés, Deseo, Acción), PAS (Problema, Agitación, Solución) y Storytelling.",
+        "Maquetado en marketing.html con la tarjeta visual del Buyer Persona y un sistema interactivo de pestañas que permite evaluar cada estructura de copywriting.",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 2.2 (Marketing): Auditoría y Simulación de Campañas de Pauta Digital Asistidas por Analítica de IA",
+        "Antigravity + Gemini Analítica (Calculadora y Auditor de KPIs en Tiempo Real)",
+        "Diseña un simulador interactivo de pauta digital (Meta Ads / Google Ads) que calcule en tiempo real Impresiones, Clics, Leads Calificados (conversión del 8%), Costo por Adquisición (CPA) y Retorno de la Inversión Publicitaria (ROAS) a partir de controles deslizantes de Presupuesto Mensual ($500.000 a $5.000.000 COP), CPC ($400 a $2.000 COP) y CTR (1.0% a 5.0%), generando un diagnóstico de auditoría automática con IA.",
+        "Programado en vivo en marketing.html (función updateAdsSimulator en app.js), actualizando instantáneamente las 5 tarjetas de KPIs y el veredicto analítico de la IA.",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 3.1 (Marketing): Plan de Marketing Predictivo y Análisis de Macrotendencias con IA Analítica",
+        "Gemini Analítica + Antigravity",
+        "Elabora un plan de marketing predictivo para el programa profesional de Marketing y Publicidad de FESNA (SNIES 119242 / 119243, Res. 011475 del 30 de abril de 2026, 8 períodos, 133 créditos). Analiza 4 macrotendencias globales: 1) Hiperpersonalización Algorítmica, 2) Neuromarketing Predictivo, 3) Consumo Ético y Propósito en Gen Z, y 4) Omnicanalidad Phygital, incluyendo un modelo predictivo de retención estudiantil (Churn vs. LTV).",
+        "Integrado en el Nivel 3 de marketing.html con tarjetas analíticas y cuantificación del incremento en retención (+34.2%) y LTV (+41.8%).",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
+    )
+
+    add_prompt_box(
+        doc,
+        "Actividad 3.2 (Marketing): Pitch Deck de Lanzamiento de Marca Internacional con Narrativa Interactiva",
+        "Gemini + Antigravity (Visor Ejecutivo Interactivo de 6 Diapositivas)",
+        "Estructura un Pitch Deck ejecutivo de 6 diapositivas con narrativa interactiva para el posicionamiento internacional de FESNA: 1) Visión Global y Disrupción Educativa, 2) Oportunidad de Mercado (+68% demanda de talento digital), 3) Solución Propedéutica de 3 Títulos Acreditados, 4) Estrategia Transmedia y Conversión con IA, 5) Unit Economics (CAC $145K, LTV $8.4M, Ratio 57.9x, ROAS 4.2x) y 6) Llamado a la Acción Global.",
+        "Implementado como un presentador interactivo de diapositivas dentro de marketing.html con navegación Anterior/Siguiente e indicadores de progreso.",
+        accent_hex="D43B27",
+        bg_hex="FEF5F4"
     )
 
     doc.add_page_break()
@@ -852,39 +864,31 @@ def build_document():
         color_rgb=(13, 59, 102)
     )
 
-    add_body_p(
-        doc,
-        "En cumplimiento estricto de las ocho (8) Reglas Generales del Examen de Segundo Corte y de los principios de integridad "
-        "académica de la Fundación de Educación Superior Nueva América (FESNA), todos los activos audiovisuales, gráficos, sonoros "
-        "y de código que conforman este portafolio responden a criterios verificables de propiedad intelectual y uso ético de la "
-        "Inteligencia Artificial:"
-    )
-
     ethics_rows = [
         [
-            "Datos Académicos y Normativos (Reglas #1, #2 y #3)",
-            "Resoluciones MEN 010895, 010896, 010897, 009955, 009956 y 009957 de junio de 2022; Portal oficial www.nuevaamerica.edu.co.",
-            "Uso institucional académico con fidelidad del 100 %. No se inventaron costos, convenios ni duraciones fuera de los actos administrativos oficiales."
+            "Datos Académicos y Normativos (Reglas #1, #2 y #4)",
+            "Resoluciones MEN 010895, 010896, 010897, 009955, 009956, 009957, 012171, 012172 y 012173 de 2022; Resoluciones MEN 011477, 011476 y 011475 del 30 de abril de 2026; Portal www.nuevaamerica.edu.co.",
+            "Fidelidad del 100 %. No se inventaron costos, requisitos ni duraciones no suministradas en los documentos oficiales."
         ],
         [
             "Identidad Sintética y Avatar IA (Regla #7)",
             "HeyGen AI Video Generator (Personaje ficticio: 'Valeria Mendoza').",
-            "Cumplimiento ético total: no se clonó la voz ni el rostro de ningún directivo, docente o estudiante real sin autorización. Se declara explícitamente su naturaleza sintética."
+            "Cumplimiento ético estricto: no se clonaron voces, rostros ni identidades de personas reales sin autorización. Se declara explícitamente el uso de avatar virtual."
         ],
         [
-            "Producción Sonora y Locuciones Neurales (4 Audios MP3)",
-            "Motor Microsoft Azure Neural TTS vía librería abierta edge-tts (Python) y guiones propios.",
-            "Voces sintéticas generadas a partir de guiones originales redactados y verificados por David Yused Pulido Pardo, libres de reclamaciones de copyright musical."
+            "Producción Sonora y Podcasts Neurales (6 Audios MP3)",
+            "Motor Microsoft Azure Neural TTS vía librería abierta edge-tts (Python) y guiones originales.",
+            "Obras sonoras de autoría académica propia (David Yused Pulido Pardo), libres de restricciones de copyright comercial."
         ],
         [
-            "Videos, Reels y Animaciones 2D (6 Archivos MP4 + 1 Canvas Live)",
+            "Videos, Reels y Animaciones 2D (8 Archivos MP4/WebM + Motores Canvas)",
             "CapCut, Google Gemini Canvas (HTML5 Canvas API) y Antigravity.",
-            "Creación original para fines académicos del curso. Subtítulos, diagramación y secuencias vectoriales de autoría del estudiante."
+            "Creación original para el portafolio académico del curso, verificada en computador y dispositivos móviles (Regla #6)."
         ],
         [
-            "Infografía Institucional Nivel 1 Administración",
-            "Modelo generativo de imagen + postprocesamiento programático con Python Pillow.",
-            "Obra derivada de carácter académico con maquetación tipográfica propia para garantizar precisión informativa."
+            "Infografías y Piezas Gráficas Comerciales (4 Imágenes)",
+            "Gemini Imagen + Postprocesamiento tipográfico con Python Pillow.",
+            "Ilustraciones generadas con IA bajo prompts documentados (Reglas #3 y #8) con atribución explícita de autoría estudiantil."
         ]
     ]
     add_styled_table(
@@ -895,22 +899,13 @@ def build_document():
     )
 
     # =========================================================================
-    # SECCION 5: SUSTENTACION TEORICA (PUNTO 4 DEL EXAMEN)
+    # SECCION 5: SUSTENTACION TEORICA (PUNTO 4 DEL EXAMEN FINAL)
     # =========================================================================
     add_formatted_heading(
         doc,
-        "5. Sustentación Teórica del Proyecto (Punto 4: Fundamentación Académica)",
+        "5. Sustentación Teórica Integral del Proyecto (Punto 4: Fundamentación Académica)",
         level=1,
         color_rgb=(13, 59, 102)
-    )
-
-    add_body_p(
-        doc,
-        "El diseño conceptual, comunicativo y tecnológico del sitio web para la Fundación de Educación Superior Nueva América (FESNA) "
-        "no se limitó a una ejecución estética o instrumental de herramientas de Inteligencia Artificial; por el contrario, se "
-        "fundamentó en cinco (5) pilares teóricos y normativos que articulan las ciencias administrativas, la disciplina contable, "
-        "la pedagogía por ciclos propedéuticos, la comunicación estratégica transmedia y la ingeniería de sistemas aplicada a la IA "
-        "generativa."
     )
 
     add_formatted_heading(
@@ -921,17 +916,12 @@ def build_document():
     )
     add_body_p(
         doc,
-        "Desde la teoría neoclásica de la administración expuesta por Chiavenato (2019) y Robbins y Coulter (2018), toda organización "
-        "contemporánea estructura su proceso administrativo (planeación, organización, dirección y control) en tres niveles "
-        "jerárquicos claramente diferenciados: el nivel operativo o técnico (enfocado en la ejecución estandarizada de tareas y "
-        "procedimientos cotidianos), el nivel táctico o intermedio (encargado de la coordinación departamental, la asignación de "
-        "recursos y el seguimiento de indicadores) y el nivel estratégico o institucional (orientado a la visión de largo plazo, la "
-        "toma de decisiones globales y la relación con el entorno competitivo). "
-        "Esta arquitectura teórica fue el eje rector de nuestra campaña para el Área de Administración en FESNA: las piezas del Nivel 1 "
-        "(Técnica Profesional en Procesos Administrativos Empresariales, Res. 010895) comunican precisión operativa y gestión "
-        "documental; las piezas del Nivel 2 (Tecnología en Gestión Administrativa, Res. 010896) enfatizan la coordinación táctica y el "
-        "control de gestión; y los productos del Nivel 3 (Administración de Empresas, Res. 010897) proyectan liderazgo directivo, "
-        "innovación y gerencia estratégica."
+        "Desde la teoría neoclásica de la administración formulada por Chiavenato (2019) y Robbins y Coulter (2018), las organizaciones "
+        "estructuran su proceso administrativo (planeación, organización, dirección y control) en tres niveles jerárquicos: el nivel "
+        "operativo o técnico (ejecución estandarizada de tareas y procesos cotidianos), el nivel táctico o intermedio (coordinación "
+        "departamental, gestión del talento humano y control de indicadores) y el nivel estratégico o institucional (visión de largo "
+        "plazo, liderazgo directivo y toma de decisiones globales). Este modelo teórico fundamenta de manera exacta la progresión "
+        "comunicativa diseñada para el Área de Administración de FESNA a través de sus tres programas acreditados."
     )
 
     add_formatted_heading(
@@ -942,72 +932,73 @@ def build_document():
     )
     add_body_p(
         doc,
-        "De acuerdo con la Ley 749 de 2002 y el Decreto Único Reglamentario del Sector Educación 1075 de 2015 expedido por el "
-        "Ministerio de Educación Nacional (MEN), la formación por ciclos propedéuticos organiza la educación superior en tres etapas "
-        "secuenciales, complementarias e interdependientes (técnica profesional, tecnológica y profesional universitaria). El componente "
-        "propedéutico constituye la fase de profundización que prepara al estudiante para transitar al siguiente nivel sin perder "
-        "el tiempo ni los créditos cursados, otorgándole además titulaciones intermedias que facilitan su inserción laboral temprana. "
-        "Tanto en la estructura de navegación de nuestro sitio web como en los guiones de los Reels, podcasts y animaciones 2D, este "
-        "concepto se tradujo visual y narrativamente como una 'escalera de valor acumulativa': 3 períodos para el primer título "
-        "técnico, 5 períodos acumulados para el título tecnológico y 9 períodos acumulados para el título profesional universitario."
+        "Conforme a la Ley 749 de 2002 y el Decreto Único Reglamentario 1075 de 2015 del Ministerio de Educación Nacional (MEN), "
+        "la formación por ciclos propedéuticos organiza la educación superior en etapas secuenciales, complementarias e "
+        "interdependientes (técnica profesional, tecnológica y profesional universitaria). Este diseño curricular democratiza el "
+        "acceso a la educación superior al otorgar tres titulaciones oficiales a lo largo de la trayectoria formativa, permitiendo "
+        "la inserción laboral temprana desde el tercer período académico y reduciendo la deserción estudiantil."
     )
 
     add_formatted_heading(
         doc,
-        "5.3. Evolución de la Ciencia Contable: Del Registro Transaccional a las NIIF y la Fe Pública",
+        "5.3. Ciencia Contable, Normas Internacionales de Información Financiera (NIIF) y Fe Pública",
         level=2,
         color_rgb=(146, 26, 163)
     )
     add_body_p(
         doc,
-        "En el Área de Contaduría Pública, la campaña se sustentó en la distinción epistemológica y legal entre la teneduría de libros, "
-        "la contabilidad de gestión y la contaduría pública como profesión liberal investida de fe pública. Conforme a la Ley 43 de "
-        "1990 (Estatuto de la Profesión de Contador Público en Colombia) y la Ley 1314 de 2009 (que regula la convergencia hacia las "
-        "Normas Internacionales de Información Financiera — NIIF/IFRS y las Normas Internacionales de Aseguramiento de la Información "
-        "— NAI), el ejercicio contable abarca desde la captura fidedigna del hecho económico hasta el dictamen independiente de "
-        "estados financieros (Horngren, Sundem & Elliott, 2010). "
-        "Por ello, en el Nivel 1 (Técnica Profesional en Procesos Contables, Res. 009955) los Reels y la cuña radial se enfocan en "
-        "la causación, la facturación electrónica y los soportes contables; en el Nivel 2 (Tecnología en Gestión Contable y Financiera, "
-        "Res. 009956) el podcast 'Conoce FESNA' y la animación 2D abordan la contabilidad administrativa, los presupuestos y el "
-        "análisis financiero; mientras que en el Nivel 3 (Contaduría Pública, Res. 009957) el testimonio con avatar IA y el podcast "
-        "institucional destacan el dominio de las NIIF, la Revisoría Fiscal, la auditoría y la responsabilidad ética de dar fe pública."
+        "En el Área de Contaduría Pública, la campaña se fundamentó en la evolución epistemológica y legal que va desde el registro "
+        "transaccional y la teneduría de libros hasta el aseguramiento de la información y la fe pública. De acuerdo con la Ley 43 "
+        "de 1990 y la Ley 1314 de 2009 (convergencia hacia estándares internacionales NIIF/NIC y normas de aseguramiento NAI), el "
+        "profesional contable garantiza la transparencia financiera y la confianza pública (Horngren, Sundem & Elliott, 2010), "
+        "articulando la operación contable (Nivel 1), la gestión tributaria y financiera (Nivel 2) y la auditoría y revisoría fiscal (Nivel 3)."
     )
 
     add_formatted_heading(
         doc,
-        "5.4. Comunicación Institucional Estratégica, Marketing Educativo y Narrativa Transmedia",
+        "5.4. Ingeniería de Software, Arquitecturas Limpias y Ciberseguridad Defensiva (OWASP)",
+        level=2,
+        color_rgb=(20, 108, 49)
+    )
+    add_body_p(
+        doc,
+        "Para el Área de Ingeniería de Sistemas, los productos desarrollados se sustentan en los principios de la ingeniería de "
+        "software moderna (Pressman & Maxim, 2021; Sommerville, 2016). El Nivel 1 aborda la algoritmia, las estructuras de datos "
+        "y la complejidad computacional (notación Big O); el Nivel 2 incorpora el Ciclo de Vida del Desarrollo de Software (SDLC) "
+        "bajo marcos ágiles (Scrum y Kanban), la persistencia políglota (SQL y NoSQL) y la integración continua (DevOps CI/CD); "
+        "mientras que el Nivel 3 materializa la seguridad desde el diseño (DevSecOps) mediante el prototipo 'FESNA AI CodeGuard', "
+        "orientado a mitigar vulnerabilidades críticas del estándar OWASP Top 10 (como Inyección SQL CWE-89 y Cross-Site Scripting CWE-79)."
+    )
+
+    add_formatted_heading(
+        doc,
+        "5.5. Marketing Digital, Neuromarketing, Buyer Persona y Narrativa Transmedia",
+        level=2,
+        color_rgb=(179, 35, 25)
+    )
+    add_body_p(
+        doc,
+        "En el Área de Marketing y Publicidad, la estrategia se apoyó en la dirección de marketing de Kotler y Keller (2016), la "
+        "planificación de imagen corporativa de Capriotti (2013) y las narrativas transmedia de Scolari (2013). El diseño de piezas "
+        "comerciales y el chatbot conversacional (Nivel 1) aplican protocolos de venta directa y atención omnicanal; la construcción "
+        "del Buyer Persona, los frameworks persuasivos (AIDA y PAS) y el simulador de métricas CTR, CPC, CPA y ROAS (Nivel 2) "
+        "responden al marketing de rendimiento basado en datos (Performance Marketing); y el análisis de macrotendencias junto al "
+        "Pitch Deck internacional (Nivel 3) integran el neuromarketing y los Unit Economics (CAC vs. LTV) para la alta gerencia de marca."
+    )
+
+    add_formatted_heading(
+        doc,
+        "5.6. Inteligencia Artificial Generativa, Ingeniería de Prompts y Enfoque Human-in-the-Loop",
         level=2,
         color_rgb=(13, 59, 102)
     )
     add_body_p(
         doc,
-        "Siguiendo los postulados de Kotler y Keller (2016) sobre dirección de marketing y de Capriotti (2013) sobre identidad e "
-        "imagen corporativa, la comunicación de una institución de educación superior exige coherencia simbólica (colores, tono de "
-        "voz y promesa de valor) combinada con segmentación de formatos según el público objetivo. Asimismo, bajo el paradigma de la "
-        "narrativa transmedia de Scolari (2013), un mismo universo institucional se despliega a través de múltiples medios donde cada "
-        "formato aporta una experiencia específica: el formato vertical 9:16 (Reels en CapCut) captura la atención inmediata de "
-        "audiencias jóvenes mediante micro-narrativas; la infografía y el Motion Graphics sintetizan estructuras curriculares "
-        "complejas mediante visualización de datos; el formato sonoro (cuñas y podcasts) genera cercanía cognitiva mediante el "
-        "diálogo; y el video institucional y el avatar hiperrealista consolidan la credibilidad y el prestigio académico."
-    )
-
-    add_formatted_heading(
-        doc,
-        "5.5. Inteligencia Artificial Generativa, Ingeniería de Prompts y Supervisión Humana (Human-in-the-Loop)",
-        level=2,
-        color_rgb=(13, 59, 102)
-    )
-    add_body_p(
-        doc,
-        "Desde la perspectiva de la Ingeniería de Sistemas y la Inteligencia Artificial moderna (Russell & Norvig, 2021; Mollick, 2024), "
-        "los modelos generativos multimodales (LLMs, síntesis neural de voz y motores de difusión de video) operan mediante "
-        "distribuciones probabilísticas condicionadas por el contexto de entrada (prompt). Sin embargo, como advierte la UNESCO (2023) "
-        "en sus directrices sobre el uso ético de la IA en la educación superior, los sistemas generativos son susceptibles a "
-        "'alucinaciones' (invención de datos no verificados) si no se someten a un protocolo de supervisión humana activa "
-        "(Human-in-the-Loop). En este proyecto, la ingeniería de prompts se diseñó bajo restricción de contexto estricto "
-        "(Grounding Documental): cada prompt inyectó explícitamente los números de Resolución MEN, los códigos SNIES y el número "
-        "exacto de créditos extraídos de los documentos oficiales de FESNA, garantizando cero alucinaciones normativas y un uso "
-        "transparente, ético y pedagógicamente riguroso de la tecnología."
+        "Finalmente, desde la teoría de agentes inteligentes de Russell y Norvig (2021), la co-inteligencia de Mollick (2024) y las "
+        "directrices éticas de la UNESCO (2023), el proyecto implementó un protocolo de supervisión humana activa (Human-in-the-Loop) "
+        "y anclaje documental (Grounding). Cada prompt suministrado a Gemini, CapCut, HeyGen y Antigravity incorporó explícitamente "
+        "los datos verificados de las Resoluciones del MEN, evitando alucinaciones algorítmicas y demostrando un dominio técnico, "
+        "conceptual y ético de la Inteligencia Artificial."
     )
 
     doc.add_page_break()
@@ -1022,13 +1013,6 @@ def build_document():
         color_rgb=(13, 59, 102)
     )
 
-    add_body_p(
-        doc,
-        "A continuación, se presenta el listado formal de referencias bibliográficas, normativas, institucionales y tecnológicas "
-        "consultadas y citadas para la fundamentación y elaboración del proyecto, organizadas alfabéticamente con sangría francesa "
-        "conforme a los lineamientos de la séptima edición de las normas de la American Psychological Association (APA):"
-    )
-
     apa_refs = [
         "American Psychological Association. (2020). Publication manual of the American Psychological Association (7th ed.). https://doi.org/10.1037/0000165-000",
         "Bytedance Ltd. (2026). CapCut: Plataforma de edición de video y subtitulado asistido por inteligencia artificial [Software]. https://www.capcut.com/",
@@ -1037,34 +1021,36 @@ def build_document():
         "Congreso de la República de Colombia. (1990, 13 de diciembre). Ley 43 de 1990. Por la cual se adiciona la Ley 145 de 1960, reglamentaria de la profesión de Contador Público y se dictan otras disposiciones. Diario Oficial n.º 39.602.",
         "Congreso de la República de Colombia. (2002, 19 de julio). Ley 749 de 2002. Por la cual se organiza el servicio público de la educación superior en las modalidades de formación técnica profesional y tecnológica. Diario Oficial n.º 44.872.",
         "Congreso de la República de Colombia. (2009, 13 de julio). Ley 1314 de 2009. Por la cual se regulan los principios y normas de contabilidad e información financiera y de aseguramiento de información aceptados en Colombia. Diario Oficial n.º 47.409.",
-        "Fundación de Educación Superior Nueva América [FESNA]. (2026). Oferta académica por ciclos propedéuticos: Áreas de Administración, Contaduría Pública, Ingeniería de Sistemas y Marketing y Publicidad. https://www.nuevaamerica.edu.co/",
-        "Google DeepMind. (2026). Google Gemini & Gemini Canvas: Modelo multimodal de lenguaje y entorno de programación interactiva [Software de inteligencia artificial]. https://gemini.google.com/",
+        "Fundación de Educación Superior Nueva América [FESNA]. (2026). Oferta académica oficial por ciclos propedéuticos: Administración de Empresas, Contaduría Pública, Ingeniería de Sistemas y Marketing y Publicidad. https://www.nuevaamerica.edu.co/",
         "Google DeepMind. (2026). Antigravity: Agente de ingeniería de software y desarrollo asistido por inteligencia artificial [Software].",
+        "Google DeepMind. (2026). Google Gemini & Gemini Canvas: Modelo multimodal de lenguaje y entorno de programación interactiva [Software de inteligencia artificial]. https://gemini.google.com/",
         "HeyGen Inc. (2026). HeyGen AI Video Generator: Plataforma de generación de video con avatares digitales e inteligencia artificial [Software]. https://www.heygen.com/",
         "Horngren, C. T., Sundem, G. L., & Elliott, J. A. (2010). Introducción a la contabilidad financiera (9.ª ed.). Pearson Educación.",
         "Kotler, P., & Keller, K. L. (2016). Dirección de marketing (15.ª ed.). Pearson Educación.",
         "Ministerio de Educación Nacional de Colombia [MEN]. (2015, 26 de mayo). Decreto 1075 de 2015. Por medio del cual se expide el Decreto Único Reglamentario del Sector Educación.",
-        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 3 de junio). Resolución n.º 009955 de 2022. Por medio de la cual se otorga el registro calificado al programa de Técnica Profesional en Procesos Contables de la Fundación de Educación Superior Nueva América (FESNA) en modalidades presencial (SNIES 111389) y virtual (SNIES 111390).",
-        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 3 de junio). Resolución n.º 009956 de 2022. Por medio de la cual se otorga el registro calificado al programa de Tecnología en Gestión Contable y Financiera de la Fundación de Educación Superior Nueva América (FESNA) en modalidades presencial (SNIES 111391) y virtual (SNIES 111392).",
-        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 3 de junio). Resolución n.º 009957 de 2022. Por medio de la cual se otorga el registro calificado al programa de Contaduría Pública de la Fundación de Educación Superior Nueva América (FESNA) en modalidades presencial (SNIES 111387) y virtual (SNIES 111388).",
-        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 16 de junio). Resoluciones n.º 010895, 010896 y 010897 de 2022. Por medio de las cuales se otorgan los registros calificados a los programas de Técnica Profesional en Procesos Administrativos Empresariales (SNIES 111383/111384), Tecnología en Gestión Administrativa (SNIES 111385/111386) y Administración de Empresas (SNIES 111357/111750) de la Fundación de Educación Superior Nueva América (FESNA).",
+        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 3 de junio). Resoluciones n.º 009955, 009956 y 009957 de 2022. Registros calificados de los programas de Técnica Profesional en Procesos Contables (SNIES 111389/111390), Tecnología en Gestión Contable y Financiera (SNIES 111391/111392) y Contaduría Pública (SNIES 111387/111388) de la Fundación de Educación Superior Nueva América (FESNA).",
+        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 16 de junio). Resoluciones n.º 010895, 010896 y 010897 de 2022. Registros calificados de los programas de Técnica Profesional en Procesos Administrativos Empresariales (SNIES 111383/111384), Tecnología en Gestión Administrativa (SNIES 111385/111386) y Administración de Empresas (SNIES 111357/111750) de la Fundación de Educación Superior Nueva América (FESNA).",
+        "Ministerio de Educación Nacional de Colombia [MEN]. (2022, 28 de junio). Resoluciones n.º 012171, 012172 y 012173 de 2022. Registros calificados de los programas de Técnica Profesional en Procesos de Programación de Software (SNIES 111395/111396), Tecnología en Gestión de Software y Sistemas (SNIES 111397/111398) e Ingeniería de Sistemas (SNIES 111393/111394) de la Fundación de Educación Superior Nueva América (FESNA).",
+        "Ministerio de Educación Nacional de Colombia [MEN]. (2026, 30 de abril). Resoluciones n.º 011477, 011476 y 011475 de 2026. Registros calificados de los programas de Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria (SNIES 119246/119247), Tecnología en Gestión Comercial y Publicidad (SNIES 119245/119244) y Profesional Universitario en Marketing y Publicidad (SNIES 119242/119243) de la Fundación de Educación Superior Nueva América (FESNA).",
         "Mollick, E. (2024). Co-Intelligence: Living and working with AI. Portfolio / Penguin Random House.",
+        "OWASP Foundation. (2021). OWASP Top 10: The Ten Most Critical Web Application Security Risks. https://owasp.org/www-project-top-ten/",
+        "Pressman, R. S., & Maxim, B. R. (2021). Ingeniería del software: Un enfoque práctico (9.ª ed.). McGraw-Hill.",
         "Robbins, S. P., & Coulter, M. (2018). Administración (13.ª ed.). Pearson Educación.",
         "Russell, S., & Norvig, P. (2021). Inteligencia artificial: Un enfoque moderno (4.ª ed.). Pearson Educación.",
         "Scolari, C. A. (2013). Narrativas transmedia: Cuando todos los medios cuentan. Deusto.",
+        "Sommerville, I. (2016). Software engineering (10th ed.). Pearson.",
         "UNESCO. (2023). Guía para el uso de IA generativa en educación e investigación. Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura. https://unesdoc.unesco.org/"
     ]
 
     for ref in apa_refs:
         add_apa_reference(doc, ref)
 
-    # Guardar en la carpeta del proyecto y en Downloads
     out_project = r"C:\Users\david\.gemini\antigravity\scratch\fesna-portafolio-ia\DOCUMENTACION_SUSTENTACION_CAMPANA_FESNA_DAVID_PULIDO.docx"
     out_downloads = r"C:\Users\david\Downloads\DOCUMENTACION_SUSTENTACION_CAMPANA_FESNA_DAVID_PULIDO.docx"
 
     doc.save(out_project)
     shutil.copy2(out_project, out_downloads)
-    print(f"Documento generado exitosamente en:\n1) {out_project}\n2) {out_downloads}")
+    print(f"Documento del Examen Final generado exitosamente en:\n1) {out_project}\n2) {out_downloads}")
 
 
 if __name__ == "__main__":

